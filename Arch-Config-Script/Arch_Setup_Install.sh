@@ -82,7 +82,6 @@ cp -r ./dunst "${HOME}"/.config
 chmod +x "${HOME}"/.config/dunst/vol_script
 
 echo -e "${BYellow}[ * ]Placing rofi folder in ~/.config/rofi${End_Colour}"
-echo place the rofi folder to .config
 cp -r ./rofi "${HOME}"/.config
 
 echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
@@ -110,7 +109,7 @@ if [[ -z ${shell_ans} || ${shell_ans} == "y" || ${shell_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Placing fish config in ~/.config/fish${End_Colour}"
     mkdir -p "${HOME}"/.config/fish
     cp ./fish/config.fish "${HOME}"/.config/fish/config.fish
-elif [[ ${shell_ans} == "y" || ${shell_ans} == "Y" ]] ; then
+elif [[ ${shell_ans} == "n" || ${shell_ans} == "N" ]] ; then
     echo -e "${BRed}Skipping Shell change${End_Colour}"
 else
     echo -e "${BRed}Not a valid option, Skipping Shell change${End_Colour}"
@@ -126,7 +125,7 @@ if [[ -z ${lightdm_ans} || ${lightdm_ans} == "y" || ${lightdm_ans} == "Y" ]] ; t
     echo -e "${BYellow}[ * ]Starting the lightdm service at boot with 'sudo systemctl enable lightdm.service'${End_Colour}"
     sudo systemctl enable lightdm.service 
     echo -e "${BYellow}[ * ]Reboot the system with 'sudo systemctl reboot'${End_Colour}"    
-elif [[ ${lightdm_ans} == "y" || ${lightdm_ans} == "Y" ]] ; then
+elif [[ ${lightdm_ans} == "n" || ${lightdm_ans} == "N" ]] ; then
     echo -e "${BRed}Skipping Lightdm Installation${End_Colour}"
 else
     echo -e "${BRed}Not a valid option, Skipping Lightdm Installation${End_Colour}"
