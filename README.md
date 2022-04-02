@@ -1,7 +1,7 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. I have created a bash script for installing this setup. The script is placed under ```Arch-Config-Script``` directory.
 
-*Note: The Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed under the ```Arch-Config-Script``` directory and the script ,before running the script.*
+*Note: The Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed under the ```Arch-Config-Script``` directory and the script ,before running the script. You can just get the script using curl (see ```Arch-Config-Script/README.md```), it will clone this repo and do the needfull.*
 
 <br />
 
