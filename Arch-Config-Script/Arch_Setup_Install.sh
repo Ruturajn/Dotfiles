@@ -14,7 +14,7 @@ End_Colour="\e[0m"
 echo -e "${BYellow}[ * ]Installing packages${End_Colour}"
 sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi picom qtile dunst \
 python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
-papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol
+papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty
 
 # Adding a swapfile
 read -p "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
