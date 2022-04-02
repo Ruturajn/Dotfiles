@@ -23,10 +23,12 @@ https://user-images.githubusercontent.com/56625259/159149079-1ee59cc7-9bcc-45fc-
 
 <br />
 
-## Arch-Linux with Rofi and Qtile (Garuda Wallpaper)
+## Arch-Linux with Rofi and Qtile (Updated)
 
 ![Arch-New-Rice](https://user-images.githubusercontent.com/56625259/160415761-2fb4e1ce-696e-40f4-863c-8396f7aa10cb.png)
 
 ![Arch-New-Rice-Rofi](https://user-images.githubusercontent.com/56625259/160415798-246dc4a8-0fd9-481b-99df-b772ca45be38.png)
 
 <br />
+
+- Garuda Wallpapers : https://gitlab.com/garuda-linux/themes-and-settings/artwork/garuda-wallpapers
