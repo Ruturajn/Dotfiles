@@ -1,0 +1,135 @@
+/**
+ * Author: Primetoxinz
+ */
+* {
+    text-color:                  #f2f2f2;
+    background-color:            #4e4743;
+    lightbg:                     #534c48;
+    red:                         #f15d22;
+    orange:                      #faa41a; 
+    blue:                        #48b9c7; 
+
+    selected-normal-foreground:  @foreground;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @background;
+    selected-urgent-foreground:  @foreground;
+    urgent-foreground:           @foreground;
+    alternate-urgent-background: @background;
+    active-foreground:           @foreground;
+    selected-active-foreground:  @foreground;
+    alternate-normal-foreground: @foreground;
+    alternate-active-background: @blue;
+    bordercolor:                 @foreground;
+    normal-background:           @background;
+    selected-normal-background:  @blue;
+    separatorcolor:              @orange;
+    spacing:                     2;
+    urgent-background:           @red;
+    alternate-urgent-foreground: @foreground;
+    selected-urgent-background:  @red;
+    alternate-active-foreground: @foreground;
+    selected-active-background:  @blue;
+    active-background:           @orange;
+}
+window {
+    border:     0;
+    text-color: #FFFFFFff;
+    /*background-color: rgba ( 0, 0, 0, 0 % );*/
+    background-color: @blue;
+    border-color: @orange;
+    border-radius: 14px;
+    padding:    5;
+    text-color: @orange;
+    background-color: @background;
+    transparency: "real";
+}
+mainbox {
+    border:  0;
+    padding: 0;
+    background-color:               #00000000;
+	border:							0% 0% 0% 0%;
+    border-radius:                  0% 0% 0% 0%;
+	//border-color:					#759cca;
+    children:                       [ inputbar, listview ];
+    spacing:                       	1%;
+    padding:                        1% 1% 1% 1%;
+}
+message {
+    border:     1px dash 0px 0px ;
+    text-color: @orange;
+    padding:    2px 0px 0px ;
+}
+textbox {
+    text-color: @orange;
+}
+
+prompt{
+    enabled: true;
+    background-color: @orange;
+    padding: 	0.25% 0.75% 0.25% 0.75%;
+    border-radius: 5%;
+    font: "Jet Brains Mono Regular 14";
+}
+
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    //border-radius: 100px;
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        " ::";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @normal-foreground;
+    //padding: 1.40% 0% 1% 0%;
+}
+
+listview {
+    fixed-height: 0;
+    border:       2px 0px 0px ;
+    padding:      2px 0px 0px ;
+    text-color: @orange;
+    columns : 2;
+    lines:  10;
+    spacing: 1%;
+    //background-color: @orange;
+}
+element {
+    border: 0;
+    background-color: #00000000;
+    text-color: #FFFFFFff;
+}
+
+element-icon {
+    size: 32px;
+    text-color: inherit;
+}
+
+element-text {
+    background-color: #00000000;
+    text-color:      inherit;
+}
+
+//mode-switcher {
+    //border: 1px dash 0px 0px ;
+//}
+//button selected {
+    //text-color: @orange;
+    //background-color: #00000000;
+//}
+element selected {
+    background-color:               #00000000;
+    text-color:                     @orange;
+	border:							0% 0% 0% 0%;
+    border-radius:                  4px;
+    //border-color:                  	@ac;
+}
+inputbar {
+    spacing: 0;
+    border: 0px ;
+    text-color: @orange;
+}
+button normal {
+    text-color: @orange;
+}
+
+
