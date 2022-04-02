@@ -102,7 +102,7 @@ mkdir -p "${HOME}"/.config/picom
 cp ./picom.conf "${HOME}"/.config/picom/
 
 # Install omf and change default shell to fish
-read -p "[1;34m[ * ]Do you want to change the default shell to fish [Y/n]:[0m" shell_ans
+read -p "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
 if [[ -z ${shell_ans} || ${shell_ans} == "y" || ${shell_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Changing Default shell to fish and installing omf with robbyrussell theme${End_Colour}"
     chsh -s /usr/bin/fish
