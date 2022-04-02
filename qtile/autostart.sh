@@ -9,4 +9,5 @@
 nitrogen --restore &
 
 ## Starting compton compositor on startup for transparency
+# If transparency is not working, try with vsync
 picom --no-vsync &
