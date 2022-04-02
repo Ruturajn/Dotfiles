@@ -47,9 +47,9 @@ if [[ -z ${aur_ans} || ${aur_ans} == "y" || ${aur_ans} == "Y" ]] ; then
     makepkg -si
     aur_name="yay"  
 elif [[ ${aur_ans} == "n" || ${aur_ans} == "N" ]] ; then
-    read -p "[1;34m[ * ]Please enter the name of the installed AUR Helper? [Y/n]:[0m" aur_name
+    read -p "[1;34m[ * ]Please enter the name of the installed AUR Helper:[0m" aur_name
 else
-    echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!{End_Colour}"
+    echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!{End_Colour}" && exit
 fi
 
 # Upgrade system with yay
@@ -75,7 +75,7 @@ sudo cp ./pfetch /usr/bin/pfetch
 # Clone the Dotfiles Repo and place all the folders in the $(HOME)/.config directory
 echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 git clone https://github.com/Ruturajn/Dotfiles.git
-cd ./Dotfiles || exit
+cd "${HOME}"/Dotfiles || exit
 
 echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 cp -r ./dunst "${HOME}"/.config
