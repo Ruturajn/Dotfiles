@@ -8,6 +8,6 @@ configures a ```swapfile``` if the user requires it.
 Since, that's out of the way now :smile: , you can run the script with the command :
 
 ```
-$ curl -fsSL https://tinyurl.com/5ahryh23 > Arch_Setup
+$ curl -fsSL https://tinyurl.com/2p85eyd5 > Arch_Setup
 $ bash ./Arch_Setup
 ```
