@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Author : Ruturajn <nanotiruturaj@gmail.com> 
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
 # Run this script for setting up the Rice.
 
 BRed="\e[1;31m" 
