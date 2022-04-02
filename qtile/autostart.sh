@@ -1,8 +1,9 @@
 #!/bin/bash
 
 ## Using feh to set the background on startup
-#feh --bg-max /usr/share/wallpapers/Cluster/contents/screenshot.png
-feh --bg-scale ~/Dotfiles-Private/Wallpapres/5120x2880.jpg
+# You can uncomment the line below, if you are doing the setup on your own.
+# If you are running the setup script, it will add this line.
+# feh --bg-scale <Path_To_Dotfiles>/Dotfiles/Wallpapres/5120x2880.jpg
 
 ## Using nitrogen to set wallpaper on startup
 nitrogen --restore &
