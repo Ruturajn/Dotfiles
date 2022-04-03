@@ -110,6 +110,7 @@ keys = [
     Key([mod], "F10", lazy.spawn(
         "/home/ruturajn/.config/dunst/vol_script toggle"), desc="Mute System Volume"),
     Key([mod], "b", lazy.spawn("firefox"), desc="Launch Firefox"),
+    Key([mod], "f", lazy.spawn("nemo"), desc="Launch File Manager - Nemo"),
 ]
 
 #groups = [Group(i) for i in "123456789"]
