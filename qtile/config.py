@@ -40,20 +40,18 @@ import subprocess
 import psutil
 import fontawesome as fa
 
-#from screens import screens
-
 
 @hook.subscribe.startup
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    #home1 = os.path.expanduser('~/.config/qtile/polybar_launch.sh')
     subprocess.run([home])
-    # subprocess.run([home1])
 
 
 mod = "mod4"
 #terminal = guess_terminal()
-terminal = "alacritty"
+terminal = "gnome-terminal"
+browser = "firefox"
+file_manager = "nemo"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -109,9 +107,8 @@ keys = [
         "/home/ruturajn/.config/dunst/vol_script up"), desc="Deccrease System Volume"),
     Key([mod], "F10", lazy.spawn(
         "/home/ruturajn/.config/dunst/vol_script toggle"), desc="Mute System Volume"),
-    Key([mod], "b", lazy.spawn("firefox"), desc="Launch Firefox"),
-    Key([mod], "f", lazy.spawn("nemo"), desc="Launch File Manager - Nemo"),
-]
+    Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
+    Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"), ]
 
 #groups = [Group(i) for i in "123456789"]
 
@@ -155,7 +152,7 @@ for i in groups:
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Columns(border_focus_stack=[
-                   "#0000F0", "#0000F0"], border_width=1, margin=8),
+                   "#533a7b", "#533a7b"], border_width=3, margin=8, border_focus="#533a7b"),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -199,7 +196,6 @@ decor_groupbox = {
     "decorations": [
         RectDecoration(colour=colors[0], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -209,7 +205,6 @@ decor_ram = {
     "decorations": [
         RectDecoration(colour=colors[1], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -218,7 +213,6 @@ decor_wallpaper = {
     "decorations": [
         RectDecoration(colour=colors[1], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -227,7 +221,6 @@ decor_battery = {
     "decorations": [
         RectDecoration(colour=colors[2], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -236,7 +229,6 @@ decor_Day = {
     "decorations": [
         RectDecoration(colour=colors[3], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -245,7 +237,6 @@ decor_Date = {
     "decorations": [
         RectDecoration(colour=colors[4], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -254,7 +245,6 @@ decor_Wifi = {
     "decorations": [
         RectDecoration(colour=colors[5], radius=7,
                        filled=True, padding_y=2, padding_x=3)
-        #RectDecoration(use_widget_background=False,radius=10, filled=True, padding_y=5)
     ],
     "padding": 18
 }
@@ -264,62 +254,26 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(),
-                # widget.Sep(),
                 widget.GroupBox(highlight_method="line", highlight_color="#d1cfe2", foreground="#000000",
                                 rounded=True, **decor_groupbox, hide_unused=False, active="#000000"),
-                # B83AC0
-                # widget.Sep(),
                 widget.Prompt(**decor_ram),
-                # widget.Sep(),
-                # widget.WindowName(),
                 widget.Spacer(lenght="100"),
                 widget.CheckUpdates(background="#00000000", foreground="#FF0000",
                                     colour_have_updates="#000000", colour_no_updates="#000000", **decor_ram),
-                # widget.Sep(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ffffff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                #     **decor,
-                # ),
-                # widget.Sep(),
-                #widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d4567f"),
                 widget.Systray(background="#00000000", icon_size=20),
-                # widget.Sep(),
                 widget.Net(interface="enp0s3", background="#00000000",
                            format=fa.icons["wifi"]+" {up}"+fa.icons["arrow-up"]+" {down} "+fa.icons["arrow-down"], **decor_Wifi),
-                # widget.Memory(background="#E6A39B",foreground="#FFFFFF", **decor_ram),
                 widget.Memory(background="#00000000", foreground="#FFFFFF",
                               measure_mem='G', format=fa.icons["server"] + "{MemUsed: .2f} GB", **decor_ram),
                 # Can also use fa.icons["microchip"], fa.icons["chart-bar"]
-                # widget.Sep(),
-                # widget.Wallpaper(directory="~/Downloads/Dotfiles-main/Wallpapers/",
-                #                  wallpaper_command=['feh', '--bg-fill'],
-                #                  background="#00000000",
-                #                  foreground="#FFFFFF",
-                #                  random_selection=False,
-                #                  max_chars=5, **decor_wallpaper),
-                # widget.Sep(),
-                # widget.Battery(background="#DCF4B6", foreground = "#000000"),
                 widget.Battery(background="#00000000", foreground="#000000",
                                charge_char=fa.icons["bolt"], discharge_char="",
                                update_interval=1,
                                format=fa.icons["battery-three-quarters"] + "{char} {percent:2.0%}", notify_below=20, notification_timeout=15,**decor_battery),
-                # widget.Battery(**decor),
-                # CDC7E1 C1F4B6
-                # widget.Sep(),
                 widget.Clock(format=fa.icons["calendar"] + " %d %b %Y %a",
                              background="#00000000", foreground="#FFFFFF", **decor_Day),
                 widget.Clock(format=fa.icons["clock"] + " %I:%M %p",
                              background="#00000000", foreground="#FFFFFF", **decor_Date),
-                #widget.PulseVolume(mouse_callbacks={'Button1': lazy.spawn('pavucontrol'), 'Button3':lazy.spawn('pavucontrol')})
-                # widget.PulseVolume(),
-                # %d-%m-%Y %a %I:%M %p
-                # widget.Sep(),
-                # widget.Clock(**decor),
-                # widget.QuickExit(**decor),
             ],
             24,
             border_width=[0, 0, 0, 0],  # Draw top and bottom borders
