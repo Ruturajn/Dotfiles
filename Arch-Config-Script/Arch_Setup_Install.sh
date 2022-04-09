@@ -26,7 +26,7 @@ if [[ -z ${ans} || ${ans} == "y" || ${ans} == "Y" ]] ; then
     sudo mkswap /swapfile
     sudo swapon /swapfile
     echo "/swapfile                                       none            swap            defaults        0 0" | sudo tee -a /etc/fstab
-    echo -e "$${BGreen}Swapfile creation and configuration successfull !!${End_Colour}"
+    echo -e "${BGreen}Swapfile creation and configuration successfull !!${End_Colour}"
 elif [[ ${ans} == "n" || ${ans} == "N" ]] ; then
     echo -e "${BRed}Skipping Swapfile creation${End_Colour}"
 else
