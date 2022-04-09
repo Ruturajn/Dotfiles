@@ -76,7 +76,7 @@ sudo cp ./pfetch /usr/bin/pfetch
 cd "${HOME}"/Git-repos/
 echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 git clone https://github.com/Ruturajn/Dotfiles.git
-cd "${HOME}"/Dotfiles || exit
+cd "${HOME}"/Git-repos/Dotfiles || exit
 
 echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 cp -r ./dunst "${HOME}"/.config
