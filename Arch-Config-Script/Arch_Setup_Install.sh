@@ -73,6 +73,7 @@ cd ./pfetch || exit
 sudo cp ./pfetch /usr/bin/pfetch
 
 # Clone the Dotfiles Repo and place all the folders in the $(HOME)/.config directory
+cd "${HOME}"/Git-repos/
 echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 git clone https://github.com/Ruturajn/Dotfiles.git
 cd "${HOME}"/Dotfiles || exit
