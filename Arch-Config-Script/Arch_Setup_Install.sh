@@ -7,7 +7,7 @@
 BRed="\e[1;31m" 
 BGreen="\e[1;32m"
 BYellow="\e[1;33m"
-BBlue="\e[1;34m"
+# BBlue="\e[1;34m"
 End_Colour="\e[0m"
 
 # Install the required packages for the Rice
@@ -39,17 +39,18 @@ sudo pip3 install psutil fontawesome dbus-next
 
 # Install `yay` as the AUR Helper, interact wherever required
 read -p "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" aur_ans
-if [[ -z ${aur_ans} || ${aur_ans} == "y" || ${aur_ans} == "Y" ]] ; then
+if [[ ${aur_ans} == "n" || ${aur_ans} == "N" ]] ; then
+    read -p "[1;34m[ * ]Please enter the name of the installed AUR Helper:[0m" aur_name
+    if [[ -z ${aur_name} ]] ; then
+        echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!{End_Colour}" && exit
+    fi
+elif [[ -z ${aur_ans} || ${aur_ans} == "y" || ${aur_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Installing yay as the AUR Helper${End_Colour}"
     sudo git clone https://aur.archlinux.org/yay.git
     sudo chown -R "${USER}":"${USER}" yay
     cd ./yay || exit
     makepkg -si
-    aur_name="yay"  
-elif [[ ${aur_ans} == "n" || ${aur_ans} == "N" ]] ; then
-    read -p "[1;34m[ * ]Please enter the name of the installed AUR Helper:[0m" aur_name
-else
-    echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!{End_Colour}" && exit
+    aur_name="yay"
 fi
 
 # Upgrade system with yay
@@ -73,7 +74,7 @@ cd ./pfetch || exit
 sudo cp ./pfetch /usr/bin/pfetch
 
 # Clone the Dotfiles Repo and place all the folders in the $(HOME)/.config directory
-cd "${HOME}"/Git-repos/
+cd "${HOME}"/Git-repos/ || exit
 echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 git clone https://github.com/Ruturajn/Dotfiles.git
 cd "${HOME}"/Git-repos/Dotfiles || exit
