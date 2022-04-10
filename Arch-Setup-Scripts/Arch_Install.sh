@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Author : Ruturajn <nanotiruturaj@gmail.com>
-# This script installs the base arch system and adds a user
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+# This script installs the base Arch system and adds a user
 
 # Defining colours
 # BRed="\e[1;31m" 
@@ -150,3 +151,4 @@ echo -e "${BYellow}Unmounting partitions[ * ]${End_Colour}"
 umount -R /mnt
 
 echo -e "${BGreen}The Base Install is done !! Reboot your machine${End_Colour}"
+
