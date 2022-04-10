@@ -5,7 +5,7 @@
 # This script installs the base Arch system and adds a user
 
 # Defining colours
-# BRed="\e[1;31m" 
+BRed="\e[1;31m" 
 BGreen="\e[1;32m"
 BYellow="\e[1;33m"
 # BBlue="\e[1;34m"
@@ -18,6 +18,10 @@ timedatectl set-ntp true
 # Partition the disk
 ## To-Do
 read -p "[1;34mEnter the disk that needs to be paritioned:[0m" disk_name
+if [[ -z ${disk_name} ]] ; then
+    echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
+    exit
+fi
 fdisk "${disk_name}" << FDISK_CMDS 
 n
 
@@ -97,7 +101,7 @@ echo -e "${BYellow}[ * ]Creating locale file and setting the LANG variable${End_
 arch-chroot /mnt echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Creating Host-name
-read -p "[1;34mEnter your desired hostname : " host_name
+read -p "[1;34mEnter your desired hostname:[0m" host_name 
 arch-chroot /mnt echo "${host_name}" >> /etc/hostname
 
 # Creating password for the root user
@@ -151,4 +155,3 @@ echo -e "${BYellow}Unmounting partitions[ * ]${End_Colour}"
 umount -R /mnt
 
 echo -e "${BGreen}The Base Install is done !! Reboot your machine${End_Colour}"
-
