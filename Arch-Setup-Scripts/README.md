@@ -21,3 +21,7 @@ Run the Base Arch Installation Script with the commands :
 $ curl -fsSL https://tinyurl.com/4kn79x78 > Arch_Install
 $ bash ./Arch_Install
 ```
+
+<br />
+
+For Disk Paritioning in the ```Arch_Install.sh```, I used this : https://stackpointer.io/unix/linux-script-to-partition-disk/632/
