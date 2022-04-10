@@ -1,11 +1,14 @@
 # Arch-Linux Post Installation Configuration
 
-This script installs all the needed packages and puts the config files in their respective folders ```~/.config/<Program-name>```. It also creates and
-configures a ```swapfile``` if the user requires it. 
+- The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. 
+- The ```Arch_Setup_Install.sh``` script installs all the needed packages for the rice and puts the config files in their respective folders ```~/.config/<Program-name>```. It also creates and configures a ```swapfile``` if the user requires it. 
 
-**Note : Please answer the questions asked by the script carefully, any damage caused to your system is solely your responsibility!**
+**Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely your
+responsibility!**
 
-Since, that's out of the way now :smile: , you can run the script with the commands :
+Since, that's out of the way now :smile:
+
+Run the Arch Setup Script with the commands :
 
 ```
 $ curl -fsSL https://tinyurl.com/4xxbyzjx > Arch_Setup
