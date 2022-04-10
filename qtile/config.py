@@ -49,7 +49,8 @@ def autostart():
 
 mod = "mod4"
 #terminal = guess_terminal()
-terminal = "gnome-terminal"
+#terminal = "gnome-terminal"
+terminal = "alacritty"
 browser = "firefox"
 file_manager = "nemo"
 
