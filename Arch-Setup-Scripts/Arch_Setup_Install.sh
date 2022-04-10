@@ -42,7 +42,7 @@ read -p "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" a
 if [[ ${aur_ans} == "n" || ${aur_ans} == "N" ]] ; then
     read -p "[1;34m[ * ]Please enter the name of the installed AUR Helper:[0m" aur_name
     if [[ -z ${aur_name} ]] ; then
-        echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!{End_Colour}" && exit
+        echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!${End_Colour}" && exit
     fi
 elif [[ -z ${aur_ans} || ${aur_ans} == "y" || ${aur_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Installing yay as the AUR Helper${End_Colour}"
