@@ -40,6 +40,7 @@ uefi
 t
 2
 swap
+w
 FDISK_CMDS
 
 # Making file-systems on each partition
