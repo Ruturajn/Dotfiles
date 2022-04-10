@@ -11,10 +11,3 @@ Since, that's out of the way now :smile: , you can run the script with the comma
 $ curl -fsSL https://tinyurl.com/2p85eyd5 > Arch_Setup
 $ bash ./Arch_Setup
 ```
-
-Running the Arch Installation Script :
-
-```
-$ curl -fsSL https://tinyurl.com/2aud8u4r > Arch_Install
-$ bash ./Arch_Install
-```
