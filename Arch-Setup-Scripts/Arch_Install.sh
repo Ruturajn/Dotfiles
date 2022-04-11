@@ -17,7 +17,10 @@ timedatectl set-ntp true
 
 # Partition the disk
 ## To-Do
-read -p "[1;34mEnter the disk that needs to be paritioned:[0m" disk_name
+tput setaf 5
+lsblk
+tput setaf 7
+read -rp "[1;34mEnter the disk that needs to be paritioned (/dev/sdX) :[0m" disk_name
 if [[ -z ${disk_name} ]] ; then
     echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
     exit
@@ -69,8 +72,9 @@ swapon /dev/sda2
 
 # Installing base packages with pacstrap
 echo -e "${BYellow}[ * ]Installing base packages with pacstrap${End_Colour}"
+read -rp "[1;34mEnter the ucode for your CPU (intel-ucode / amd-ucode):[0m" cpu_code
 pacstrap /mnt base base-devel linux linux-firmware grub efibootmgr networkmanager \
-intel-ucode
+"${cpu_code}"
 
 # Generate file-system table with genfstab
 echo -e "${BYellow}[ * ]Generating file-system table with UUID${End_Colour}"
@@ -89,7 +93,7 @@ echo -e "${BYellow}[ * ]Synchronizing hardware clock to system clock${End_Colour
 arch-chroot /mnt hwclock --systohc
 
 # Uncommenting en_US.UTF-8 UTF-8 in /etc/locale.gen
-echo -e "${BYellow}[ * ]Uncommenting en_US.UTF-8 UTF-8 in /etc/locale.gen{End_Colour}"
+echo -e "${BYellow}[ * ]Uncommenting en_US.UTF-8 UTF-8 in /etc/locale.gen${End_Colour}"
 arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
 
 # Generating locale
@@ -101,7 +105,7 @@ echo -e "${BYellow}[ * ]Creating locale file and setting the LANG variable${End_
 arch-chroot /mnt echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Creating Host-name
-read -p "[1;34mEnter your desired hostname:[0m" host_name 
+read -rp "[1;34mEnter your desired hostname:[0m" host_name 
 arch-chroot /mnt echo "${host_name}" >> /etc/hostname
 
 # Creating password for the root user
@@ -119,7 +123,7 @@ base-devel linux-headers wpa_supplicant xdg-utils xdg-user-dirs bluez \
 bluez-utils cups pulseaudio alsa-utils pavucontrol terminus-font os-prober \
 udisks2 ntfs-3g bash-completion nfs-utils avahi openssh rsync xorg-xinit \
 xterm xf86-video-vmware firefox gnu-free-fonts noto-fonts ttf-dejavu \
-ttf-ubuntu-font-family vim git curl
+ttf-ubuntu-font-family vim git curl nemo
 
 # Installing grub bootloader
 echo -e "${BYellow}[ * ]Installing grub bootloader${End_Colour}"
@@ -136,7 +140,7 @@ arch-chroot /mnt systemctl enable sshd
 
 # Adding user
 echo -e "${BYellow}[ * ]Adding user${End_Colour}"
-read -p "[1;34mEnter your desired username:[0m" user_name
+read -rp "[1;34mEnter your desired username:[0m" user_name
 arch-chroot /mnt useradd -m "${user_name}"
 arch-chroot /mnt passwd "${user_name}"
 
@@ -150,8 +154,22 @@ arch-chroot /mnt usermod -aG wheel "${user_name}"
 
 arch-chroot /mnt echo "Defaults env_reset,pwfeedback" | tee -a /etc/sudoers
 
+echo -e "${BGreen}The Base Install is done !!${End_Colour}"
+
+read -rp "[1;34mDo you want to setup the Qtile Rice? [Y/n]:[0m" rice_ans
+if [[ -z ${rice_ans} || ${rice_ans} == "y" || ${rice_ans} == "Y" ]] ; then
+    curl -fsSL https://tinyurl.com/4xxbyzjx > Arch_Setup
+    mv ./Arch_Setup /mnt/home/"${user_name}"
+    arch-chroot /mnt runuser -u "${user_name}" -- bash /home/"${user_name}"/Arch_Setup
+elif [[ ${rice_ans} == "n" || ${rice_ans} == "N" ]] ; then
+    echo -e "${BRed}Skipping Rice Setup${End_Colour}"
+else
+    echo -e "${BRed}Not a valid option, Skipping Rice Setup${End_Colour}"
+fi
+
+
 # Echo exit chroot and unmount partitions
 echo -e "${BYellow}Unmounting partitions[ * ]${End_Colour}"
 umount -R /mnt
 
-echo -e "${BGreen}The Base Install is done !! Reboot your machine${End_Colour}"
+echo -e "${BGreen}Setup Completed !! Reboot Your Machine${End_Colour}"
