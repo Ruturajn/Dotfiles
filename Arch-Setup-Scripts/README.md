@@ -3,8 +3,9 @@
 - The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. 
 - The ```Arch_Setup_Install.sh``` script installs all the needed packages for the rice and puts the config files in their respective folders ```~/.config/<Program-name>```. It also creates and configures a ```swapfile``` if the user requires it. 
 
-**Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely your
-responsibility!**
+**Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely
+your responsibility! Also the ```Arch_Install.sh``` script is currently only tested on virtualbox, since it (as of yet) does not handle detecting your
+GPU. So you will not have your NVIDIA or AMD GPU Drivers installed if you test this out on real hardware.**
 
 Since, that's out of the way now :smile:
 
