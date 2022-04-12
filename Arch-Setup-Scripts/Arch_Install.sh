@@ -138,7 +138,7 @@ base-devel linux-headers wpa_supplicant xdg-utils xdg-user-dirs bluez \
 bluez-utils cups pulseaudio alsa-utils pavucontrol terminus-font os-prober \
 udisks2 ntfs-3g bash-completion nfs-utils avahi openssh rsync xorg-xinit \
 xterm xf86-video-vmware firefox gnu-free-fonts noto-fonts ttf-dejavu \
-ttf-ubuntu-font-family vim git curl nemo
+ttf-ubuntu-font-family vim git curl nemo gwenview simplescreenrecorder
 
 # Installing grub bootloader
 echo -e "${BYellow}[ * ]Installing grub bootloader${End_Colour}"
