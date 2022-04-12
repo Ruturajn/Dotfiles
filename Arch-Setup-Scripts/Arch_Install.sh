@@ -116,7 +116,7 @@ echo -e "${BYellow}[ * ]Uncommenting en_US.UTF-8 UTF-8 in /etc/locale.gen${End_C
 arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
 
 # Generating locale
-echo -e "${BYellow}[ * ]Generating locale-gen{End_Colour}"
+echo -e "${BYellow}[ * ]Generating locale-gen${End_Colour}"
 arch-chroot /mnt locale-gen
 
 # Creating locale file and setting the LANG variable
@@ -124,8 +124,9 @@ echo -e "${BYellow}[ * ]Creating locale file and setting the LANG variable${End_
 arch-chroot /mnt echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Creating Host-name
-read -rp "[1;34mEnter your desired hostname:[0m" host_name 
-arch-chroot /mnt echo "${host_name}" >> /etc/hostname
+read -rp "[1;34mEnter your desired hostname:[0m" host_name
+arch-chroot /mnt touch /mnt/etc/hostname
+arch-chroot /mnt echo "${host_name}" | tee -a /mnt/etc/hostname
 
 # Creating password for the root user
 echo -e "${BYellow}[ * ]Creating password for the root user${End_Colour}"
@@ -172,7 +173,7 @@ arch-chroot /mnt sed -i "s/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/"
 echo -e "${BYellow}Adding ${user_name} to the wheel group[ * ]${End_Colour}"
 arch-chroot /mnt usermod -aG wheel "${user_name}"
 
-arch-chroot /mnt echo "Defaults env_reset,pwfeedback" | tee -a /etc/sudoers
+arch-chroot /mnt echo "Defaults env_reset,pwfeedback" | tee -a /mnt/etc/sudoers
 
 echo -e "${BGreen}The Base Install is done !!${End_Colour}"
 
