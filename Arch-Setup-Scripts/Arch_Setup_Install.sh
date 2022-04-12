@@ -104,7 +104,7 @@ echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in
 mkdir -p "${HOME}"/.config/qtile
 cp ./qtile/config.py "${HOME}"/.config/qtile/config.py
 cp ./qtile/autostart.sh "${HOME}"/.config/qtile/
-echo "feh --bg-scale ${HOME}/Git-repos/Dotfiles/Wallpapers/5120x2880.jpg" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+echo "nitrogen --set-scaled ${HOME}/Git-repos/Dotfiles/Wallpapers/5120x2880.jpg" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 chmod +x "${HOME}"/.config/qtile/autostart.sh
 
 echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
