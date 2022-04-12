@@ -1,13 +1,19 @@
 # Arch-Linux Post Installation Configuration
 
-- The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. 
+- The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. At the end
+it also asks whether the ```Arch_Setup_Install.sh``` script should be acquired and run, to complete the whole setup.
 - The ```Arch_Setup_Install.sh``` script installs all the needed packages for the rice and puts the config files in their respective folders ```~/.config/<Program-name>```. It also creates and configures a ```swapfile``` if the user requires it. 
 
 **Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely
-your responsibility! Also the ```Arch_Install.sh``` script is currently only tested on virtualbox, since it (as of yet) does not handle detecting your
-GPU. So you will not have your NVIDIA or AMD GPU Drivers installed if you test this out on real hardware.**
+your responsibility! Also the ```Arch_Install.sh``` script is currently only tested on virtualbox, since it (as of yet) does not handle driver installation
+for the GPU. So you will need to install NVIDIA or AMD GPU drivers yourself based on your machine (This will be incorporated in the script soon).**
 
 Since, that's out of the way now :smile:
+
+Important things to follow for the Setup on Virtual Box :
+- Check the ```Enable EFI(special OSes only)``` checkbox under the ```System``` tab in *VM Settings*.
+- Check the ```Enable 3D Acceleration``` checkbox under the ```Display``` tab in *VM Settings*.
+- Approximately ```30-35GB``` storage recommended for the whole setup.
 
 Run the Arch Setup Script with the commands :
 
