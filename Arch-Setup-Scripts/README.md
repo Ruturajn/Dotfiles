@@ -12,7 +12,6 @@ Since, that's out of the way now :smile:
 
 Important things to follow for the Setup on Virtual Box :
 - Check the ```Enable EFI(special OSes only)``` checkbox under the ```System``` tab in *VM Settings*.
-- Check the ```Enable 3D Acceleration``` checkbox under the ```Display``` tab in *VM Settings*.
 - Approximately ```30-35GB``` storage recommended for the whole setup.
 
 Run the Arch Setup Script with the commands :

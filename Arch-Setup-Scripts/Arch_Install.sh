@@ -30,6 +30,10 @@ End_Colour="\e[0m"
 echo -e "${BYellow}[ * ]Setting up the system clock${End_Colour}"
 timedatectl set-ntp true
 
+# Enabling parallel downloads for pacstrap
+echo -e "${BYellow}[ * ]Enabling parallel downloads for pacstrap${End_Colour}"
+sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 8/g" /etc/pacman.conf
+
 # Partition the disk
 ## To-Do
 tput setaf 5
@@ -138,7 +142,8 @@ base-devel linux-headers wpa_supplicant xdg-utils xdg-user-dirs bluez \
 bluez-utils cups pulseaudio alsa-utils pavucontrol terminus-font os-prober \
 udisks2 ntfs-3g bash-completion nfs-utils avahi openssh rsync xorg-xinit \
 xterm xf86-video-vmware firefox gnu-free-fonts noto-fonts ttf-dejavu \
-ttf-ubuntu-font-family vim git curl nemo gwenview simplescreenrecorder
+ttf-ubuntu-font-family vim git curl nemo gwenview simplescreenrecorder \
+konsole
 
 # Installing grub bootloader
 echo -e "${BYellow}[ * ]Installing grub bootloader${End_Colour}"
@@ -173,7 +178,7 @@ echo -e "${BGreen}The Base Install is done !!${End_Colour}"
 
 read -rp "[1;34mDo you want to setup the Qtile Rice? [Y/n]:[0m" rice_ans
 if [[ -z ${rice_ans} || ${rice_ans} == "y" || ${rice_ans} == "Y" ]] ; then
-    curl -fsSL https://tinyurl.com/4xxbyzjx > Arch_Setup
+    curl -fSL https://tinyurl.com/arch-setup-rn > Arch_Setup
     mv ./Arch_Setup /mnt/home/"${user_name}"
     arch-chroot /mnt runuser -u "${user_name}" -- bash /home/"${user_name}"/Arch_Setup
 elif [[ ${rice_ans} == "n" || ${rice_ans} == "N" ]] ; then
