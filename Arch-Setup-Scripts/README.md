@@ -17,14 +17,14 @@ Important things to follow for the Setup on Virtual Box :
 Run the Arch Setup Script with the commands :
 
 ```
-$ curl -fsSL https://tinyurl.com/4xxbyzjx > Arch_Setup
+$ curl -fsSL https://tinyurl.com/arch-setup-rn > Arch_Setup
 $ bash ./Arch_Setup
 ```
 
 Run the Base Arch Installation Script with the commands :
 
 ```
-$ curl -fsSL https://tinyurl.com/4kn79x78 > Arch_Install
+$ curl -fsSL https://tinyurl.com/arch-install-rn > Arch_Install
 $ bash ./Arch_Install
 ```
 
