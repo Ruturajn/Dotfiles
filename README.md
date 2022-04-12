@@ -5,7 +5,7 @@ for a base Arch-Linux Install.
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
 under the ```Arch-Setup-Scripts``` directory and the script ,before running the script. You can just get the script using curl (see ```Arch-Setup-Scripts/README.md```), it will clone this repo and do the needfull.*
-- *The Arch Install Script adds a user, partitions the disk, etc. (see ```Arch-Setup-Scripts/README.md```).*
+- *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see ```Arch-Setup-Scripts/README.md```).*
 
 <br />
 
