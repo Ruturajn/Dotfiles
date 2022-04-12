@@ -125,7 +125,7 @@ arch-chroot /mnt echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Creating Host-name
 read -rp "[1;34mEnter your desired hostname:[0m" host_name
-arch-chroot /mnt touch /mnt/etc/hostname
+arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${host_name}" | tee -a /mnt/etc/hostname
 
 # Creating password for the root user
