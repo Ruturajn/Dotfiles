@@ -113,11 +113,24 @@ cp ./alacritty.yml ~/.config/
 echo -e "${BYellow}[ * ]Placing .vimrc in ~/${End_Colour}"
 cp ./.vimrc "${HOME}"/
 
+echo -e "${BYellow}[ *]Making ~/.vim/plugged directory"
+mkdir -p "${HOME}"/.vim/plugged
+
+echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo -e "${BYellow}[ * ]Sourcing .vimrc${End_Colour}"
+source "${HOME}"/.vimrc
+
+echo -e "${BYellow}[ * ]Installing vim plugins${End_Colour}"
+vim +'PlugInstall --sync' +qa
+
 echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
 mkdir -p "${HOME}"/.config/picom
 cp ./picom.conf "${HOME}"/.config/picom/
 
-# Install omf and change default shell to fish
+# Install fish and change default shell
 read -p "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
 if [[ -z ${shell_ans} || ${shell_ans} == "y" || ${shell_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Changing Default shell to fish and installing omf with robbyrussell theme${End_Colour}"
