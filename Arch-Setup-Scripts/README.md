@@ -30,4 +30,4 @@ $ bash ./Arch_Install
 
 <br />
 
-For Disk Paritioning in ```Arch_Install.sh```, I used this : https://stackpointer.io/unix/linux-script-to-partition-disk/632/
+Disk Paritioning Reference in ```Arch_Install.sh``` : https://stackpointer.io/unix/linux-script-to-partition-disk/632/

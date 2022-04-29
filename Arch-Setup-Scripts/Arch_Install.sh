@@ -121,7 +121,7 @@ arch-chroot /mnt locale-gen
 
 # Creating locale file and setting the LANG variable
 echo -e "${BYellow}[ * ]Creating locale file and setting the LANG variable${End_Colour}"
-arch-chroot /mnt echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+arch-chroot /mnt echo "LANG=en_US.UTF-8" | tee -a /mnt/etc/locale.conf
 
 # Creating Host-name
 read -rp "[1;34mEnter your desired hostname:[0m" host_name
