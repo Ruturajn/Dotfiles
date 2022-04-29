@@ -11,8 +11,11 @@ for the GPU. So you will need to install NVIDIA or AMD GPU drivers yourself base
 Since, that's out of the way now :smile:
 
 Important things to follow for the Setup on Virtual Box :
+- Choose `VBoxVGA`  as the Graphics Driver under the `Display` Tab, for Alacritty to work in the VM. If you want to select `VMSVGA`, a different terminal
+  emulator will need to be installed.
 - Check the ```Enable EFI(special OSes only)``` checkbox under the ```System``` tab in *VM Settings*.
 - Approximately ```30-35GB``` storage recommended for the whole setup.
+- **For the Keybindings see [this](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/Commands.txt).**
 
 Run the Arch Setup Script with the commands :
 
