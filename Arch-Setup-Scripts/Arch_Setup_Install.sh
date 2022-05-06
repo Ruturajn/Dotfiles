@@ -144,20 +144,39 @@ else
     echo -e "${BRed}Not a valid option, Skipping Shell change${End_Colour}"
 fi
 
-# Enable lightdm service with the following steps
-read -p "[1;34m[ * ]Do you want to install the lightdm login manager?[Y/n]:[0m" lightdm_ans
-if [[ -z ${lightdm_ans} || ${lightdm_ans} == "y" || ${lightdm_ans} == "Y" ]] ; then
-    echo -e "${BYellow}[ * ]Installing Lightdm${End_Colour}"
-    sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-    echo -e "${BYellow}[ * ]Uncommenting 'greeter-session' option in '/etc/lightdm/lightdm.conf' and replacing with 'greeter-session=lightdm'${End_Colour}"
-    sudo sed -i "s/# greeter-session = Session to load for greeter/greeter-session=lightdm/g" /etc/lightdm/lightdm.conf
-    echo -e "${BYellow}[ * ]Starting the lightdm service at boot with 'sudo systemctl enable lightdm.service'${End_Colour}"
-    sudo systemctl enable lightdm.service 
+# # Enable lightdm service with the following steps
+# read -p "[1;34m[ * ]Do you want to install the lightdm login manager?[Y/n]:[0m" lightdm_ans
+# if [[ -z ${lightdm_ans} || ${lightdm_ans} == "y" || ${lightdm_ans} == "Y" ]] ; then
+#     echo -e "${BYellow}[ * ]Installing Lightdm${End_Colour}"
+#     sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+#     echo -e "${BYellow}[ * ]Uncommenting 'greeter-session' option in '/etc/lightdm/lightdm.conf' and replacing with 'greeter-session=lightdm'${End_Colour}"
+#     sudo sed -i "s/# greeter-session = Session to load for greeter/greeter-session=lightdm/g" /etc/lightdm/lightdm.conf
+#     echo -e "${BYellow}[ * ]Starting the lightdm service at boot with 'sudo systemctl enable lightdm.service'${End_Colour}"
+#     sudo systemctl enable lightdm.service 
+#     echo -e "${BYellow}[ * ]Reboot the system with 'sudo systemctl reboot'${End_Colour}"    
+# elif [[ ${lightdm_ans} == "n" || ${lightdm_ans} == "N" ]] ; then
+#     echo -e "${BRed}Skipping Lightdm Installation${End_Colour}"
+# else
+#     echo -e "${BRed}Not a valid option, Skipping Lightdm Installation${End_Colour}"
+# fi
+
+
+# Install and Enable sddm service with the following steps
+read -p "[1;34m[ * ]Do you want to install the sddm login manager?[Y/n]:[0m" sddm_ans
+if [[ -z ${sddm_ans} || ${sddm_ans} == "y" || ${sddm_ans} == "Y" ]] ; then
+    echo -e "${BYellow}[ * ]Installing sddm${End_Colour}"
+    sudo pacman -S sddm 
+    echo -e "${BYellow}[ * ]Installing Candy Theme for sddm with ${aur_name}${End_Colour}"
+    "${aur_name}" -S sddm-theme-sugar-candy-git
+    echo -e "${BYellow}[ * ]Editing the conf file for sddm to change the theme to Sugar-Candy${End_Colour}"
+    sudo sed -i 's/Current=.*/Current=Sugar-Candy/' /usr/lib/sddm/sddm.conf.d/default.conf
+    echo -e "${BYellow}[ * ]Starting the sddm service at boot with 'sudo systemctl enable sddm.service'${End_Colour}"
+    sudo systemctl enable sddm.service 
     echo -e "${BYellow}[ * ]Reboot the system with 'sudo systemctl reboot'${End_Colour}"    
-elif [[ ${lightdm_ans} == "n" || ${lightdm_ans} == "N" ]] ; then
-    echo -e "${BRed}Skipping Lightdm Installation${End_Colour}"
+elif [[ ${sddm_ans} == "n" || ${sddm_ans} == "N" ]] ; then
+    echo -e "${BRed}Skipping sddm Installation${End_Colour}"
 else
-    echo -e "${BRed}Not a valid option, Skipping Lightdm Installation${End_Colour}"
+    echo -e "${BRed}Not a valid option, Skipping sddm Installation${End_Colour}"
 fi
 
 # Installation Success
