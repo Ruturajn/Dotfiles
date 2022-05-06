@@ -34,14 +34,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/AutoComplPop'
   Plug 'gko/vim-coloresque'
   Plug 'ap/vim-css-color'
-  "Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline'
   Plug 'mhinz/vim-startify'
   Plug 'tpope/vim-fugitive'
   Plug 'ryanoasis/vim-devicons'
   Plug 'itchyny/lightline.vim'
   Plug 'pacha/vem-tabline'
-  "Plug 'scrooloose/syntastic'
-
+  " Plug 'scrooloose/syntastic'
+  " Plug 'jiangmiao/auto-pairs'
+  Plug 'tpope/vim-commentary'
+  " Plug 'junegunn/fzf.vim' 
+  Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 
 call plug#end()
 
@@ -135,3 +138,23 @@ endfunction
 " &t_SI is for INSERT mode, and &t_EI is for everything else.
 let &t_SI = "\e[5 q"
 let &t_EI = "\e[2 q"
+
+" let g:startify_custom_header = [ 
+"             \ '   ██████╗  █████╗ ███████╗██╗  ██╗██████╗  ██████╗  █████╗ ██████╗ ██████╗  ',
+"             \ '   ██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗██╔═══██╗██╔══██╗██╔══██╗██╔══██╗ ',
+"             \ '   ██║  ██║███████║███████╗███████║██████╔╝██║   ██║███████║██████╔╝██║  ██║ ',
+"             \ '   ██║  ██║██╔══██║╚════██║██╔══██║██╔══██╗██║   ██║██╔══██║██╔══██╗██║  ██║ ',
+"             \ '   ██████╔╝██║  ██║███████║██║  ██║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝ ',
+"             \ '   ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ',
+"             \ ]
+
+let g:startify_custom_header = [                                                                         
+            \'    ██╗   ██╗██╗███╗   ███╗',
+            \'    ██║   ██║██║████╗ ████║',
+            \'    ██║   ██║██║██╔████╔██║',
+            \'    ╚██╗ ██╔╝██║██║╚██╔╝██║',
+            \'     ╚████╔╝ ██║██║ ╚═╝ ██║',
+            \'      ╚═══╝  ╚═╝╚═╝     ╚═╝',
+            \ ]
+
+" let g:shfmt_fmt_on_save = 1
