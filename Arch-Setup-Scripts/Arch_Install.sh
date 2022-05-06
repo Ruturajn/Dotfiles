@@ -190,7 +190,7 @@ fi
 
 
 # Echo exit chroot and unmount partitions
-echo -e "${BYellow}Unmounting partitions[ * ]${End_Colour}"
+echo -e "${BYellow}[ * ]Unmounting partitions${End_Colour}"
 umount -R /mnt
 
 echo -e "${BGreen}Setup Completed !! Reboot Your Machine${End_Colour}"
