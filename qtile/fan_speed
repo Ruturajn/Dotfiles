@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Here the awk command prints the 7th row of the output from the `sensors` command, which
+# consists of the cpu_fan speed parameter. Then, the sed command removes everything before
+# ':     ' which gives us the fan_speed with RPM like '5400 RPM', so now we remove the RPM
+# by removing everything after a space. This finally gives us the pure numerical value for 
+# the fan_speed.
+
+#fan_speed_val=$(sensors | awk 'FNR == 7 {print}' | sed 's/^.*:     //' | sed 's/ .*//')
+fan_speed_val=$(sensors | grep -i "cpu_fan" | sed 's/^.*:     //' | sed 's/ .*//')
+
+# Send a notification displaying the Fan Speed
+dunstify -r "9993" -i "icons8-fan-48" "Fan Speed:${fan_speed_val} RPM"

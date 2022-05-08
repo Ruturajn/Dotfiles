@@ -109,7 +109,9 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn(
         "/home/ruturajn/.config/dunst/vol_script toggle"), desc="Mute System Volume"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
-    Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"), ]
+    Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
+    Key(["mod1"], "c", lazy.spawn("/home/ruturajn/.config/qtile/cpu_temp"), desc="Display CPU Core Temperature"),
+    Key(["mod1"], "f", lazy.spawn("/home/ruturajn/.config/qtile/fan_speed"), desc="Display CPU Fan Speed"),]
 
 #groups = [Group(i) for i in "123456789"]
 
