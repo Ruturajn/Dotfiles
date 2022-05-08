@@ -102,11 +102,11 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "F11", lazy.spawn(
+    Key([], "XF86AudioLowerVolume", lazy.spawn(
         "/home/ruturajn/.config/dunst/vol_script down"), desc="Increase System Volume"),
-    Key([mod], "F12", lazy.spawn(
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(
         "/home/ruturajn/.config/dunst/vol_script up"), desc="Deccrease System Volume"),
-    Key([mod], "F10", lazy.spawn(
+    Key([], "XF86AudioMute", lazy.spawn(
         "/home/ruturajn/.config/dunst/vol_script toggle"), desc="Mute System Volume"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"), ]
