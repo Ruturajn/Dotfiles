@@ -101,9 +101,10 @@ echo -e "${BYellow}[ * ]Placing rofi folder in ~/.config/rofi${End_Colour}"
 cp -r ./rofi "${HOME}"/.config
 
 echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
-mkdir -p "${HOME}"/.config/qtile
-cp ./qtile/config.py "${HOME}"/.config/qtile/config.py
-cp ./qtile/autostart.sh "${HOME}"/.config/qtile/
+#mkdir -p "${HOME}"/.config/qtile
+#cp ./qtile/config.py "${HOME}"/.config/qtile/config.py
+#cp ./qtile/autostart.sh "${HOME}"/.config/qtile/
+cp -r ./qtile "${HOME}/.config/"
 echo "nitrogen --set-scaled ${HOME}/Git-repos/Dotfiles/Wallpapers/5120x2880.jpg" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 chmod +x "${HOME}"/.config/qtile/autostart.sh
 
