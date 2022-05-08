@@ -13,11 +13,8 @@ set -gx LD_LIBRARY_PATH /usr/local/lib
 
 
 # Adding Aliases
-alias sup="sudo apt update && sudo apt upgrade"
 #alias ll="ls -lah --color=auto"
 alias ll="lsd -lah"
-alias lsblk="lsblk -e 7"
-alias suin="sudo apt-get install"
 
 #set -U fish_color_param blue
 set fish_greeting
