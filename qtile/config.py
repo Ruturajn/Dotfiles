@@ -103,15 +103,15 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([], "XF86AudioLowerVolume", lazy.spawn(
-        "/home/ruturajn/.config/dunst/vol_script down"), desc="Increase System Volume"),
+        os.path.expanduser("~/.config/dunst/vol_script down")), desc="Increase System Volume"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn(
-        "/home/ruturajn/.config/dunst/vol_script up"), desc="Deccrease System Volume"),
+        os.path.expanduser("~/.config/dunst/vol_script up")), desc="Deccrease System Volume"),
     Key([], "XF86AudioMute", lazy.spawn(
-        "/home/ruturajn/.config/dunst/vol_script toggle"), desc="Mute System Volume"),
+        os.path.expanduser("~/.config/dunst/vol_script toggle")), desc="Mute System Volume"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
-    Key(["mod1"], "c", lazy.spawn("/home/ruturajn/.config/qtile/cpu_temp"), desc="Display CPU Core Temperature"),
-    Key(["mod1"], "f", lazy.spawn("/home/ruturajn/.config/qtile/fan_speed"), desc="Display CPU Fan Speed"),]
+    Key(["mod1"], "c", lazy.spawn(os.path.expanduser("~/.config/qtile/cpu_temp")), desc="Display CPU Core Temperature"),
+    Key(["mod1"], "f", lazy.spawn(os.path.expanduser("~/.config/qtile/fan_speed")), desc="Display CPU Fan Speed"),]
 
 #groups = [Group(i) for i in "123456789"]
 
