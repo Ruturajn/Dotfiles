@@ -51,7 +51,7 @@ mod = "mod4"
 #terminal = guess_terminal()
 #terminal = "gnome-terminal"
 terminal = "alacritty"
-browser = "firefox"
+browser = "brave"
 file_manager = "nemo"
 
 keys = [
@@ -111,7 +111,13 @@ keys = [
     Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
     Key(["mod1"], "c", lazy.spawn(os.path.expanduser("~/.config/qtile/cpu_temp")), desc="Display CPU Core Temperature"),
-    Key(["mod1"], "f", lazy.spawn(os.path.expanduser("~/.config/qtile/fan_speed")), desc="Display CPU Fan Speed"),]
+    Key(["mod1"], "f", lazy.spawn(os.path.expanduser("~/.config/qtile/fan_speed")), desc="Display CPU Fan Speed"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn(os.path.expanduser("~/.config/qtile/bright_control down")), desc="Decrease Screen Brightness"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn(os.path.expanduser("~/.config/qtile/bright_control up")), desc="Increase Screen Brightness"),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle Play-Pasue Music"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Play Previous Music Track"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Play Next Music Track"),
+    Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop the Music"),]
 
 #groups = [Group(i) for i in "123456789"]
 
