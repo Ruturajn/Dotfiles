@@ -51,7 +51,7 @@ mod = "mod4"
 #terminal = guess_terminal()
 #terminal = "gnome-terminal"
 terminal = "alacritty"
-browser = "brave"
+browser = "firefox"
 file_manager = "nemo"
 
 keys = [

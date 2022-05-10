@@ -21,13 +21,32 @@
 --------------------------------------------------------------------------------------
 | 9.    | Launch Flameshot                              | Super + Control + S         |
 --------------------------------------------------------------------------------------
-| 10.   | Toggle Mute Speaker                           | Super + F10                 |
+| 10.   | Toggle Mute Speaker                           | XF86AudioMute               |                 
 --------------------------------------------------------------------------------------
-| 11.   | Decrease Speaker volume                       | Super + F11                 |
+| 11.   | Decrease Speaker volume                       | XF86AudioLowerVolume        |
 --------------------------------------------------------------------------------------
-| 12.   | Increase Speaker volume                       | Super + F12                 |
+| 12.   | Increase Speaker volume                       | XF86AudioRaiseVolume        |
 --------------------------------------------------------------------------------------
 | 13.   | Launch Browser (Firefox)                      | Super + B                   |
 --------------------------------------------------------------------------------------
 | 14.   | Launch File Manager (nemo)                    | Super + F                   |
 --------------------------------------------------------------------------------------
+| 15.   | See CPU Fan Speed as a dunst Notification     | Alt + F                     |
+--------------------------------------------------------------------------------------
+| 16.   | See Tempeartures for CPU cores (dunst)        | Alt + C                     |
+--------------------------------------------------------------------------------------
+| 17.   | Increase Screen Brightness                    | XF86MonBrightnessUp         |
+--------------------------------------------------------------------------------------
+| 18.   | Decrease Screen Brightness                    | XF86MonBrightnessDown       |
+--------------------------------------------------------------------------------------
+| 19.   | Toggle Music Play-Pause                       | XF86AudioPlay               |
+--------------------------------------------------------------------------------------
+| 20.   | Play the previous Music Track                 | XF86AudioPrev               |
+--------------------------------------------------------------------------------------
+| 21.   | Play the next Music Track                     | XF86AudioNext               |
+--------------------------------------------------------------------------------------
+| 22.   | Stop Playing the Music Track                  | XF86AudioStop               |
+--------------------------------------------------------------------------------------
+
+Note: The XF86* Keys are generally fn+<some_F<number>_Key>. They will usually have
+some sort of icons on it depicting it's function.
