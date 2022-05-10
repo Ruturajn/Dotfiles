@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+
+# This script helps in controlling the brightness of the screen.
+
+
+# Check if the brightness needs to be increased or reduced
+if [[ $1 == "up" ]] ; then
+    echo "<your_password>" | sudo -S brightnessctl s +2% > /dev/null 
+elif [[ $1 == "down" ]] ; then
+    echo "<your_password>" | sudo -S brightnessctl s 2%- > /dev/null
+fi
+
+
+# Get the current brightness value
+brightness_val=$(brightnessctl i | grep -i "Current Brightness" | sed 's/^.*(//' | sed 's/\%.*//')
+
+# Send the notification
+dunstify -r "9995" -h int:value:"${brightness_val}" -i "icons8-sun-48" "Brightness : ${brightness_val}"
