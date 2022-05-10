@@ -29,7 +29,7 @@ echo -e "${BYellow}[ * ]Installing packages${End_Colour}"
 sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi picom qtile dunst \
 python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
-git vim curl flameshot pulseaudio
+git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono
 
 # Adding a swapfile
 read -p "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
@@ -78,6 +78,10 @@ echo -e "${BYellow}[ * ]Installing lsd and qtile-extras with ${aur_name}${End_Co
 # Install the required fonts
 echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains Mono Font with ${aur_name}${End_Colour}"
 "${aur_name}" -S nerd-fonts-fantasque-sans-mono ttf-jetbrains-mono 
+
+# Install pipes and cava with yay
+echo -e "${BYellow}[ * ]Installing pipes.sh and cava with ${aur_name}${End_Colour}"
+"${aur_name}" -S pipes.sh cava
 
 # Getting pfetch as fetch tool
 echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
