@@ -7,9 +7,9 @@
 
 # Check if the brightness needs to be increased or reduced
 if [[ $1 == "up" ]] ; then
-    echo "<your_password>" | sudo -S brightnessctl s +2% > /dev/null 
+    echo "raj" | sudo -S brightnessctl s +2% > /dev/null 
 elif [[ $1 == "down" ]] ; then
-    echo "<your_password>" | sudo -S brightnessctl s 2%- > /dev/null
+    echo "raj" | sudo -S brightnessctl s 2%- > /dev/null
 fi
 
 
@@ -17,4 +17,4 @@ fi
 brightness_val=$(brightnessctl i | grep -i "Current Brightness" | sed 's/^.*(//' | sed 's/\%.*//')
 
 # Send the notification
-dunstify -r "9995" -h int:value:"${brightness_val}" -i "icons8-sun-48" "Brightness : ${brightness_val}"
+dunstify -r "9995" -h int:value:"${brightness_val}" -i "icons8-sun-48" -t 2000 "Brightness : ${brightness_val}"
