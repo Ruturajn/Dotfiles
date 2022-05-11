@@ -80,8 +80,8 @@ echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains M
 "${aur_name}" -S nerd-fonts-fantasque-sans-mono ttf-jetbrains-mono 
 
 # Install pipes and cava with yay
-echo -e "${BYellow}[ * ]Installing pipes.sh and cava with ${aur_name}${End_Colour}"
-"${aur_name}" -S pipes.sh cava
+echo -e "${BYellow}[ * ]Installing pipes.sh, cava and brave-bin with ${aur_name}${End_Colour}"
+"${aur_name}" -S pipes.sh cava brave-bin
 
 # Getting pfetch as fetch tool
 echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
