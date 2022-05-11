@@ -7,9 +7,9 @@
 
 # Check if the brightness needs to be increased or reduced
 if [[ $1 == "up" ]] ; then
-    echo "raj" | sudo -S brightnessctl s +2% > /dev/null 
+    echo "<your_password>" | sudo -S brightnessctl s +2% > /dev/null 
 elif [[ $1 == "down" ]] ; then
-    echo "raj" | sudo -S brightnessctl s 2%- > /dev/null
+    echo "<your_password>" | sudo -S brightnessctl s 2%- > /dev/null
 fi
 
 
