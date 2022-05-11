@@ -1,38 +1,34 @@
 # Dotfiles
-My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup and the other 
-for a base Arch-Linux Install.
+My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup and 
+the other for a base Arch-Linux Install. To use the config, you will need to make 2 changes:
+- Editing line `10` and `12` in the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script to add your sudo password. 
+- Editing line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. This
+  can be skipped if you want to use nitrogen, to set your wallaper. You will need to set a wallpaper the first time you login to Qtile. This only a one
+  time thing, and the wallpaper you chose will persist, due to line `9` in the 
+  [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
 
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
-under the ```Arch-Setup-Scripts``` directory and the script ,before running the script. You can just get the script using curl (see ```Arch-Setup-Scripts/README.md```), it will clone this repo and do the needfull.*
-- *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see ```Arch-Setup-Scripts/README.md```).*
+under the `Arch-Setup-Scripts` directory and the script ,before running the script. You can just get the script using curl (see 
+[Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)), it will clone this repo and do the needfull.*
+- *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
 
 <br />
 
 ## Arch-Linux with Rofi and Qtile
 
-![Arch_Rice_Systray](https://user-images.githubusercontent.com/56625259/158530348-1731d299-dafb-4dce-a1cd-5b64af39ea63.png)
+![New-Arch-Rice-1](https://user-images.githubusercontent.com/56625259/167813830-32d36fb8-e0f1-489f-9a30-43411625d1d7.png)
 
-![Arch_Rice_Systray_Rofi](https://user-images.githubusercontent.com/56625259/158530407-ce4b8163-0afd-4725-b518-ce2e88a887b5.png)
+![New-Arch-Rice-Rofi-1](https://user-images.githubusercontent.com/56625259/167813875-e1a4483c-541e-48fc-9a36-c16985c7014b.png)
 
-![Mute_dunst](https://user-images.githubusercontent.com/56625259/158999869-5ec4e180-543d-438a-a110-277b8b4024a9.png)
+![Vol-Up](https://user-images.githubusercontent.com/56625259/167814956-abbf7f1f-aa28-4986-ac3c-873e0bb9dc02.png)
 
-![Unmute_dunst](https://user-images.githubusercontent.com/56625259/158999877-c758ae92-5ef6-40a9-a787-3a580a4c6ebd.png)
+![Vol-Down](https://user-images.githubusercontent.com/56625259/167814981-39ce0d68-a505-405c-8a05-e63ba44f6e9d.png)
 
-![Vol_down_dunst](https://user-images.githubusercontent.com/56625259/159000138-8341a030-af0d-493a-9603-ad52b11b956e.png)
+![Vol-Mute](https://user-images.githubusercontent.com/56625259/167815000-4dd5a088-83ad-4a15-8e5f-169e53199689.png)
 
-![Vol_up_dunst](https://user-images.githubusercontent.com/56625259/158999919-361b7049-89a5-4a17-803e-11a5705da830.png)
+![Vol-Unmute](https://user-images.githubusercontent.com/56625259/167815033-97508f5e-aa39-41ad-8e48-da05c1b5e2b8.png)
 
-https://user-images.githubusercontent.com/56625259/159149079-1ee59cc7-9bcc-45fc-9382-6253958b0292.mp4
-
-<br />
-
-## Arch-Linux with Rofi and Qtile (Updated)
-
-![Arch-New-Rice](https://user-images.githubusercontent.com/56625259/160415761-2fb4e1ce-696e-40f4-863c-8396f7aa10cb.png)
-
-![Arch-New-Rice-Rofi](https://user-images.githubusercontent.com/56625259/160415798-246dc4a8-0fd9-481b-99df-b772ca45be38.png)
+![Brightness](https://user-images.githubusercontent.com/56625259/167815454-98273e17-4d39-4a96-8233-df499eaf3ab8.png)
 
 <br />
-
-- Garuda Wallpapers : https://gitlab.com/garuda-linux/themes-and-settings/artwork/garuda-wallpapers
