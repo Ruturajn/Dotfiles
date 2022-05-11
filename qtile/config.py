@@ -51,7 +51,7 @@ mod = "mod4"
 #terminal = guess_terminal()
 #terminal = "gnome-terminal"
 terminal = "alacritty"
-browser = "firefox"
+browser = "brave"
 file_manager = "nemo"
 
 keys = [
@@ -178,9 +178,9 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="JetBrains Mono",
     fontsize=16,
-    padding=15,
+    padding=5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -212,50 +212,58 @@ decor_groupbox = {
 
 decor_ram = {
     "decorations": [
-        RectDecoration(colour=colors[1], radius=7,
+        RectDecoration(colour=colors[1], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
-    "padding": 18
+    "padding": 13
+}
+
+decor_CPU = {
+    "decorations": [
+        RectDecoration(colour=colors_1[2], radius=4,
+                       filled=True, padding_y=2, padding_x=3)
+    ],
+    "padding": 13
 }
 
 decor_wallpaper = {
     "decorations": [
-        RectDecoration(colour=colors[1], radius=7,
+        RectDecoration(colour=colors[1], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
-    "padding": 18
+    "padding": 13
 }
 
 decor_battery = {
     "decorations": [
-        RectDecoration(colour=colors[2], radius=7,
+        RectDecoration(colour=colors_7[2], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
-    "padding": 18
+    "padding": 13
 }
 
 decor_Day = {
     "decorations": [
-        RectDecoration(colour=colors[3], radius=7,
+        RectDecoration(colour=colors[3], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
-    "padding": 18
+    "padding": 13
 }
 
 decor_Date = {
     "decorations": [
-        RectDecoration(colour=colors[4], radius=7,
+        RectDecoration(colour=colors[4], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
-    "padding": 18
+    "padding": 13
 }
 
 decor_Wifi = {
     "decorations": [
-        RectDecoration(colour=colors[5], radius=7,
+        RectDecoration(colour=colors[5], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
-    "padding": 18
+    "padding": 13
 }
 
 screens = [
@@ -266,15 +274,19 @@ screens = [
                 widget.GroupBox(highlight_method="line", highlight_color="#d1cfe2", foreground="#000000",
                                 rounded=True, **decor_groupbox, hide_unused=False, active="#000000"),
                 widget.Prompt(**decor_ram),
-                widget.Spacer(lenght="100"),
+                widget.Spacer(length=670),
                 widget.CheckUpdates(background="#00000000", foreground="#FF0000",
                                     colour_have_updates="#000000", colour_no_updates="#000000", **decor_ram),
                 widget.Systray(background="#00000000", icon_size=20),
-                widget.Net(interface="enp0s3", background="#00000000",
-                           format=fa.icons["wifi"]+" {up}"+fa.icons["arrow-up"]+" {down} "+fa.icons["arrow-down"], **decor_Wifi),
+                # widget.Net(interface="wlp2s0", background="#00000000",
+                #            format=fa.icons["wifi"]+" {up}"+fa.icons["arrow-up"]+" {down} "+fa.icons["arrow-down"], **decor_Wifi),
+                widget.Net(interface="wlp2s0", background="#00000000",
+                           format=fa.icons["wifi"]+" {up}", **decor_Wifi),
                 widget.Memory(background="#00000000", foreground="#FFFFFF",
                               measure_mem='G', format=fa.icons["server"] + "{MemUsed: .2f} GB", **decor_ram),
                 # Can also use fa.icons["microchip"], fa.icons["chart-bar"]
+                # widget.CPU(format=fa.icons["microchip"]+" {freq_current}GHz {load_percent}%",**decor_wallpaper),
+                widget.CPU(format=fa.icons["microchip"]+" {load_percent}%",**decor_CPU),
                 widget.Battery(background="#00000000", foreground="#000000",
                                charge_char=fa.icons["bolt"], discharge_char="",
                                update_interval=1,
@@ -284,7 +296,7 @@ screens = [
                 widget.Clock(format=fa.icons["clock"] + " %I:%M %p",
                              background="#00000000", foreground="#FFFFFF", **decor_Date),
             ],
-            24,
+            27,
             border_width=[0, 0, 0, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"],  # Borders are magenta
             background="#00000000",
