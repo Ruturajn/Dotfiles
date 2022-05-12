@@ -1,6 +1,6 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup 
-and the other for a base Arch-Linux Install. To use the config, you will need to make 2 important changes, and one optional change:
+and the other for a base Arch-Linux Install. To use the config, you will need to make 2 important changes:
 - Editing line `10` and `12` in the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script to add your sudo 
   password. 
 - Editing line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -15,6 +15,20 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
 - *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
 
 <br />
+
+### Setup Details
+
+| Category | Tool Used |
+| --- | --- |
+| Window Manager | [Qtile](https://github.com/qtile/qtile) (with [Qtile-Extras](https://github.com/elParaguayo/qtile-extras)) |
+| Terminal | [Alacritty](https://github.com/alacritty/alacritty) |
+| Shell    | [Fish](https://github.com/fish-shell/fish-shell) (with [Oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)) |
+| Compositor | [Jonaburg's Fork of picom](https://github.com/jonaburg/picom) |
+| Application Launcher | [Rofi](https://github.com/davatorium/rofi) | 
+| Text Editor | [Vim](https://github.com/vim/vim) |
+| Browser | [Brave](https://brave.com/) |
+| Notifications | [Dunst](https://github.com/dunst-project/dunst) |
+| File Manager | [Nemo](https://github.com/linuxmint/nemo) |
 
 ## Arch-Linux with Rofi and Qtile
 
