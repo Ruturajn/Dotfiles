@@ -26,7 +26,7 @@ End_Colour="\e[0m"
 
 # Install the required packages for the Rice
 echo -e "${BYellow}[ * ]Installing packages${End_Colour}"
-sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi picom qtile dunst \
+sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi qtile dunst \
 python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono
