@@ -1,11 +1,14 @@
 # Dotfiles
-My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup and 
-the other for a base Arch-Linux Install. To use the config, you will need to make 2 changes:
-- Editing line `10` and `12` in the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script to add your sudo password. 
-- Editing line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. This
-  can be skipped if you want to use nitrogen, to set your wallaper. You will need to set a wallpaper the first time you login to Qtile. This only a one
-  time thing, and the wallpaper you chose will persist, due to line `9` in the 
+My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup 
+and the other for a base Arch-Linux Install. To use the config, you will need to make 2 important changes, and one optional change:
+- Editing line `10` and `12` in the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script to add your sudo 
+  password. 
+- Editing line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
+  This can be skipped if you want to use nitrogen, to set your wallaper. You will need to set a wallpaper the first time you login to Qtile. This is only a 
+  one time thing, and the wallpaper you chose will persist, due to line `9` in the 
   [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
+- This is optional, for rounded corners you can edit line `147` in [picom.conf](https://github.com/Ruturajn/Dotfiles/blob/main/picom.conf), and set
+  set `corner-radius` to whatever value that you want.
 
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed

@@ -158,3 +158,6 @@ let g:startify_custom_header = [
             \ ]
 
 " let g:shfmt_fmt_on_save = 1
+
+" Copy and paste between vim and other programs
+set clipboard=unnamedplus
