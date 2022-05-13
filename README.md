@@ -1,14 +1,12 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup 
-and the other for a base Arch-Linux Install. To use the config, you will need to make 2 important changes, and one optional change:
+and the other for a base Arch-Linux Install. To use the config, you will need to make 2 important changes:
 - Editing line `10` and `12` in the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script to add your sudo 
   password. 
 - Editing line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
   This can be skipped if you want to use nitrogen, to set your wallaper. You will need to set a wallpaper the first time you login to Qtile. This is only a 
   one time thing, and the wallpaper you chose will persist, due to line `9` in the 
   [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
-- This is optional, for rounded corners you can edit line `147` in [picom.conf](https://github.com/Ruturajn/Dotfiles/blob/main/picom.conf), and set
-  set `corner-radius` to whatever value that you want.
 
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
@@ -18,11 +16,25 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
 
 <br />
 
+### Setup Details
+
+| Category | Tool Used |
+| --- | --- |
+| Window Manager | [Qtile](https://github.com/qtile/qtile) (with [Qtile-Extras](https://github.com/elParaguayo/qtile-extras)) |
+| Terminal | [Alacritty](https://github.com/alacritty/alacritty) |
+| Shell    | [Fish](https://github.com/fish-shell/fish-shell) (with [Oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)) |
+| Compositor | [Jonaburg's Fork of picom](https://github.com/jonaburg/picom) |
+| Application Launcher | [Rofi](https://github.com/davatorium/rofi) | 
+| Text Editor | [Vim](https://github.com/vim/vim) |
+| Browser | [Brave](https://brave.com/) |
+| Notifications | [Dunst](https://github.com/dunst-project/dunst) |
+| File Manager | [Nemo](https://github.com/linuxmint/nemo) |
+
 ## Arch-Linux with Rofi and Qtile
 
-![New-Arch-Rice-1](https://user-images.githubusercontent.com/56625259/167813830-32d36fb8-e0f1-489f-9a30-43411625d1d7.png)
+![New-Arch-Rice-2](https://user-images.githubusercontent.com/56625259/168045281-d5581bc1-13c3-4295-ad71-1211b6047f3d.png)
 
-![New-Arch-Rice-Rofi-1](https://user-images.githubusercontent.com/56625259/167813875-e1a4483c-541e-48fc-9a36-c16985c7014b.png)
+![New-Arch-Rice-Rofi-2](https://user-images.githubusercontent.com/56625259/168045326-e1f42bbe-7374-4d9c-a7fe-1e0569355e7a.png)
 
 ![Vol-Up](https://user-images.githubusercontent.com/56625259/167814956-abbf7f1f-aa28-4986-ac3c-873e0bb9dc02.png)
 

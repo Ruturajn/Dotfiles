@@ -26,7 +26,7 @@ End_Colour="\e[0m"
 
 # Install the required packages for the Rice
 echo -e "${BYellow}[ * ]Installing packages${End_Colour}"
-sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi picom qtile dunst \
+sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi qtile dunst \
 python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono
@@ -80,8 +80,8 @@ echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains M
 "${aur_name}" -S nerd-fonts-fantasque-sans-mono ttf-jetbrains-mono 
 
 # Install pipes and cava with yay
-echo -e "${BYellow}[ * ]Installing pipes.sh, cava and brave-bin with ${aur_name}${End_Colour}"
-"${aur_name}" -S pipes.sh cava brave-bin
+echo -e "${BYellow}[ * ]Installing pipes.sh, cava, brave-bin and picom-jonaburg-git with ${aur_name}${End_Colour}"
+"${aur_name}" -S pipes.sh cava brave-bin picom-jonaburg-git
 
 # Getting pfetch as fetch tool
 echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
