@@ -13,6 +13,12 @@ and the other for a base Arch-Linux Install. To use the config, you will need to
 under the `Arch-Setup-Scripts` directory and the script ,before running the script. You can just get the script using curl (see 
 [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)), it will clone this repo and do the needfull.*
 - *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
+- *The `picom.conf` file here, is to be used with the original picom, since I am using [Jonaburg's Fork of picom](https://github.com/jonaburg/picom)
+  I use the default config provided in that repo, so I have not included it here. If you want to use jonaburg-picom just use the default config there,
+  since I am using just that, no changes.*
+
+If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script, all of 
+these things mentioned about editing files, and picom configs, will be taken care of by the script.
 
 <br />
 
