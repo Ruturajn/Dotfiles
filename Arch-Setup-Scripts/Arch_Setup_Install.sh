@@ -32,7 +32,7 @@ papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono
 
 # Adding a swapfile
-read -p "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
+read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
 if [[ -z ${ans} || ${ans} == "y" || ${ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Creating 4G swapfile${End_Colour}"
     sudo dd if=/dev/zero of=/swapfile bs=1M count=4096
@@ -52,9 +52,9 @@ echo -e "${BYellow}[ * ]Installing fontawesome and dbus-next for icons and notif
 sudo pip3 install psutil fontawesome dbus-next
 
 # Install `yay` as the AUR Helper, interact wherever required
-read -p "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" aur_ans
+read -rp "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" aur_ans
 if [[ ${aur_ans} == "n" || ${aur_ans} == "N" ]] ; then
-    read -p "[1;34m[ * ]Please enter the name of the installed AUR Helper:[0m" aur_name
+    read -rp "[1;34m[ * ]Please enter the name of the installed AUR Helper:[0m" aur_name
     if [[ -z ${aur_name} ]] ; then
         echo -e "${BRed}FATAL : Cannot proceed without an AUR Helper !!${End_Colour}" && exit
     fi
@@ -97,6 +97,14 @@ echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 git clone https://github.com/Ruturajn/Dotfiles.git
 cd "${HOME}"/Git-repos/Dotfiles || exit
 
+echo -e "${BYellow}[ * ]Backing up current .config folder in backup_dot_config${End_Colour}"
+if [[ -d "${HOME}"/.config ]] ; then
+    mkdir "${HOME}"/backup_dot_config
+    cp -r "${HOME}"/.config/. "${HOME}"/backup_dot_config
+else
+   mkdir "${HOME}"/.config
+fi
+
 echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 cp -r ./dunst "${HOME}"/.config
 chmod +x "${HOME}"/.config/dunst/vol_script
@@ -136,7 +144,7 @@ mkdir -p "${HOME}"/.config/picom
 cp ./picom.conf "${HOME}"/.config/picom/
 
 # Install fish and change default shell
-read -p "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
+read -rp "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
 if [[ -z ${shell_ans} || ${shell_ans} == "y" || ${shell_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Changing Default shell to fish and installing omf with robbyrussell theme${End_Colour}"
     chsh -s /usr/bin/fish
@@ -150,7 +158,7 @@ else
 fi
 
 # # Enable lightdm service with the following steps
-# read -p "[1;34m[ * ]Do you want to install the lightdm login manager?[Y/n]:[0m" lightdm_ans
+# read -rp "[1;34m[ * ]Do you want to install the lightdm login manager?[Y/n]:[0m" lightdm_ans
 # if [[ -z ${lightdm_ans} || ${lightdm_ans} == "y" || ${lightdm_ans} == "Y" ]] ; then
 #     echo -e "${BYellow}[ * ]Installing Lightdm${End_Colour}"
 #     sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
@@ -167,7 +175,7 @@ fi
 
 
 # Install and Enable sddm service with the following steps
-read -p "[1;34m[ * ]Do you want to install the sddm login manager?[Y/n]:[0m" sddm_ans
+read -rp "[1;34m[ * ]Do you want to install the sddm login manager?[Y/n]:[0m" sddm_ans
 if [[ -z ${sddm_ans} || ${sddm_ans} == "y" || ${sddm_ans} == "Y" ]] ; then
     echo -e "${BYellow}[ * ]Installing sddm${End_Colour}"
     sudo pacman -S sddm 
