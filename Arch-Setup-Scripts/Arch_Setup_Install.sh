@@ -81,7 +81,7 @@ echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains M
 
 # Install pipes and cava with yay
 echo -e "${BYellow}[ * ]Installing pipes.sh, cava, brave-bin and picom-jonaburg-git with ${aur_name}${End_Colour}"
-"${aur_name}" -S pipes.sh cava brave-bin picom-jonaburg-git
+"${aur_name}" -S pipes.sh cava brave-bin
 
 # Getting pfetch as fetch tool
 echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
@@ -139,9 +139,39 @@ source "${HOME}"/.vimrc
 echo -e "${BYellow}[ * ]Installing vim plugins${End_Colour}"
 vim +'PlugInstall --sync' +qa
 
-echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
+echo -e "${BYellow}[ * ]Making ~/.config/picom${End_Colour}"
 mkdir -p "${HOME}"/.config/picom
-cp ./picom.conf "${HOME}"/.config/picom/
+
+echo -e "${BYellow}[ * ]Choose the option for the compositor:"
+echo -e "1) picom"
+echo -e "2) jonaburg-picom"
+echo -e "3) ibhagwan-picom${End_Colour}"
+read -rp "[1;34m[ * ]Enter the number for the picom compositor you want to install :[0m" picom_ans
+
+case "${picom_ans}" in
+    1)
+        echo -e "${BYellow}[ * ]Installing picom${End_Colour}"
+        sudo pacman -S picom
+        
+        echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
+        cp ./picom.conf "${HOME}"/.config/picom/
+        ;;
+    2)
+        echo -e "${BYellow}[ * ]Installing picom-jonaburg-git with ${aur_name}${End_Colour}"
+        "${aur_name}" -S picom-jonaburg-git
+
+        echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
+        curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" > "${HOME}"/.config/picom/picom.conf
+        ;;
+    3)
+        echo -e "${BYellow}[ * ]Installing picom-ibhagwan-git with ${aur_name}${End_Colour}"
+        "${aur_name}" -S picom-ibhagwan-git
+
+        echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
+        curl -fsSL "https://raw.githubusercontent.com/ibhagwan/picom/next-rebase/picom.sample.conf" > "${HOME}"/.config/picom/picom.conf
+        ;;
+esac
+
 
 # Install fish and change default shell
 read -rp "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
