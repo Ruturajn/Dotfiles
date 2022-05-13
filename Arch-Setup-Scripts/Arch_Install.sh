@@ -44,50 +44,55 @@ if [[ -z ${disk_name} ]] ; then
     echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
     exit
 fi
-fdisk "${disk_name}" << FDISK_CMDS 
-n
+# fdisk "${disk_name}" << FDISK_CMDS 
+# n
 
 
 
-+512M
-n
+# +512M
+# n
 
 
 
-+4G
-n
+# +4G
+# n
 
 
 
 
-t
-1
-uefi
-t
-2
-swap
-w
-FDISK_CMDS
+# t
+# 1
+# uefi
+# t
+# 2
+# swap
+# w
+# FDISK_CMDS
+
+echo -e "${BYellow}[ * ]Paritioning the disk${End_Colour}"
+sgdisk -n 1::+512M -t 1:ef00 "${disk_name}"
+sgdisk -n 2::+4G -t 2:8200 "${disk_name}"
+sgdisk -n 3::: -t 3:8300 "${disk_name}"
 
 # Making file-systems on each partition
 echo -e "${BYellow}[ * ]Writing paritions with filesystems${End_Colour}"
 echo ""
 echo -e "${BYellow}[ * ]Making the root parition as ext4${End_Colour}"
-mkfs.ext4 /dev/sda3
+mkfs.ext4 "${disk_name}3"
 echo -e "${BYellow}[ * ]Making the swap parition${End_Colour}"
-mkswap /dev/sda2
+mkswap "${disk_name}2"
 echo -e "${BYellow}[ * ]Making the boot parition as fat32${End_Colour}"
-mkfs.fat -F 32 /dev/sda1
+mkfs.fat -F 32 "${disk_name}1"
 
 # Mounting the paritions
 echo -e "${BYellow}[ * ]Mounting the paritions"
-mount /dev/sda3 /mnt
+mount "${disk_name}3" /mnt
 mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
+mount "${disk_name}1" /mnt/boot
 
 # Activate the swap parition
 echo -e "${BYellow}[ * ]Activating the swap parition${End_Colour}"
-swapon /dev/sda2
+swapon "${disk_name}2"
 
 # Installing base packages with pacstrap
 echo -e "${BYellow}[ * ]Installing base packages with pacstrap${End_Colour}"
