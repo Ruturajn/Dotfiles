@@ -125,6 +125,7 @@ fi
 echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 cp -r ./dunst "${HOME}"/.config
 chmod +x "${HOME}"/.config/dunst/vol_script
+sed -i "s|    icon_path = .*|    icon_path = $HOME/.config/dunst/icons|" "${HOME}"/.config/dunst/dunstrc
 
 echo -e "${BYellow}[ * ]Placing rofi folder in ~/.config/rofi${End_Colour}"
 cp -r ./rofi "${HOME}"/.config
