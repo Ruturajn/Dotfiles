@@ -237,5 +237,9 @@ fi
 echo -e "${BYellow}[ * ]Enabling pulseaudio at startup${End_Colour}"
 systemctl --user enable pulseaudio
 
+# Adding user to video group
+echo -e "${BYellow}[ * ]Add user to video group${End_Colour}"
+sudo usermod -aG video "$USER"
+
 # Installation Success
 echo -e "${BGreen}Installation Successfull, Logout and Login to Qtile!!${End_Colour}"
