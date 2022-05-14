@@ -113,13 +113,13 @@ echo -e "${BYellow}[ * ]Backing up vim related config files in vim_backup_files$
 if [[ -f "${HOME}"/.vimrc ]]; then
 	mv "${HOME}"/.vimrc "${HOME}"/vim_backup_files/.
 else
-    rm -r "${HOME}"/vim_backup_files
+	rm -r "${HOME}"/vim_backup_files
 fi
 
 if [[ -d "${HOME}"/.vim ]]; then
 	mv "${HOME}"/.vim "${HOME}"/vim_backup_files/.
 else
-    rm -r "${HOME}"/vim_backup_files
+	rm -r "${HOME}"/vim_backup_files
 fi
 
 echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
