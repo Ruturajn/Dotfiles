@@ -7,11 +7,10 @@
 
 # Check if the brightness needs to be increased or reduced
 if [[ $1 == "up" ]] ; then
-    echo "<your_password>" | sudo -S brightnessctl s +2% > /dev/null 
+    brightnessctl s +2% > /dev/null 
 elif [[ $1 == "down" ]] ; then
-    echo "<your_password>" | sudo -S brightnessctl s 2%- > /dev/null
+    brightnessctl s 2%- > /dev/null 
 fi
-
 
 # Get the current brightness value
 brightness_val=$(brightnessctl i | grep -i "Current Brightness" | sed 's/^.*(//' | sed 's/\%.*//')
