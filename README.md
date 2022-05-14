@@ -1,9 +1,7 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup 
-and the other for a base Arch-Linux Install. To use the config, you will need to make 2 important changes:
-- Editing line `10` and `12` in the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script to add your sudo 
-  password. 
-- Editing line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
+and the other for a base Arch-Linux Install. To use the config, you will need to make a change:
+- Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
   This can be skipped if you want to use nitrogen, to set your wallaper. You will need to set a wallpaper the first time you login to Qtile. This is only a 
   one time thing, and the wallpaper you chose will persist, due to line `9` in the 
   [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
@@ -13,12 +11,15 @@ and the other for a base Arch-Linux Install. To use the config, you will need to
 under the `Arch-Setup-Scripts` directory and the script ,before running the script. You can just get the script using curl (see 
 [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)), it will clone this repo and do the needfull.*
 - *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
-- *The `picom.conf` file here, is to be used with the original picom, since I am using [Jonaburg's Fork of picom](https://github.com/jonaburg/picom)
+- *The `picom.conf` file here, is to be used with the original picom. Since I am using [Jonaburg's Fork of picom](https://github.com/jonaburg/picom)
   I use the default config provided in that repo, so I have not included it here. If you want to use jonaburg-picom just use the default config there,
   since I am using just that, no changes.*
+- *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
+  `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
 
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script, all of 
-these things mentioned about editing files, and picom configs, will be taken care of by the script.
+these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
+from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script.
 
 <br />
 
