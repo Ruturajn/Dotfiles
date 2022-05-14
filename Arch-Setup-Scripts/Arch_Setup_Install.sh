@@ -112,7 +112,11 @@ mkdir "${HOME}"/vim_backup_files
 echo -e "${BYellow}[ * ]Backing up vim related config files in vim_backup_files${End_Colour}"
 if [[ -f "${HOME}"/.vimrc ]]; then
 	mv "${HOME}"/.vimrc "${HOME}"/vim_backup_files/.
-elif [[ -d "${HOME}"/.vim ]]; then
+else
+    rm -r "${HOME}"/vim_backup_files
+fi
+
+if [[ -d "${HOME}"/.vim ]]; then
 	mv "${HOME}"/.vim "${HOME}"/vim_backup_files/.
 else
     rm -r "${HOME}"/vim_backup_files
