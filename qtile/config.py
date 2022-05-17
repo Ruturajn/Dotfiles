@@ -35,6 +35,12 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras.widget.decorations import RectDecoration, BorderDecoration
 
+from qtile_extras.popup.toolkit import (
+PopupRelativeLayout,
+PopupImage,
+PopupText
+)
+
 import os
 import subprocess
 import psutil
@@ -46,6 +52,78 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.run([home])
 
+def show_power_menu(qtile):
+
+    controls = [
+        PopupImage(
+            filename="~/.config/qtile/icons/exit.png",
+            pos_x=0.15, 
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            highlight="#00000000",
+            mouse_callbacks={
+                "Button1": lazy.shutdown()
+            }
+        ),
+        PopupImage(
+            filename="~/.config/qtile/icons/power-off.png",
+            pos_x=0.45,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            highlight="#00000000",
+            mouse_callbacks={
+                "Button1": lazy.spawn("shutdown now")
+            }
+        ),
+        PopupImage(
+            filename="~/.config/qtile/icons/reboot.png",
+            pos_x=0.75,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            highlight="#00000000",
+            mouse_callbacks={
+                "Button1": lazy.spawn("reboot")
+            }
+        ),
+        PopupText(
+            text="Log Out",
+            pos_x=0.085,
+            pos_y=0.7,
+            width=0.2,
+            height=0.2,
+            h_align="center"
+        ),
+        PopupText(
+            text="Shutdown",
+            pos_x=0.4,
+            pos_y=0.7,
+            width=0.2,
+            height=0.2,
+            h_align="center"
+        ),
+        PopupText(
+            text="Reboot",
+            pos_x=0.7,
+            pos_y=0.7,
+            width=0.2,
+            height=0.2,
+            h_align="center"
+        )
+    ]
+
+    layout = PopupRelativeLayout(
+        qtile,
+        width=1000,
+        height=200,
+        controls=controls,
+        background="#00000060",
+        initial_focus=None,
+    )
+
+    layout.show(centered=True)
 
 mod = "mod4"
 #terminal = guess_terminal()
@@ -117,7 +195,8 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle Play-Pasue Music"),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Play Previous Music Track"),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Play Next Music Track"),
-    Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop the Music"),]
+    Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop the Music"),
+    Key([mod, "shift"], "q", lazy.function(show_power_menu)),]
 
 #groups = [Group(i) for i in "123456789"]
 
