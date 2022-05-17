@@ -239,6 +239,7 @@ for i in groups:
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Bsp(margin=8, border_focus="#533a7b", fair=False),
     layout.Columns(border_focus_stack=[
                    "#533a7b", "#533a7b"], border_width=3, margin=8, border_focus="#533a7b"),
     layout.Max(),
@@ -368,12 +369,12 @@ screens = [
                 # widget.CPU(format=fa.icons["microchip"]+" {freq_current}GHz {load_percent}%",**decor_wallpaper),
                 widget.CPU(format=fa.icons["microchip"]+" {load_percent}%",**decor_CPU),
                 widget.Battery(background="#00000000", foreground="#000000",
-                               charge_char=fa.icons["bolt"], discharge_char="",
-                               update_interval=1,
-                               format=fa.icons["battery-three-quarters"] + "{char} {percent:2.0%}", notify_below=20, notification_timeout=15,**decor_battery),
+                               charge_char="", discharge_char="", unknown_char="",
+                               update_interval=1, full_char="", empty_char="",
+                               format="{char} {percent:2.0%}", **decor_battery),
                 widget.Clock(format=fa.icons["calendar"] + " %d %b %Y %a",
                              background="#00000000", foreground="#FFFFFF", **decor_Day),
-                widget.Clock(format=fa.icons["clock"] + " %I:%M %p",
+                widget.Clock(format=" %I:%M:%S %p",
                              background="#00000000", foreground="#FFFFFF", **decor_Date),
             ],
             27,
