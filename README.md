@@ -44,7 +44,7 @@ from that fork in `~/.config/picom/picom.conf`), and adding your user to the gro
 | File Manager | [Nemo](https://github.com/linuxmint/nemo) |
 | Fonts | [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete) and [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete) |
 | Fetch Program | [pfetch](https://github.com/dylanaraps/pfetch) or [fm6000](https://github.com/anhsirk0/fetch-master-6000) |
-| Terminal Programs | [cava](https://github.com/karlstav/cava), [bashtop](https://github.com/aristocratos/bashtop) and [pipes.sh](https://github.com/pipeseroni/pipes.sh) |
+| Terminal Programs | [cava](https://github.com/karlstav/cava), [bashtop](https://github.com/aristocratos/bashtop), [pipes.sh](https://github.com/pipeseroni/pipes.sh) and [cmatrix](https://github.com/abishekvashok/cmatrix) |
 
 ## Rofi and Qtile
 
