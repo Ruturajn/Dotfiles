@@ -1,6 +1,8 @@
 # Dotfiles
-My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup 
-and the other for a base Arch-Linux Install. To use the config, you will need to make 2 changes (If you are not using one of the setup scripts):
+My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have three bash scripts in this repo, two of those
+are for installing this setup and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu.
+
+To use the config, you will need to make 2 changes (If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -48,7 +50,7 @@ from that fork in `~/.config/picom/picom.conf`), and adding your user to the gro
 
 <br />
 
-## Rofi and Qtile
+## Screenshots
 
 ![Arch-Rice](https://user-images.githubusercontent.com/56625259/169133033-b98ac87b-028e-4aac-856d-756fc19dc765.png)
 
