@@ -1,8 +1,8 @@
 # Setting Up the Rice on Ubuntu
 
 - The `Ubuntu_Setup_Install.sh` script places all the required config files under their respective folders `$HOME/.config/<Program-name>`, and installs 
-  all the dependencies. You can just get the script by using `curl` as shown below. It will backup your `$HOME/.config` directory before making any
-  changes, so you will not loose any data.
+   all the dependencies. You can just get the script by using `curl` as shown below, and it will clone this repo and do the needfull. The script will 
+   backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
 - The config files need to be a changed slightly while using them on Ubuntu, this is handled by `Ubuntu_Setup_Install.sh` script. If you plan to place
   the config files manually, the following changes need to be made:
     - Line `132` and `133` needs to be changed to `browser = "brave-browser"` and `file_manager = "nautilus"` respectively in
