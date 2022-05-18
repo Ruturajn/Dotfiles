@@ -1,6 +1,6 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have two bash scripts one for installing this setup 
-and the other for a base Arch-Linux Install. To use the config, you will need to make 2 changes:
+and the other for a base Arch-Linux Install. To use the config, you will need to make 2 changes (If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -18,8 +18,10 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
   since I am using just that, no changes.*
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
   `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
+- *All of the aforementioned things stand for setting up this rice on Ubuntu as well.*
 
-If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script, all of 
+If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) or the 
+[Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
 from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script.
 
@@ -38,8 +40,9 @@ from that fork in `~/.config/picom/picom.conf`), and adding your user to the gro
 | Browser | [Brave](https://brave.com/) |
 | Notifications | [Dunst](https://github.com/dunst-project/dunst) |
 | File Manager | [Nemo](https://github.com/linuxmint/nemo) |
+| Fonts | [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete) and [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete) |
 
-## Arch-Linux with Rofi and Qtile
+## Rofi and Qtile
 
 ![New-Arch-Rice-2](https://user-images.githubusercontent.com/56625259/168045281-d5581bc1-13c3-4295-ad71-1211b6047f3d.png)
 
