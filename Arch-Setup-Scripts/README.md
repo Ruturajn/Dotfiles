@@ -1,8 +1,10 @@
 # Arch-Linux Installation and Post-Installation Setup
 
-- The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. At the end
-it also asks whether the ```Arch_Setup_Install.sh``` script should be acquired and run, to complete the whole setup.
-- The ```Arch_Setup_Install.sh``` script installs all the needed packages for the rice and puts the config files in their respective folders ```~/.config/<Program-name>```. It also creates and configures a ```swapfile``` if the user requires it. 
+- The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. At the 
+  end it also asks whether the ```Arch_Setup_Install.sh``` script should be acquired and run, to complete the whole setup.
+- The ```Arch_Setup_Install.sh``` script installs all the needed packages for the rice and puts the config files in their respective folders   
+  ```~/.config/<Program-name>```. It also creates and configures a ```swapfile``` if the user requires it. The script will also
+  backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
 
 **Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely
 your responsibility! Also the ```Arch_Install.sh``` script is currently only tested on virtualbox, since it (as of yet) does not handle driver installation
