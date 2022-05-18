@@ -67,4 +67,8 @@ from that fork in `~/.config/picom/picom.conf`), and adding your user to the gro
 
 ![Arch-Vol-Unmute](https://user-images.githubusercontent.com/56625259/169134193-83e8e6bf-54f1-42a4-997f-69cee7a7594b.png)
 
+![Arch-Bright-Up](https://user-images.githubusercontent.com/56625259/169141677-856809a7-a2d3-4e8c-8f9b-84bb9c6db1c0.png)
+
+![Arch-Bright-Down](https://user-images.githubusercontent.com/56625259/169141696-bfd5e1a9-6d14-492f-9084-d573cac8f168.png)
+
 <br />
