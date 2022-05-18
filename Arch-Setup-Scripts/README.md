@@ -1,4 +1,4 @@
-# Arch-Linux Post Installation Configuration
+# Arch-Linux Installation and Post-Installation Setup
 
 - The ```Arch_Install.sh``` script partitions the disk, installs the base Arch System (with UEFI) and creates a user with ```sudo``` privileges. At the end
 it also asks whether the ```Arch_Setup_Install.sh``` script should be acquired and run, to complete the whole setup.
