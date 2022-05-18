@@ -74,7 +74,7 @@ def show_power_menu(qtile):
             height=0.5,
             highlight="#00000000",
             mouse_callbacks={
-                "Button1": lazy.spawn("shutdown now")
+                "Button1": lazy.spawn("poweroff")
             }
         ),
         PopupImage(

@@ -27,11 +27,11 @@ End_Colour="\e[0m"
 echo -e "${BRed}==========================================================================================================================${End_Colour}"
 echo -e "${BRed}[ * ]!This script is going to backup your current .config folder and any vim related files that you mave have in the
      home directory to the folders named 'backup_dot_config' and 'vim_backup_files' respectively. Then it is going to
-     install some packages that are requireed for the rice, and place the respective dotfiles in the .config directory.
+     install some packages that are required for the rice, and place the respective dotfiles in the .config directory.
      The .config directory in your system will not be replaced rather stuff will be added to it. So there will not be loss
      of current config files.\n${End_Colour}"
 echo -e "${BRed}==========================================================================================================================${End_Colour}"
-read -rp "[1;34m[ * ]Do you want to proceed [Y/n]:[0m" setup_ans
+read -rp "[1;34m[ * ]Do you want to proceed?[Y/n]:[0m" setup_ans
 
 if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# Backup the current config files
