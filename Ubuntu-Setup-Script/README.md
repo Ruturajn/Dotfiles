@@ -16,7 +16,8 @@
     - Edit line `6` in the [qtile/autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path
       to your wallpaper. This can be skipped if you want to use nitrogen, to set your wallaper. To do that, you will need to set a wallpaper
       the first time you login to Qtile with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist,
-      due to line `9` in the [qtile/autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
+      due to line `9` in the [qtile/autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script. Also, you will
+      need to make the autostart script executable, with `chmod +x <Path-to-autostart.sh>/autostart.sh`.
     - If you don't see the `wifi` widget show up, change line `364` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/config.py)
       to your network interface.
   
