@@ -15,7 +15,7 @@
       [alacritty.yml](https://github.com/Ruturajn/Dotfiles/blob/main/alacritty.yml) file.
     - Edit line `6` in the [qtile/autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path
       to your wallpaper. This can be skipped if you want to use nitrogen, to set your wallaper. To do that, you will need to set a wallpaper
-      the first time you login to Qtile. This is only a one time thing, and the wallpaper you chose will persist,
+      the first time you login to Qtile with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist,
       due to line `9` in the [qtile/autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
   
 **Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely
