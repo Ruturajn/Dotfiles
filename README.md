@@ -16,9 +16,11 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
 - *The `picom.conf` file here, is to be used with the original picom. Since I am using [Jonaburg's Fork of picom](https://github.com/jonaburg/picom)
   I use the default config provided in that repo, so I have not included it here. If you want to use jonaburg-picom just use the default config there,
   since I am using just that, no changes.*
+- If you don't see the `wifi` widget show up, change line `364` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/config.py)
+  to your network interface.
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
   `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
-- *All of the aforementioned things stand for setting up this rice on Ubuntu as well.*
+- *All of the aforementioned things stand for setting up this rice on Ubuntu as well(See [Ubuntu-Setup-Script/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Ubuntu-Setup-Script)).*
 
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) or the 
 [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all of 
@@ -41,21 +43,23 @@ from that fork in `~/.config/picom/picom.conf`), and adding your user to the gro
 | Notifications | [Dunst](https://github.com/dunst-project/dunst) |
 | File Manager | [Nemo](https://github.com/linuxmint/nemo) |
 | Fonts | [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete) and [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete) |
+| Fetch Program | [pfetch](https://github.com/dylanaraps/pfetch) or [fm6000](https://github.com/anhsirk0/fetch-master-6000) |
+| Terminal Programs | [cava](https://github.com/karlstav/cava), [bashtop](https://github.com/aristocratos/bashtop) and [pipes.sh](https://github.com/pipeseroni/pipes.sh) |
 
 ## Rofi and Qtile
 
-![New-Arch-Rice-2](https://user-images.githubusercontent.com/56625259/168045281-d5581bc1-13c3-4295-ad71-1211b6047f3d.png)
+![Arch-Rice](https://user-images.githubusercontent.com/56625259/169133033-b98ac87b-028e-4aac-856d-756fc19dc765.png)
 
-![New-Arch-Rice-Rofi-2](https://user-images.githubusercontent.com/56625259/168045326-e1f42bbe-7374-4d9c-a7fe-1e0569355e7a.png)
+![Arch-Rice-Rofi](https://user-images.githubusercontent.com/56625259/169133226-fcdb848b-94e4-4ac6-8914-6b88756e9e1a.png)
 
-![Vol-Up](https://user-images.githubusercontent.com/56625259/167814956-abbf7f1f-aa28-4986-ac3c-873e0bb9dc02.png)
+![Arch-Rice-Exit-Menu](https://user-images.githubusercontent.com/56625259/169133357-b0fd7ea3-e586-479e-897a-afbbda891bad.png)
 
-![Vol-Down](https://user-images.githubusercontent.com/56625259/167814981-39ce0d68-a505-405c-8a05-e63ba44f6e9d.png)
+![Arch-Vol-Up](https://user-images.githubusercontent.com/56625259/169133869-f2e65894-6c0a-45f2-a114-c15b71a28fd2.png)
 
-![Vol-Mute](https://user-images.githubusercontent.com/56625259/167815000-4dd5a088-83ad-4a15-8e5f-169e53199689.png)
+![Arch-Vol-Down](https://user-images.githubusercontent.com/56625259/169133972-9d2eff19-016d-4b8f-abc9-94f0812983c3.png)
 
-![Vol-Unmute](https://user-images.githubusercontent.com/56625259/167815033-97508f5e-aa39-41ad-8e48-da05c1b5e2b8.png)
+![Arch-Vol-Mute](https://user-images.githubusercontent.com/56625259/169134095-be37003e-54a4-4c05-ac66-46e6ed38b03e.png)
 
-![Brightness](https://user-images.githubusercontent.com/56625259/167815454-98273e17-4d39-4a96-8233-df499eaf3ab8.png)
+![Arch-Vol-Unmute](https://user-images.githubusercontent.com/56625259/169134193-83e8e6bf-54f1-42a4-997f-69cee7a7594b.png)
 
 <br />
