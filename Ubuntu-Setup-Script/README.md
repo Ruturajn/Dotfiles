@@ -17,6 +17,8 @@
       to your wallpaper. This can be skipped if you want to use nitrogen, to set your wallaper. To do that, you will need to set a wallpaper
       the first time you login to Qtile with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist,
       due to line `9` in the [qtile/autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script.
+    - If you don't see the `wifi` widget show up, change line `364` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/config.py)
+      to your network interface.
   
 **Note : Please read the scripts before running them and answer the questions asked in the scripts carefully, any damage caused to your system is solely
 your responsibility! But, that's highly unlikely, I needed to give a disclaimer just in case.**
