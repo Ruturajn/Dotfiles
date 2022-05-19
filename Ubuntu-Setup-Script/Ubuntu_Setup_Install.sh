@@ -42,18 +42,17 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	fi
 
 	# Backup vim related config files
-	mkdir "${HOME}"/vim_backup_files
 	echo -e "${BYellow}[ * ]Backing up vim related config files in vim_backup_files${End_Colour}"
+	mkdir "${HOME}"/vim_backup_files
 	if [[ -f "${HOME}"/.vimrc ]]; then
 		mv "${HOME}"/.vimrc "${HOME}"/vim_backup_files/.
-	else
-		rm -r "${HOME}"/vim_backup_files
 	fi
 
-	mkdir "${HOME}"/vim_backup_files
 	if [[ -d "${HOME}"/.vim ]]; then
 		mv "${HOME}"/.vim "${HOME}"/vim_backup_files/.
-	else
+	fi
+
+	if [[ ! "$(ls -A ${HOME}/vim_backup_files)" ]]; then
 		rm -r "${HOME}"/vim_backup_files
 	fi
 
