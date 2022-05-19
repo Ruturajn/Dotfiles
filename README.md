@@ -18,7 +18,7 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
 - *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
 - *The `picom.conf` file here, is to be used with the original picom. Since I am using [Jonaburg's Fork of picom](https://github.com/jonaburg/picom)
   I use the default config provided in that repo, so I have not included it here. If you want to use jonaburg-picom just use the default config there,
-  since I am using just that, no changes.*
+  I am using just that, no changes.*
 - If you don't see the `wifi` widget show up, change line `364` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/config.py)
   to your network interface.
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
