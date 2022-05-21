@@ -54,22 +54,24 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 
 ## Screenshots
 
-![Arch-Rice](https://user-images.githubusercontent.com/56625259/169133033-b98ac87b-028e-4aac-856d-756fc19dc765.png)
+![Arch-Rice](https://user-images.githubusercontent.com/56625259/169665230-5a5e57c1-19ec-49d5-8ae3-302889a0f7b5.png)
 
-![Arch-Rice-Rofi](https://user-images.githubusercontent.com/56625259/169133226-fcdb848b-94e4-4ac6-8914-6b88756e9e1a.png)
+![Arch-Rice-1](https://user-images.githubusercontent.com/56625259/169665237-d42fa0c9-a4cc-4ace-a64e-3b949b5c1d49.png)
 
-![Arch-Rice-Exit-Menu](https://user-images.githubusercontent.com/56625259/169133357-b0fd7ea3-e586-479e-897a-afbbda891bad.png)
+![Arch-Rice-Rofi](https://user-images.githubusercontent.com/56625259/169665249-8ff5d697-32e7-45df-988a-9478492385f5.png)
 
-![Arch-Vol-Up](https://user-images.githubusercontent.com/56625259/169133869-f2e65894-6c0a-45f2-a114-c15b71a28fd2.png)
+![Arch-Rice-Exit-Menu](https://user-images.githubusercontent.com/56625259/169665255-8e9ec6bf-8800-4af0-8109-4eab19aeca21.png)
 
-![Arch-Vol-Down](https://user-images.githubusercontent.com/56625259/169133972-9d2eff19-016d-4b8f-abc9-94f0812983c3.png)
+![Arch-Rice-Vol-Up](https://user-images.githubusercontent.com/56625259/169665261-99fdab5e-dd19-49a2-8748-d293d91061b6.png)
 
-![Arch-Vol-Mute](https://user-images.githubusercontent.com/56625259/169134095-be37003e-54a4-4c05-ac66-46e6ed38b03e.png)
+![Arch-Rice-Vol-Down](https://user-images.githubusercontent.com/56625259/169665547-142add44-b18f-4135-bdec-c9a4e65321d8.png)
 
-![Arch-Vol-Unmute](https://user-images.githubusercontent.com/56625259/169134193-83e8e6bf-54f1-42a4-997f-69cee7a7594b.png)
+![Arch-Rice-Vol-Mute](https://user-images.githubusercontent.com/56625259/169665550-c1ddbb0b-22b3-4817-8d20-d5452facfb6b.png)
 
-![Arch-Bright-Up](https://user-images.githubusercontent.com/56625259/169141677-856809a7-a2d3-4e8c-8f9b-84bb9c6db1c0.png)
+![Arch-Rice-Vol-UnMute](https://user-images.githubusercontent.com/56625259/169665555-63d22970-8db7-4cec-9d99-ac1ac82b0434.png)
 
-![Arch-Bright-Down](https://user-images.githubusercontent.com/56625259/169141696-bfd5e1a9-6d14-492f-9084-d573cac8f168.png)
+![Arch-Rice-Bright-Up](https://user-images.githubusercontent.com/56625259/169665669-f609cf82-68d0-46c8-a6ef-a1e4407316d4.png)
+
+![Arch-Rice-Bright-Down](https://user-images.githubusercontent.com/56625259/169665673-0be90997-0dc2-48c7-8b88-ab8a892b2327.png)
 
 <br />
