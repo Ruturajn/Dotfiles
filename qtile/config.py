@@ -56,7 +56,7 @@ def show_power_menu(qtile):
 
     controls = [
         PopupImage(
-            filename="~/.config/qtile/icons/exit.png",
+            filename="~/.config/qtile/icons/log-out-new.png",
             pos_x=0.15, 
             pos_y=0.1,
             width=0.1,
@@ -67,7 +67,7 @@ def show_power_menu(qtile):
             }
         ),
         PopupImage(
-            filename="~/.config/qtile/icons/power-off.png",
+            filename="~/.config/qtile/icons/switch.png",
             pos_x=0.45,
             pos_y=0.1,
             width=0.1,
@@ -78,7 +78,7 @@ def show_power_menu(qtile):
             }
         ),
         PopupImage(
-            filename="~/.config/qtile/icons/reboot.png",
+            filename="~/.config/qtile/icons/sync-new-2.png",
             pos_x=0.75,
             pos_y=0.1,
             width=0.1,
@@ -188,10 +188,10 @@ keys = [
         os.path.expanduser("~/.config/dunst/vol_script toggle")), desc="Mute System Volume"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
-    Key(["mod1"], "c", lazy.spawn(os.path.expanduser("~/.config/qtile/cpu_temp")), desc="Display CPU Core Temperature"),
-    Key(["mod1"], "f", lazy.spawn(os.path.expanduser("~/.config/qtile/fan_speed")), desc="Display CPU Fan Speed"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn(os.path.expanduser("~/.config/qtile/bright_control down")), desc="Decrease Screen Brightness"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn(os.path.expanduser("~/.config/qtile/bright_control up")), desc="Increase Screen Brightness"),
+    Key(["mod1"], "c", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/cpu_temp")), desc="Display CPU Core Temperature"),
+    Key(["mod1"], "f", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/fan_speed")), desc="Display CPU Fan Speed"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/bright_control down")), desc="Decrease Screen Brightness"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/bright_control up")), desc="Increase Screen Brightness"),
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle Play-Pasue Music"),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Play Previous Music Track"),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Play Next Music Track"),
@@ -289,6 +289,13 @@ decor_groupbox = {
     "padding": 18
 }
 
+decor_Wifi = {
+    "decorations": [
+        RectDecoration(colour=colors[5], radius=4,
+                       filled=True, padding_y=2, padding_x=3)
+    ],
+    "padding": 13
+}
 
 decor_ram = {
     "decorations": [
@@ -301,14 +308,6 @@ decor_ram = {
 decor_CPU = {
     "decorations": [
         RectDecoration(colour=colors_1[2], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_wallpaper = {
-    "decorations": [
-        RectDecoration(colour=colors[1], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -338,14 +337,21 @@ decor_Date = {
     "padding": 13
 }
 
-decor_Wifi = {
+decor_RPM = {
     "decorations": [
-        RectDecoration(colour=colors[5], radius=4,
+        RectDecoration(colour=colors_5[4], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
 }
 
+decor_Temp = {
+    "decorations": [
+        RectDecoration(colour=colors_1[1], radius=4,
+                       filled=True, padding_y=2, padding_x=3)
+    ],
+    "padding": 13
+}
 screens = [
     Screen(
         top=bar.Bar(
@@ -354,13 +360,10 @@ screens = [
                 widget.GroupBox(highlight_method="line", highlight_color="#d1cfe2", foreground="#000000",
                                 rounded=True, **decor_groupbox, hide_unused=False, active="#000000"),
                 widget.Prompt(**decor_ram),
-                #widget.Spacer(length="670"),
                 widget.Spacer(),
                 widget.CheckUpdates(background="#00000000", foreground="#FF0000",
                                     colour_have_updates="#000000", colour_no_updates="#000000", **decor_ram),
                 widget.Systray(background="#00000000", icon_size=20),
-                # widget.Net(interface="wlp2s0", background="#00000000",
-                #            format=fa.icons["wifi"]+" {up}"+fa.icons["arrow-up"]+" {down} "+fa.icons["arrow-down"], **decor_Wifi),
                 widget.Net(interface="wlp2s0", background="#00000000",
                            format=fa.icons["wifi"]+" {up}", **decor_Wifi),
                 widget.Memory(background="#00000000", foreground="#FFFFFF",
@@ -368,14 +371,16 @@ screens = [
                 # Can also use fa.icons["microchip"], fa.icons["chart-bar"]
                 # widget.CPU(format=fa.icons["microchip"]+" {freq_current}GHz {load_percent}%",**decor_wallpaper),
                 widget.CPU(format=fa.icons["microchip"]+" {load_percent}%",**decor_CPU),
-                widget.Battery(background="#00000000", foreground="#000000",
-                               charge_char="", discharge_char="", unknown_char="",
-                               update_interval=1, full_char="", empty_char="",
-                               format="{char} {percent:2.0%}", **decor_battery),
+                widget.GenPollText(update_interval=1, func=lambda: "{}%".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/bat_poll")).decode("utf-8")),
+                                   background="#00000000", foreground="#FFFFFF", **decor_battery),
                 widget.Clock(format=fa.icons["calendar"] + " %d %b %Y %a",
                              background="#00000000", foreground="#FFFFFF", **decor_Day),
                 widget.Clock(format=" %I:%M:%S %p",
                              background="#00000000", foreground="#FFFFFF", **decor_Date),
+                widget.GenPollText(update_interval=600, func=lambda: " {} RPM".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/fan_speed_text")).decode("utf-8")),
+                                   background="#00000000", foreground="#FFFFFF", **decor_RPM),
+                widget.GenPollText(update_interval=600, func=lambda: " {}°C".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/cpu_temp_text")).decode("utf-8")),
+                                   background="#00000000", foreground="#FFFFFF", **decor_Temp),
             ],
             27,
             border_width=[0, 0, 0, 0],  # Draw top and bottom borders
@@ -390,11 +395,11 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag(["control"], "Button1", lazy.window.set_position_floating(),
+    Drag(["mod1"], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
-    Drag(["control"], "Button3", lazy.window.set_size_floating(),
+    Drag(["mod1"], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click(["control"], "Button2", lazy.window.bring_to_front()),
+    Click(["mod1"], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+# This script polls the battery status and prints out the
+# the corresponding icon according the battery charge status.
+
+battery_status=$(acpi | sed 's/^.*ing, //' | sed 's/\%.*//')
+
+if [[ "${battery_status}" -ge 95 ]] ; then
+    bat_icon=""
+elif [[ "${battery_status}" -ge 75 ]] ; then
+    bat_icon=""
+elif [[ "${battery_status}" -ge 50 ]] ; then
+    bat_icon=""
+elif [[ "${battery_status}" -ge 25 ]] ; then
+    bat_icon=""
+else
+    bat_icon=""
+fi
+
+charge_status=$(acpi | awk '{print $3}' | sed 's/\,//')
+
+if [[ "${charge_status}" == "Charging" ]] ; then
+    bat_icon+=""
+fi
+
+printf "%s" "${bat_icon}" " ${battery_status}"

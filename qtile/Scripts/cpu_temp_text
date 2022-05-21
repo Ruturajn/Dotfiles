@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+
+core_1_temp=$(sensors | grep -i "Core " | sed 's/^.*      +//' | sed 's/\..*//' | awk 'FNR == 1 {print}')
+core_2_temp=$(sensors | grep -i "Core " | sed 's/^.*      +//' | sed 's/\..*//' | awk 'FNR == 2 {print}')
+core_3_temp=$(sensors | grep -i "Core " | sed 's/^.*      +//' | sed 's/\..*//' | awk 'FNR == 3 {print}')
+core_4_temp=$(sensors | grep -i "Core " | sed 's/^.*      +//' | sed 's/\..*//' | awk 'FNR == 4 {print}')
+
+total_val="${core_1_temp}"+"${core_2_temp}"+"${core_3_temp}"+"${core_4_temp}"
+total_val=$(echo "${total_val}" | bc -l)
+avg_val=$(echo "${total_val}/4" | bc -l)
+#echo "${avg_val}"
+printf "%3.2f" "${avg_val}"
