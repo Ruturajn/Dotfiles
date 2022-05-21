@@ -174,6 +174,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "1) picom"
 	echo -e "2) jonaburg-picom"
 	echo -e "3) ibhagwan-picom${End_Colour}"
+	echo -e "${BGreen}Normal picom, i.e. option '1' works best in a VM${End_Colour}"
 	read -rp "[1;34m[ * ]Enter the number for the picom compositor you want to install :[0m" picom_ans
 
 	case "${picom_ans}" in
@@ -203,7 +204,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# Installing material design icon font
 	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
 	cd "${HOME}"/Git-repos || exit
-	wget https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf
+	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
 	if [[ ! -d "${HOME}"/.fonts ]]; then
 		mkdir "${HOME}"/.fonts
 		cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
