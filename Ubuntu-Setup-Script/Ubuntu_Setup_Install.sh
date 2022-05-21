@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+# Run this script for setting up the Rice.
+
 echo -ne "
 ██████╗ ██╗   ██╗████████╗██╗   ██╗██████╗  █████╗      ██╗███╗   ██╗
 ██╔══██╗██║   ██║╚══██╔══╝██║   ██║██╔══██╗██╔══██╗     ██║████╗  ██║
@@ -11,10 +15,6 @@ echo -ne "
                   Ubuntu Qtile Setup Script                       
 =====================================================================
 "
-
-# Author : Ruturajn <nanotiruturaj@gmail.com>
-# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
-# Run this script for setting up the Rice.
 
 BRed="\e[1;31m"
 BGreen="\e[1;32m"
@@ -206,6 +206,12 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Installing JetBrains Mono Font${End_Colour}"
 	wget "https://github.com/JetBrains/JetBrainsMono/raw/master/fonts/ttf/JetBrainsMono-Regular.ttf"
 	cp JetBrainsMono-Regular.ttf ~/.fonts/
+	fc-cache -fv
+
+	# Installing material design icon font
+	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
+	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
+	cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
 	fc-cache -fv
 
 	echo -e "${BYellow}[ * ]Installing pamixer from source${End_Colour}"

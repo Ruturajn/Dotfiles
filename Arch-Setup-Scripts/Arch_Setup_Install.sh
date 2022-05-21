@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+# Run this script for setting up the Rice.
+
 echo -ne "
 ██████╗ ██╗   ██╗████████╗██╗   ██╗██████╗  █████╗      ██╗███╗   ██╗
 ██╔══██╗██║   ██║╚══██╔══╝██║   ██║██╔══██╗██╔══██╗     ██║████╗  ██║
@@ -13,10 +17,6 @@ echo -ne "
 
 =====================================================================
 "
-
-# Author : Ruturajn <nanotiruturaj@gmail.com>
-# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
-# Run this script for setting up the Rice.
 
 BRed="\e[1;31m"
 BGreen="\e[1;32m"
@@ -54,7 +54,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		mv "${HOME}"/.vim "${HOME}"/vim_backup_files/.
 	fi
 
-	if [[ ! "$(ls -A ${HOME}/vim_backup_files)" ]]; then
+	if [[ ! $(ls -A "${HOME}"/vim_backup_files) ]]; then
 		rm -r "${HOME}"/vim_backup_files
 	fi
 
@@ -64,7 +64,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
-		brightnessctl
+		brightnessctl bc bashtop acpi github-cli wget shfmt
 
 	# Adding a swapfile
 	read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
@@ -199,6 +199,18 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		curl -fsSL "https://raw.githubusercontent.com/ibhagwan/picom/next-rebase/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
 		;;
 	esac
+
+	# Installing material design icon font
+	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
+	cd "${HOME}"/Git-repos || exit
+	wget https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf
+	if [[ ! -d "${HOME}"/.fonts ]]; then
+		mkdir "${HOME}"/.fonts
+		cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
+	else
+		cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
+	fi
+	fc-cache -fv
 
 	# Install fish and change default shell
 	read -rp "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
