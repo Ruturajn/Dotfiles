@@ -207,10 +207,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
 	if [[ ! -d "${HOME}"/.fonts ]]; then
 		mkdir "${HOME}"/.fonts
-		cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
-	else
-		cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
 	fi
+	cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
 	fc-cache -fv
 
 	# Install fish and change default shell
