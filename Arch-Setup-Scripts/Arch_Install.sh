@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+# This script installs the base Arch system and adds a user
+
 echo -ne "
 ██████╗ ██╗   ██╗████████╗██╗   ██╗██████╗  █████╗      ██╗███╗   ██╗
 ██╔══██╗██║   ██║╚══██╔══╝██║   ██║██╔══██╗██╔══██╗     ██║████╗  ██║
@@ -14,13 +18,8 @@ echo -ne "
 =====================================================================
 "
 
-
-# Author : Ruturajn <nanotiruturaj@gmail.com>
-# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
-# This script installs the base Arch system and adds a user
-
 # Defining colours
-BRed="\e[1;31m" 
+BRed="\e[1;31m"
 BGreen="\e[1;32m"
 BYellow="\e[1;33m"
 # BBlue="\e[1;34m"
@@ -40,25 +39,18 @@ tput setaf 5
 lsblk
 tput setaf 7
 read -rp "[1;34mEnter the disk that needs to be paritioned (/dev/sdX) :[0m" disk_name
-if [[ -z ${disk_name} ]] ; then
-    echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
-    exit
+if [[ -z ${disk_name} ]]; then
+	echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
+	exit
 fi
-# fdisk "${disk_name}" << FDISK_CMDS 
+# fdisk "${disk_name}" << FDISK_CMDS
 # n
-
-
 
 # +512M
 # n
 
-
-
 # +4G
 # n
-
-
-
 
 # t
 # 1
@@ -98,11 +90,11 @@ swapon "${disk_name}2"
 echo -e "${BYellow}[ * ]Installing base packages with pacstrap${End_Colour}"
 read -rp "[1;34mEnter the ucode for your CPU (intel-ucode / amd-ucode):[0m" cpu_code
 pacstrap /mnt base base-devel linux linux-firmware grub efibootmgr networkmanager \
-"${cpu_code}"
+	"${cpu_code}"
 
 # Generate file-system table with genfstab
 echo -e "${BYellow}[ * ]Generating file-system table with UUID${End_Colour}"
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >>/mnt/etc/fstab
 
 # Chroot into the installed base system
 echo -e "${BYellow}[ * ]Chroot into the installed base system${End_Colour}"
@@ -144,11 +136,11 @@ arch-chroot /mnt sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 5/g" /etc/
 # Installing some more packages
 echo -e "${BYellow}[ * ]Installing some more packages${End_Colour}"
 arch-chroot /mnt pacman -S grub efibootmgr networkmanager network-manager-applet dialog \
-base-devel linux-headers wpa_supplicant xdg-utils xdg-user-dirs bluez \
-bluez-utils cups pulseaudio alsa-utils pavucontrol terminus-font os-prober \
-udisks2 ntfs-3g bash-completion nfs-utils avahi openssh rsync xorg-xinit \
-xterm xf86-video-vmware firefox gnu-free-fonts noto-fonts ttf-dejavu \
-ttf-ubuntu-font-family vim git curl nemo gwenview simplescreenrecorder polkit
+	base-devel linux-headers wpa_supplicant xdg-utils xdg-user-dirs bluez \
+	bluez-utils cups pulseaudio alsa-utils pavucontrol terminus-font os-prober \
+	udisks2 ntfs-3g bash-completion nfs-utils avahi openssh rsync xorg-xinit \
+	xterm xf86-video-vmware firefox gnu-free-fonts noto-fonts ttf-dejavu \
+	ttf-ubuntu-font-family vim git curl nemo gwenview simplescreenrecorder polkit
 
 # Installing grub bootloader
 echo -e "${BYellow}[ * ]Installing grub bootloader${End_Colour}"
@@ -182,16 +174,15 @@ arch-chroot /mnt echo "Defaults env_reset,pwfeedback" | tee -a /mnt/etc/sudoers
 echo -e "${BGreen}The Base Install is done !!${End_Colour}"
 
 read -rp "[1;34mDo you want to setup the Qtile Rice? [Y/n]:[0m" rice_ans
-if [[ -z ${rice_ans} || ${rice_ans} == "y" || ${rice_ans} == "Y" ]] ; then
-    curl -fSL https://tinyurl.com/arch-setup-rn > Arch_Setup
-    mv ./Arch_Setup /mnt/home/"${user_name}"
-    arch-chroot /mnt runuser -u "${user_name}" -- bash /home/"${user_name}"/Arch_Setup
-elif [[ ${rice_ans} == "n" || ${rice_ans} == "N" ]] ; then
-    echo -e "${BRed}Skipping Rice Setup${End_Colour}"
+if [[ -z ${rice_ans} || ${rice_ans} == "y" || ${rice_ans} == "Y" ]]; then
+	curl -fSL https://tinyurl.com/arch-setup-rn >Arch_Setup
+	mv ./Arch_Setup /mnt/home/"${user_name}"
+	arch-chroot /mnt runuser -u "${user_name}" -- bash /home/"${user_name}"/Arch_Setup
+elif [[ ${rice_ans} == "n" || ${rice_ans} == "N" ]]; then
+	echo -e "${BRed}Skipping Rice Setup${End_Colour}"
 else
-    echo -e "${BRed}Not a valid option, Skipping Rice Setup${End_Colour}"
+	echo -e "${BRed}Not a valid option, Skipping Rice Setup${End_Colour}"
 fi
-
 
 # Echo exit chroot and unmount partitions
 echo -e "${BYellow}[ * ]Unmounting partitions${End_Colour}"
