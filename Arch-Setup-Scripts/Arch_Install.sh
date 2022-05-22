@@ -32,7 +32,7 @@ timedatectl set-ntp true
 
 # Enabling parallel downloads for pacstrap
 echo -e "${BYellow}[ * ]Enabling parallel downloads for pacstrap${End_Colour}"
-sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 8/g" /etc/pacman.conf
+sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 5/g" /etc/pacman.conf
 
 # Partition the disk
 ## To-Do
@@ -139,7 +139,7 @@ arch-chroot /mnt passwd
 
 # Enabling parallel downloads for pacman
 echo -e "${BYellow}[ * ]Enabling parallel downloads for pacman${End_Colour}"
-arch-chroot /mnt sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 8/g" /etc/pacman.conf
+arch-chroot /mnt sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 5/g" /etc/pacman.conf
 
 # Installing some more packages
 echo -e "${BYellow}[ * ]Installing some more packages${End_Colour}"
