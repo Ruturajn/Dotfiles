@@ -69,7 +69,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		fonts-fantasque-sans fish cargo lxappearance \
 		nitrogen brightnessctl fonts-font-awesome playerctl python3-pip \
 		build-essential cmake fonts-material-design-icons-iconfont ntfs-3g \
-		ntfs-3g-dev nfs-kernel-server udisks2 papirus-icon-theme
+		ntfs-3g-dev nfs-kernel-server udisks2 papirus-icon-theme acpi lm-sensors
 
 	echo -e "${BYellow}[ * ]Installing cxxopts from source${End_Colour}"
 	if [[ ! -d "${HOME}"/Git-Repos ]]; then
@@ -239,7 +239,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
-	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/China_Town.jpg" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/China_Town.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 	sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/config.py
 	sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/config.py
@@ -327,7 +327,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		;;
 	esac
 
-	echo "${BYellow}[ * ]Changing the path for picom executable in autostart.sh${End_Colour}"
+	echo -e "${BYellow}[ * ]Changing the path for picom executable in autostart.sh${End_Colour}"
 	read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
 	if [[ -z ${vm_ans} || ${vm_ans} == "y" || ${vm_ans} == "Y" ]]; then
 		sed -i 's|picom.*|/usr/local/picom/bin/picom --no-vsync \&|' "${HOME}"/.config/qtile/autostart.sh

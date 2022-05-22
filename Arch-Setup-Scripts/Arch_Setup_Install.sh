@@ -145,7 +145,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	#cp ./qtile/config.py "${HOME}"/.config/qtile/config.py
 	#cp ./qtile/autostart.sh "${HOME}"/.config/qtile/
 	cp -r ./qtile "${HOME}/.config/"
-	echo "nitrogen --set-scaled ${HOME}/Git-repos/Dotfiles/Wallpapers/China_Town.jpg" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "nitrogen --set-scaled ${HOME}/Git-repos/Dotfiles/Wallpapers/China_Town.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
