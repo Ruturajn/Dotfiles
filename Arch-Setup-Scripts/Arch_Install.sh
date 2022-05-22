@@ -43,14 +43,22 @@ if [[ -z ${disk_name} ]]; then
 	echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
 	exit
 fi
+
 # fdisk "${disk_name}" << FDISK_CMDS
 # n
+
+
 
 # +512M
 # n
 
+
+
 # +4G
 # n
+
+
+
 
 # t
 # 1
