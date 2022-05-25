@@ -7,7 +7,9 @@
     lightbg:                     #534c48;
     red:                         #f15d22;
     orange:                      #faa41a; 
-    blue:                        #48b9c7; 
+    blue:                        #48b9c7;
+    catpuccin:                   #ABE9B3;
+    black-foreground:            #000000;
 
     selected-normal-foreground:  @foreground;
     normal-foreground:           @foreground;
@@ -60,12 +62,13 @@ message {
     padding:    2px 0px 0px ;
 }
 textbox {
-    text-color: @orange;
+    text-color: @color;
 }
 
 prompt{
     enabled: true;
-    background-color: @orange;
+    background-color: @catpuccin;
+    text-color: @black-foreground;
     padding: 	0.25% 0.75% 0.25% 0.75%;
     border-radius: 5%;
     font: "Jet Brains Mono Regular 14";
@@ -118,7 +121,7 @@ element-text {
 //}
 element selected {
     background-color:               #00000000;
-    text-color:                     @orange;
+    text-color:                     @catpuccin;
 	border:							0% 0% 0% 0%;
     border-radius:                  4px;
     //border-color:                  	@ac;
