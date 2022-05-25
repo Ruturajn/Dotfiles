@@ -129,7 +129,7 @@ screens = [
                 widget.TextBox("", background="#00000000", foreground=foreground_colour_icon, fontsize=28, mouse_callbacks={"Button1" : lazy.spawn("rofi -show drun")}),
                 widget.CurrentLayoutIcon(),
                 widget.CurrentLayout(**decor_layout, foreground=foreground_colour),
-                widget.Clock(format=fa.icons["calendar"] + " %d %b %Y %a",
+                widget.Clock(format=fa.icons["calendar"] + " %d-%m-%y %a",
                              background="#00000000", foreground=foreground_colour, **decor_Day),
                 widget.Clock(format=" %I:%M:%S %p",
                              background="#00000000", foreground=foreground_colour, **decor_Date),
