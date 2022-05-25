@@ -12,6 +12,10 @@
 #fan_speed_val=$(sensors | awk 'FNR == 7 {print}' | sed 's/^.*:     //' | sed 's/ .*//')
 fan_speed_val=$(sensors | grep -i "cpu_fan" | sed 's/^.*:     //' | sed 's/ .*//')
 
+if [[ "${fan_speed_val}" == "" ]] ; then
+    fan_speed_val+="0"
+fi
+
 printf "%s""${fan_speed_val}"
 
 
