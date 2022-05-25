@@ -10,7 +10,16 @@ nitrogen --restore &
 
 ## Starting compton compositor on startup for transparency
 # If transparency is not working, try with vsync
-picom --no-vsync &
+picom &
 
 # Start pulseaudio
 pulseaudio --start
+#nitrogen --set-scaled /home/ruturajn/Git-repos/Dotfiles/Wallpapers/China_Town.jpg
+
+#Enable tap to click
+#xinput set-prop 14 337 1
+xinput set-prop 13 341 1
+
+#Enable natural scrolling
+#xinput set-prop 14 316 1
+xinput set-prop 13 320 1

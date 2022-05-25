@@ -35,6 +35,10 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras.widget.decorations import RectDecoration, BorderDecoration
 
+# Importing keys and colours
+from Keybindings import *
+from Colours_Decor import *
+
 from qtile_extras.popup.toolkit import (
 PopupRelativeLayout,
 PopupImage,
@@ -51,152 +55,6 @@ import fontawesome as fa
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.run([home])
-
-def show_power_menu(qtile):
-
-    controls = [
-        PopupImage(
-            filename="~/.config/qtile/icons/log-out-new.png",
-            pos_x=0.15, 
-            pos_y=0.1,
-            width=0.1,
-            height=0.5,
-            highlight="#00000000",
-            mouse_callbacks={
-                "Button1": lazy.shutdown()
-            }
-        ),
-        PopupImage(
-            filename="~/.config/qtile/icons/switch.png",
-            pos_x=0.45,
-            pos_y=0.1,
-            width=0.1,
-            height=0.5,
-            highlight="#00000000",
-            mouse_callbacks={
-                "Button1": lazy.spawn("poweroff")
-            }
-        ),
-        PopupImage(
-            filename="~/.config/qtile/icons/sync-new-2.png",
-            pos_x=0.75,
-            pos_y=0.1,
-            width=0.1,
-            height=0.5,
-            highlight="#00000000",
-            mouse_callbacks={
-                "Button1": lazy.spawn("reboot")
-            }
-        ),
-        PopupText(
-            text="Log Out",
-            pos_x=0.085,
-            pos_y=0.7,
-            width=0.2,
-            height=0.2,
-            h_align="center"
-        ),
-        PopupText(
-            text="Shutdown",
-            pos_x=0.4,
-            pos_y=0.7,
-            width=0.2,
-            height=0.2,
-            h_align="center"
-        ),
-        PopupText(
-            text="Reboot",
-            pos_x=0.7,
-            pos_y=0.7,
-            width=0.2,
-            height=0.2,
-            h_align="center"
-        )
-    ]
-
-    layout = PopupRelativeLayout(
-        qtile,
-        width=1000,
-        height=200,
-        controls=controls,
-        background="#00000060",
-        initial_focus=None,
-    )
-
-    layout.show(centered=True)
-
-mod = "mod4"
-#terminal = guess_terminal()
-#terminal = "gnome-terminal"
-terminal = "alacritty"
-browser = "brave"
-file_manager = "nemo"
-
-keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-    # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
-        desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key(["control", "shift"], "l", lazy.spawn(
-        "rofi -show drun"), desc="Launch Rofi"),
-    Key([mod, "control"], "s", lazy.spawn(
-        "flameshot gui"), desc="Lauch Flameshot GUI"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn(
-        os.path.expanduser("~/.config/dunst/vol_script down")), desc="Increase System Volume"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn(
-        os.path.expanduser("~/.config/dunst/vol_script up")), desc="Deccrease System Volume"),
-    Key([], "XF86AudioMute", lazy.spawn(
-        os.path.expanduser("~/.config/dunst/vol_script toggle")), desc="Mute System Volume"),
-    Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
-    Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
-    Key(["mod1"], "c", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/cpu_temp")), desc="Display CPU Core Temperature"),
-    Key(["mod1"], "f", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/fan_speed")), desc="Display CPU Fan Speed"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/bright_control down")), desc="Decrease Screen Brightness"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/bright_control up")), desc="Increase Screen Brightness"),
-    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle Play-Pasue Music"),
-    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Play Previous Music Track"),
-    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Play Next Music Track"),
-    Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop the Music"),
-    Key([mod, "shift"], "q", lazy.function(show_power_menu)),]
 
 #groups = [Group(i) for i in "123456789"]
 
@@ -239,7 +97,7 @@ for i in groups:
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Bsp(margin=8, border_focus="#533a7b", fair=False),
+    layout.Bsp(margin=8, border_focus="#533a7b", fair=False, border_on_single=True),
     layout.Columns(border_focus_stack=[
                    "#533a7b", "#533a7b"], border_width=3, margin=8, border_focus="#533a7b"),
     layout.Max(),
@@ -264,123 +122,42 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-colors_1 = ["#600060", "#992A88", "#758CCA", "#C1F4B6", ""]
-
-colors_2 = ["#C2B2B4", "#6B4E71", "#3A4454", "#53687E", "#F5DDDD"]
-
-colors_3 = ["#98c1d9", "#6969b3", "#533a7b", "#4b244a", "#25171a"]
-
-colors_4 = ["#d4afb9", "#d1cfe2", "#9cadce", "#7ec4cf", "#52b2cf"]
-
-colors_5 = ["#067bc2", "#84bcda", "#ecc30b", "#f37748", "#d56062"]
-
-colors_6 = ["#efd9ce", "#dec0f1", "#b79ced", "#957fef", "#7161ef"]
-
-colors_7 = ["#ffa630", "#d7e8ba", "#4da1a9", "#2e5077", "#611c35"]
-
-colors = ["#d1ccdc", "#424c55", "#f5edf0", "#886f68", "#3d2c2e", "#533a7b"]
-
-
-decor_groupbox = {
-    "decorations": [
-        RectDecoration(colour=colors[0], radius=7,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 18
-}
-
-decor_Wifi = {
-    "decorations": [
-        RectDecoration(colour=colors[5], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_ram = {
-    "decorations": [
-        RectDecoration(colour=colors[1], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_CPU = {
-    "decorations": [
-        RectDecoration(colour=colors_1[2], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_battery = {
-    "decorations": [
-        RectDecoration(colour=colors_7[2], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_Day = {
-    "decorations": [
-        RectDecoration(colour=colors[3], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_Date = {
-    "decorations": [
-        RectDecoration(colour=colors[4], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_RPM = {
-    "decorations": [
-        RectDecoration(colour=colors_5[4], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
-
-decor_Temp = {
-    "decorations": [
-        RectDecoration(colour=colors_1[1], radius=4,
-                       filled=True, padding_y=2, padding_x=3)
-    ],
-    "padding": 13
-}
 screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.TextBox("", background="#00000000", foreground=foreground_colour_icon, fontsize=28, mouse_callbacks={"Button1" : lazy.spawn("rofi -show drun")}),
                 widget.CurrentLayoutIcon(),
-                widget.GroupBox(highlight_method="line", highlight_color="#d1cfe2", foreground="#000000",
-                                rounded=True, **decor_groupbox, hide_unused=False, active="#000000"),
+                widget.CurrentLayout(**decor_layout, foreground=foreground_colour),
+                widget.Clock(format=fa.icons["calendar"] + " %d %b %Y %a",
+                             background="#00000000", foreground=foreground_colour, **decor_Day),
+                widget.Clock(format=" %I:%M:%S %p",
+                             background="#00000000", foreground=foreground_colour, **decor_Date),
+                # widget.Net(interface="wlp2s0", background="#00000000", foreground=foreground_colour,
+                #            format=fa.icons["wifi"]+" {up}", **decor_Wifi),
+                widget.Net(interface="wlo1", background="#00000000", foreground=foreground_colour,
+                           format=fa.icons["wifi"]+" {up}", **decor_Wifi),
+                widget.Spacer(length=bar.STRETCH),
+                widget.GroupBox(highlight_method="line", highlight_color="#00000000", foreground=foreground_colour,
+                                rounded=True, **decor_groupbox, hide_unused=False, active="#000000", margin_x=6,
+                                borderwidth=4),
+                widget.Spacer(length=bar.STRETCH),
                 widget.Prompt(**decor_ram),
-                widget.Spacer(),
                 widget.CheckUpdates(background="#00000000", foreground="#FF0000",
                                     colour_have_updates="#000000", colour_no_updates="#000000", **decor_ram),
                 widget.Systray(background="#00000000", icon_size=20),
-                widget.Net(interface="wlp2s0", background="#00000000",
-                           format=fa.icons["wifi"]+" {up}", **decor_Wifi),
-                widget.Memory(background="#00000000", foreground="#FFFFFF",
+                widget.Memory(background="#00000000", foreground=foreground_colour,
                               measure_mem='G', format=fa.icons["server"] + "{MemUsed: .2f} GB", **decor_ram),
                 # Can also use fa.icons["microchip"], fa.icons["chart-bar"]
                 # widget.CPU(format=fa.icons["microchip"]+" {freq_current}GHz {load_percent}%",**decor_wallpaper),
                 widget.CPU(format=fa.icons["microchip"]+" {load_percent}%",**decor_CPU),
                 widget.GenPollText(update_interval=1, func=lambda: "{}%".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/bat_poll")).decode("utf-8")),
-                                   background="#00000000", foreground="#FFFFFF", **decor_battery),
-                widget.Clock(format=fa.icons["calendar"] + " %d %b %Y %a",
-                             background="#00000000", foreground="#FFFFFF", **decor_Day),
-                widget.Clock(format=" %I:%M:%S %p",
-                             background="#00000000", foreground="#FFFFFF", **decor_Date),
+                                   background="#00000000", foreground=foreground_colour, **decor_battery),
                 widget.GenPollText(update_interval=600, func=lambda: " {} RPM".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/fan_speed_text")).decode("utf-8")),
-                                   background="#00000000", foreground="#FFFFFF", **decor_RPM),
+                                   background="#00000000", foreground=foreground_colour, **decor_RPM),
                 widget.GenPollText(update_interval=600, func=lambda: " {}°C".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/cpu_temp_text")).decode("utf-8")),
-                                   background="#00000000", foreground="#FFFFFF", **decor_Temp),
+                                   background="#00000000", foreground=foreground_colour, **decor_Temp),
+                widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.function(show_power_menu)}),
             ],
             27,
             border_width=[0, 0, 0, 0],  # Draw top and bottom borders
