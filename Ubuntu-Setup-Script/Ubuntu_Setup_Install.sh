@@ -236,13 +236,14 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	cp -r ./rofi "${HOME}"/.config
 	sed -i 's/text\-color\: \@normal\-foreground\;/text\-color\: \@text-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
 	sed -i 's/background\-color\: \@background\;/background\-color\: \@background\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
+	sed -i 's/text\-color\: \@color\;/text\-color\: \@text\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
 
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Pixelated_Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
-	sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/config.py
-	sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/config.py
+	sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/Keybindings.py
+	sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
 	cp ./alacritty.yml ~/.config/
@@ -331,6 +332,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
 	if [[ -z ${vm_ans} || ${vm_ans} == "y" || ${vm_ans} == "Y" ]]; then
 		sed -i 's|picom.*|/usr/local/picom/bin/picom --no-vsync \&|' "${HOME}"/.config/qtile/autostart.sh
+		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty.yml
 	else
 		sed -i 's|picom.*|/usr/local/picom/bin/picom \&|' "${HOME}"/.config/qtile/autostart.sh
 	fi
