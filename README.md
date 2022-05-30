@@ -53,22 +53,20 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 
 ## Screenshots
 
-![Arch-Rice-2](https://user-images.githubusercontent.com/56625259/170262433-e5a55e80-7f66-4e97-962c-1fcea18ad951.png)
+![Arch_Rice_Qtile](https://user-images.githubusercontent.com/56625259/170982950-a64198cd-11c6-4372-b731-699f6e24422f.png)
 
-![Arch-Rice-2-1](https://user-images.githubusercontent.com/56625259/170262460-886c15b7-11d4-4fdf-bbe7-2a7d0b897913.png)
+![Arch_Rice_Qtile_1](https://user-images.githubusercontent.com/56625259/170983002-f8f7a216-383c-4a12-967f-8c12be56008f.png)
 
-![Arch-Rice-2-Rofi](https://user-images.githubusercontent.com/56625259/170262487-cc528438-55bb-4881-9299-6faf45294b96.png)
+![Arch_Rice_Qtile_Rofi](https://user-images.githubusercontent.com/56625259/170983036-b79e3f1c-ad1e-4a70-a4b0-2b106fefdbeb.png)
 
-![Arch-Rice-2-Exit-Menu](https://user-images.githubusercontent.com/56625259/170262689-81ea0ae2-66a4-443e-93d0-b70aeae1062d.png)
+![Arch_Rice_Qtile_Vol-Up](https://user-images.githubusercontent.com/56625259/170983071-5ced2d72-36a0-40ff-8742-ea7f110885e1.png)
 
-![Arch-Rice-2-Vol-Up](https://user-images.githubusercontent.com/56625259/170262732-dc154cc7-4e30-483c-822e-d3e68d7d7900.png)
+![Arch_Rice_Qtile_Vol-Down](https://user-images.githubusercontent.com/56625259/170983084-7ebc4cdb-5bdf-447d-90f2-37a14d1538ff.png)
 
-![Arch-Rice-2-Vol-Down](https://user-images.githubusercontent.com/56625259/170262766-35a2d460-3d22-47b0-a6e6-e708b61f046e.png)
+![Arch_Rice_Qtile_Vol-Mute](https://user-images.githubusercontent.com/56625259/170983101-205fc931-5138-4d9b-a145-4cedd5ab8e1e.png)
 
-![Arch-Rice-2-Vol-Mute](https://user-images.githubusercontent.com/56625259/170262796-97fce2aa-afe2-4a1a-b5b6-f8bcbafed835.png)
+![Arch_Rice_Qtile_Vol-UnMute](https://user-images.githubusercontent.com/56625259/170983129-452a26be-e0ee-4194-9e9f-35296a9c6be6.png)
 
-![Arch-Rice-2-Vol-Unmute](https://user-images.githubusercontent.com/56625259/170262818-b99b2ff7-ca2f-45c6-9d90-be7c0c0c2a4e.png)
-
-![Arch-Rice-2-Brightness](https://user-images.githubusercontent.com/56625259/170262881-9b3bdbef-dabd-4d58-850c-f828aec3abe0.png)
+![Arch_Rice_Qtile_Brightness](https://user-images.githubusercontent.com/56625259/170983161-d5827eee-dd7f-406a-95bd-a026cfc34b20.png)
 
 <br />
