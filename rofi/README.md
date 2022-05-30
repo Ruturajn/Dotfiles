@@ -1,1 +1,0 @@
-# Rofi Config and Themes
