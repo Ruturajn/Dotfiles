@@ -239,6 +239,9 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# sed -i 's/background\-color\: \@background\;/background\-color\: \@background\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
 	# sed -i 's/text\-color\: \@color\;/text\-color\: \@text\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
 
+	echo -e "${BYellow}[ * ]Placing cava folder in ~/.config/cava${End_Colour}"
+	cp -r ./cava "${HOME}"/.config
+
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Pixelated_Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
