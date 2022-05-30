@@ -1,6 +1,7 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have three bash scripts in this repo, two of those
-are for installing this setup and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu.
+are for installing this setup and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu, which you can find
+in the `ubuntu` branch.
 
 To use the config on Arch, you will need to make 2 changes (If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
@@ -23,12 +24,10 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
   to your network interface.
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
   `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
-- *All of the aforementioned things stand for setting up this rice on Ubuntu as well(See [Ubuntu-Setup-Script/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Ubuntu-Setup-Script)).*
 
-If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) or the 
-[Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all of 
+If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
-from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The scripts will also
+from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The script will also
 backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
 
 <br />
