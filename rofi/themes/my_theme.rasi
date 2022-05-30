@@ -134,5 +134,3 @@ inputbar {
 button normal {
     text-color: @orange;
 }
-
-
