@@ -143,8 +143,6 @@ screens = [
                                 borderwidth=4),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Prompt(**decor_ram),
-                widget.CheckUpdates(background="#00000000", foreground="#FF0000",
-                                    colour_have_updates="#000000", colour_no_updates="#000000", **decor_ram),
                 widget.Systray(background="#00000000", icon_size=20),
                 widget.Memory(background="#00000000", foreground=foreground_colour,
                               measure_mem='G', format=fa.icons["server"] + "{MemUsed: .2f} GB", **decor_ram),
