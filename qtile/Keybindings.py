@@ -14,11 +14,9 @@ import psutil
 import fontawesome as fa
 
 mod = "mod4"
-#terminal = guess_terminal()
-#terminal = "gnome-terminal"
 terminal = "alacritty"
-browser = "brave"
-file_manager = "nemo"
+browser = "brave-browser"
+file_manager = "nautilus"
 
 from qtile_extras.popup.toolkit import (
     PopupRelativeLayout,

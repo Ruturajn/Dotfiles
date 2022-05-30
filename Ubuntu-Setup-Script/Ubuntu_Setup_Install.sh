@@ -226,6 +226,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 	git clone "https://github.com/Ruturajn/Dotfiles.git"
 	cd "${HOME}"/Git-Repos/Dotfiles || exit
+	git checkout ubuntu
 
 	echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 	cp -r ./dunst "${HOME}"/.config
@@ -234,20 +235,20 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	echo -e "${BYellow}[ * ]Placing rofi folder in ~/.config/rofi${End_Colour}"
 	cp -r ./rofi "${HOME}"/.config
-	sed -i 's/text\-color\: \@normal\-foreground\;/text\-color\: \@text-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
-	sed -i 's/background\-color\: \@background\;/background\-color\: \@background\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
-	sed -i 's/text\-color\: \@color\;/text\-color\: \@text\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
+	# sed -i 's/text\-color\: \@normal\-foreground\;/text\-color\: \@text-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
+	# sed -i 's/background\-color\: \@background\;/background\-color\: \@background\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
+	# sed -i 's/text\-color\: \@color\;/text\-color\: \@text\-color\;/' "${HOME}"/.config/rofi/themes/my_theme.rasi
 
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Pixelated_Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
-	sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/Keybindings.py
-	sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
+	# sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/Keybindings.py
+	# sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
 	cp ./alacritty.yml ~/.config/
-	sed -i 's/family\: FantasqueSansMono/family\: FantasqueSansMono Nerd Font Mono/' "${HOME}"/.config/alacritty.yml
+	# sed -i 's/family\: FantasqueSansMono/family\: FantasqueSansMono Nerd Font Mono/' "${HOME}"/.config/alacritty.yml
 
 	echo -e "${BYellow}[ * ]Placing .vimrc in ~/${End_Colour}"
 	cp ./.vimrc "${HOME}"/

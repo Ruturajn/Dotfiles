@@ -42,7 +42,7 @@ window {
     border-radius: 14px;
     padding:    5;
     text-color: @orange;
-    background-color: @background;
+    background-color: @background-color;
     transparency: "real";
 }
 mainbox {
@@ -62,7 +62,7 @@ message {
     padding:    2px 0px 0px ;
 }
 textbox {
-    text-color: @color;
+    text-color: @text-color;
 }
 
 prompt{
@@ -82,7 +82,7 @@ textbox-prompt-colon {
     expand:     false;
     str:        " ::";
     margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
+    text-color: @text-color;
     //padding: 1.40% 0% 1% 0%;
 }
 
@@ -134,5 +134,3 @@ inputbar {
 button normal {
     text-color: @orange;
 }
-
-
