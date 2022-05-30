@@ -29,7 +29,6 @@ set laststatus=2
 " PLUGINS ------------------------------------------------------------------- 
 call plug#begin('~/.vim/plugged')
 
-
   Plug 'preservim/nerdtree'
   Plug 'vim-scripts/AutoComplPop'
   Plug 'gko/vim-coloresque'
@@ -45,6 +44,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   " Plug 'junegunn/fzf.vim' 
   Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+  Plug 'vim-scripts/DoxygenToolkit.vim'
+  " Plug 'catppuccin/vim'
 
 call plug#end()
 
@@ -161,3 +162,15 @@ let g:startify_custom_header = [
 
 " Copy and paste between vim and other programs
 set clipboard=unnamedplus
+
+" :map <C-Enter> :rightb vert term<cr>
+"
+
+" Set mouse
+" set mouse=a
+" nnoremap g<right> 5<c-w>>
+" nnoremap g<left> 5<c-w><lt>
+
+:map <C-r><Enter> :rightb vert term<cr>
+nnoremap <C-a>l 5<C-w>>
+nnoremap <C-a>h 5<C-w><lt>
