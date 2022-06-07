@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ $1 == "up" ]]; then
+    pamixer -i 2 && dunstify -a "Mute_Volume" -r "9991" \
+    -h int:value:"$(pamixer --get-volume)" -i "icons8-audio-50" "Vol:$(pamixer --get-volume)" -t 2000
+elif [[ $1 == "down" ]]; then
+    pamixer -d 2 && dunstify -a "Decrease_Volume" -r "9991" \
+    -h int:value:"$(pamixer --get-volume)" -i "icons8-voice-50" "Vol:$(pamixer --get-volume)" -t 2000
+elif [[ $1 == "toggle" ]]; then
+    pamixer -t
+    if $(pamixer --get-mute); then
+            dunstify -a "Mute_Volume" -u critical -r "9991" -i "icons8-no-audio-50" "Mute" -t 2000
+    else
+            #vol_up_script
+            dunstify -a "Mute_Volume" -r "9991" -i "volume-off-solid" "UnMute" -t 2000
+    fi
+else
+    notify-send "Not a valid volume argument" -t 2000
+fi
