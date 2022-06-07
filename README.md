@@ -14,9 +14,8 @@ To use the config on Ubuntu, you will need to make 2 changes (If you are not usi
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file 
   placed under the `Ubuntu-Setup-Script` directory and the script, before running the script. You can just get the script using curl (see 
   [Ubuntu-Setup-Script/README.md](https://github.com/Ruturajn/Dotfiles/tree/ubuntu/Ubuntu-Setup-Script)), it will clone this repo and do the needfull.*
-- *The `picom.conf` file here, is to be used with the original picom. Since I am using [Jonaburg's Fork of picom](https://github.com/jonaburg/picom)
-  I use the default config provided in that repo, so I have not included it here. If you want to use jonaburg-picom just use the default config there,
-  I am using just that, no changes.*
+- *The `picom.conf` file here, is to be used with the original picom. For [Jonaburg's Fork of picom](https://github.com/jonaburg/picom),
+  I use `jonaburg_picom.conf`. If you want to use jonaburg-picom use that.*
 - If you don't see the `wifi` widget show up, change line `138` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/config.py)
   to your network interface.
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/Scripts/bright_control) script, the user will need to be a part of 
