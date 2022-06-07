@@ -190,7 +190,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		"${aur_name}" -S picom-jonaburg-git
 
 		echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
-		curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
+		#curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
+		cp ./jonaburg_picom.conf "${HOME}"/.config/picom/picom.conf
 		;;
 	3)
 		echo -e "${BYellow}[ * ]Installing picom-ibhagwan-git with ${aur_name}${End_Colour}"
