@@ -153,7 +153,7 @@ keys = [
         os.path.expanduser("~/.config/qtile/Scripts/vol_script up")), desc="Deccrease System Volume"),
     Key([], "XF86AudioMute", lazy.spawn(
         os.path.expanduser("~/.config/qtile/Scripts/vol_script toggle")), desc="Mute System Volume"),
-    Key([mod], "b", lazy.spawn(browser), desc="Launch Firefox"),
+    Key([mod], "b", lazy.spawn(browser), desc="Launch Brave"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
     Key(["mod1"], "c", lazy.spawn(os.path.expanduser(
         "~/.config/qtile/Scripts/cpu_temp")), desc="Display CPU Core Temperature"),
