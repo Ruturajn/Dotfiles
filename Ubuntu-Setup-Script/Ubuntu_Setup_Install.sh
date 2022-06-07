@@ -314,7 +314,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		sudo ninja -C build install
 
 		echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
-		curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
+		#curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
+		cp "${HOME}"/Git-Repos/Dotfiles/jonaburg_picom.conf "${HOME}"/.config/picom/
 		;;
 	3)
 		echo -e "${BYellow}[ * ]Installing picom-ibhagwan from source${End_Colour}"
