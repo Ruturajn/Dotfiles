@@ -47,6 +47,10 @@
 --------------------------------------------------------------------------------------
 | 22.   | Stop Playing the Music Track                  | XF86AudioStop               |
 --------------------------------------------------------------------------------------
+| 23.   | Show the Power Menu                           | Super + Shift + Q           |
+--------------------------------------------------------------------------------------
+| 24.   | Show the Wi-Fi Menu                           | Alt + W                     |
+--------------------------------------------------------------------------------------
 
 Note: The XF86* Keys are generally fn+<some_F<number>_Key>. They will usually have
 some sort of icons on it depicting it's function.
