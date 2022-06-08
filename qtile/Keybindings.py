@@ -170,4 +170,5 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn(
         "playerctl next"), desc="Play Next Music Track"),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop the Music"),
-    Key([mod, "shift"], "q", lazy.function(show_power_menu)), ]
+    Key([mod, "shift"], "q", lazy.function(show_power_menu)),
+    Key(["mod1"], "w", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/wifi_menu")), desc="Launch Wi-fi menu script")]
