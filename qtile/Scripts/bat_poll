@@ -1,7 +1,6 @@
 #!/bin/bash
-
 # Author : Ruturajn <nanotiruturaj@gmail.com>
-# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
+
 # This script polls the battery status and prints out the
 # the corresponding icon according the battery charge status.
 

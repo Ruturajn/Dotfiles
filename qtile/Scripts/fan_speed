@@ -1,7 +1,5 @@
 #!/bin/bash
-
 # Author : Ruturajn <nanotiruturaj@gmail.com>
-# Copyright (c) 2022, Ruturaj A. Nanoti, All Rights Reserved
 
 # Here the awk command prints the 7th row of the output from the `sensors` command, which
 # consists of the cpu_fan speed parameter. Then, the sed command removes everything before

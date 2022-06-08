@@ -1,4 +1,5 @@
 #!/bin/bash
+# Author: Ruturajn <nanotiruturaj@gmail.com>
 
 # Get all the Wifi Networks Available
 ntw=$(nmcli --fields "SSID" device wifi list |
