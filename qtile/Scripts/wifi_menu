@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Get all the Wifi Networks Available
+ntw=$(nmcli --fields "SSID" device wifi list |
+	sed 1d | uniq -u | sed 's/^/ /g' | 
+	rofi -dmenu -p "Wifi" -i -l 5 -width 20 \
+    -theme-str 'window {width: 20%;}' \
+    -theme-str 'listview {columns: 1;}' \
+    -theme-str 'configuration {show-icons: false;}' \
+    -theme-str 'configuration {font: "Jet Brains Mono Nerd Font Mono Regular 14";}')
+
+# Trimming whitespace
+ntw=$(echo "${ntw}" | sed 's/ //g' | xargs)
+
+# Check if nothing was selected
+if [[ -z "${ntw}" ]]; then
+	exit 0
+fi
+
+# To-Do: Add dunst notification if network connection was successfull
+check_saved=$(nmcli -g NAME connection | grep "${ntw}")
+if [[ "${check_saved}" == "${ntw}" ]]; then
+	#nmcli dev wifi connect "${ntw}"
+	nmcli connection up id "${ntw}"
+else
+    # Prompting the user for a Password
+	ntw_pass=$(rofi -dmenu -p "Password" \
+        -width 20 -l 0 -theme-str 'window {width: 20%;}' -password) 
+    # Trimming whitespace
+    ntw_pass=$(echo "${ntw_pass}" | xargs)
+    if [[ -z "${ntw_pass}" ]] ; then
+        exit 0
+    fi
+    nmcli dev wifi connect "${ntw}" password "${ntw_pass}"
+fi
+
+if [[ $? == "0" ]]; then
+	dunstify -r "9995" -i "icons8-wi-fi-24" -t 3000 "Connected to ${ntw}!!"
+else
+	dunstify -r "9995" -i "icons8-wi-fi-off-24" -t 3000 "Error Connecting to ${ntw}"
+fi
