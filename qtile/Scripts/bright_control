@@ -1,9 +1,7 @@
 #!/bin/bash
-
 # Author : Ruturajn <nanotiruturaj@gmail.com>
 
 # This script helps in controlling the brightness of the screen.
-
 
 # Check if the brightness needs to be increased or reduced
 if [[ $1 == "up" ]] ; then
