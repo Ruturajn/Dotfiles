@@ -114,7 +114,7 @@
 
     ### Text ###
 
-    font = Jet Brains Mono Regular 11
+    font = Jet Brains Mono Regular 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
