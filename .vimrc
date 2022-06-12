@@ -18,6 +18,7 @@ syntax on
 
 " Set Line numbers
 set number
+set relativenumber
 
 " Set number of spaces in tab
 set tabstop=4 softtabstop=4
