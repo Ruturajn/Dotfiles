@@ -69,7 +69,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		fonts-fantasque-sans fish cargo lxappearance \
 		nitrogen brightnessctl fonts-font-awesome playerctl python3-pip \
 		build-essential cmake fonts-material-design-icons-iconfont ntfs-3g \
-		ntfs-3g-dev nfs-kernel-server udisks2 papirus-icon-theme acpi lm-sensors
+		ntfs-3g-dev nfs-kernel-server udisks2 papirus-icon-theme acpi lm-sensors \
+		lxpolkit
 
 	echo -e "${BYellow}[ * ]Installing cxxopts from source${End_Colour}"
 	if [[ ! -d "${HOME}"/Git-Repos ]]; then
