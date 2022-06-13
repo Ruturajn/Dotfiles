@@ -14,3 +14,6 @@ picom &
 
 # Start pulseaudio
 pulseaudio --start
+
+# Start polkit authentication agent
+lxpolkit &
