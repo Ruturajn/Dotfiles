@@ -353,8 +353,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		chsh -s /usr/bin/fish
 		echo -e "${BYellow}[ * ]Placing fish config in ~/.config/fish${End_Colour}"
 		mkdir -p "${HOME}"/.config/fish
-		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install >install
-		fish install --path=/home/rajn/.local/share/omf --config=/home/rajn/.config/omf --noninteractive
+		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+		fish install --path=~/.local/share/omf --config=~/.config/omf --noninteractive
 		cp ./fish/config.fish "${HOME}"/.config/fish/config.fish
 		rm install
 	elif [[ ${shell_ans} == "n" || ${shell_ans} == "N" ]]; then
