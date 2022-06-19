@@ -250,7 +250,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
-	cp ./alacritty ~/.config/
+	cp -r ./alacritty ~/.config/
 	# sed -i 's/family\: FantasqueSansMono/family\: FantasqueSansMono Nerd Font Mono/' "${HOME}"/.config/alacritty.yml
 
 	echo -e "${BYellow}[ * ]Choose your Preferred Editor : "
