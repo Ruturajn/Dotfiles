@@ -5,7 +5,7 @@
 pfetch
 
 # Adding the Path for ST-Development Folder
-set -gx fish_user_paths /home/ruturajn/.local/bin/ 
+set -gx fish_user_paths ~/.local/bin/ 
 set -gx LD_LIBRARY_PATH /usr/local/lib
 
 # Adding the Path for ST-Development Folder in the bashrc format
