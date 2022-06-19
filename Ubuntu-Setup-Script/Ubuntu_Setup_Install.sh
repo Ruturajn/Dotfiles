@@ -250,7 +250,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
-	cp ./alacritty.yml ~/.config/
+	cp ./alacritty ~/.config/
 	# sed -i 's/family\: FantasqueSansMono/family\: FantasqueSansMono Nerd Font Mono/' "${HOME}"/.config/alacritty.yml
 
 	echo -e "${BYellow}[ * ]Choose your Preferred Editor : "
@@ -355,7 +355,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		sudo ninja -C build install
 
 		echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
-		cp "${HOME}"/Git-Repos/Dotfiles/picom.conf "${HOME}"/.config/picom/
+		cp "${HOME}"/Git-Repos/Dotfiles/picom/picom.conf "${HOME}"/.config/picom/
 		;;
 	2)
 		echo -e "${BYellow}[ * ]Installing picom-jonaburg from source${End_Colour}"
@@ -370,7 +370,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 		echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
 		#curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
-		cp "${HOME}"/Git-Repos/Dotfiles/jonaburg_picom.conf "${HOME}"/.config/picom/picom.conf
+		cp "${HOME}"/Git-Repos/Dotfiles/picom/jonaburg_picom.conf "${HOME}"/.config/picom/picom.conf
 		;;
 	3)
 		echo -e "${BYellow}[ * ]Installing picom-ibhagwan from source${End_Colour}"
@@ -392,7 +392,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
 	if [[ -z ${vm_ans} || ${vm_ans} == "y" || ${vm_ans} == "Y" ]]; then
 		sed -i 's|picom.*|/usr/local/picom/bin/picom --no-vsync \&|' "${HOME}"/.config/qtile/autostart.sh
-		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty.yml
+		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty/alacritty.yml
 	else
 		sed -i 's|picom.*|/usr/local/picom/bin/picom \&|' "${HOME}"/.config/qtile/autostart.sh
 	fi
