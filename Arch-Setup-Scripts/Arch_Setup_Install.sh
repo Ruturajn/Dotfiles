@@ -134,7 +134,6 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 	cp -r ./dunst "${HOME}"/.config
-	chmod +x "${HOME}"/.config/dunst/vol_script
 	sed -i "s|    icon_path = .*|    icon_path = $HOME/.config/dunst/icons|" "${HOME}"/.config/dunst/dunstrc
 
 	echo -e "${BYellow}[ * ]Placing rofi folder in ~/.config/rofi${End_Colour}"
@@ -149,23 +148,67 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
-	cp ./alacritty.yml ~/.config/
+	cp ./alacritty ~/.config/
 
-	echo -e "${BYellow}[ * ]Placing .vimrc in ~/${End_Colour}"
-	cp ./.vimrc "${HOME}"/
+	echo -e "${BYellow}[ * ]Choose your Preferred Editor : "
+	echo -e "1) vim"
+	echo -e "2) neovim"
+	read -rp "[1;34m[ * ]Enter your choice : [0m" editor_ans
 
-	echo -e "${BYellow}[ *]Making ~/.vim/plugged directory"
-	mkdir -p "${HOME}"/.vim/plugged
+	case "${editor_ans}" in
+	1)
+		echo -e "${BYellow}[ * ]Installing Vim${End_Colour}"
+		echo -e "${BYellow}[ * ]Placing .vimrc in ~/${End_Colour}"
+		cp ./.vimrc "${HOME}"/
 
-	echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		echo -e "${BYellow}[ *]Making ~/.vim/plugged directory"
+		mkdir -p "${HOME}"/.vim/plugged
 
-	echo -e "${BYellow}[ * ]Sourcing .vimrc${End_Colour}"
-	source "${HOME}"/.vimrc
+		echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-	echo -e "${BYellow}[ * ]Installing vim plugins${End_Colour}"
-	vim +'PlugInstall --sync' +qa
+		echo -e "${BYellow}[ * ]Sourcing .vimrc${End_Colour}"
+		source "${HOME}"/.vimrc
+
+		echo -e "${BYellow}[ * ]Installing vim plugins${End_Colour}"
+		vim +'PlugInstall --sync' +qa
+		;;
+	2)
+		echo -e "${BYellow}[ * ]Installing Neovim${End_Colour}"
+
+		# Installing Vim-Plug for neovim
+		echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
+		sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+		# Check if neovim is installed, if it is remove it and install latest
+		echo -e "${BYellow}[ * ]Installing Latest Neovim${End_Colour}"
+		sudo pacman -S neovim
+
+		echo -e "${BYellow}[ * ]Placing nvim directory in ~/.config${End_Colour}"
+		cp -r nvim ~/.config/
+
+		# Install nodejs
+		echo -e "${BYellow}[ * ]Installing Latest Nodejs${End_Colour}"
+		sudo pacman -S npm nodejs
+
+		# Make a plugged directory in ~/.config/nvim/
+		echo -e "${BYellow}[ * ]Making directory ~/.config/nvim/plugged${End_Colour}"
+		mkdir -p ~/.config/nvim/plugged
+
+		# Install plugins
+		nvim +'PlugInstall --sync' +qa
+
+		# Install LSP Servers
+		nvim +'LspInstall --sync pyright' +qa
+
+		# Install Rust if not installed
+		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
+		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+		rustup component add rust-src
+		nvim +'LspInstall --sync rust_analyzer' +qa
+		;;
+	esac
 
 	echo -e "${BYellow}[ * ]Making ~/.config/picom${End_Colour}"
 	mkdir -p "${HOME}"/.config/picom
@@ -183,7 +226,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		sudo pacman -S picom
 
 		echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
-		cp ./picom.conf "${HOME}"/.config/picom/
+		cp ./picom/picom.conf "${HOME}"/.config/picom/
 		;;
 	2)
 		echo -e "${BYellow}[ * ]Installing picom-jonaburg-git with ${aur_name}${End_Colour}"
@@ -191,7 +234,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 		echo -e "${BYellow}[ * ]Placing picom config in ~/.config/picom${End_Colour}"
 		#curl -fsSL "https://raw.githubusercontent.com/jonaburg/picom/next/picom.sample.conf" >"${HOME}"/.config/picom/picom.conf
-		cp ./jonaburg_picom.conf "${HOME}"/.config/picom/picom.conf
+		cp ./picom/jonaburg_picom.conf "${HOME}"/.config/picom/picom.conf
 		;;
 	3)
 		echo -e "${BYellow}[ * ]Installing picom-ibhagwan-git with ${aur_name}${End_Colour}"
@@ -220,7 +263,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		chsh -s /usr/bin/fish
 		echo -e "${BYellow}[ * ]Placing fish config in ~/.config/fish${End_Colour}"
 		mkdir -p "${HOME}"/.config/fish
-		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install >install
 		fish install --path=~/.local/share/omf --config=~/.config/omf --noninteractive
 		fish -c "omf install robbyrussell"
 		cp ./fish/config.fish "${HOME}"/.config/fish/config.fish

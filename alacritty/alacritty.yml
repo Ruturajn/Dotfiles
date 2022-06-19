@@ -8,8 +8,8 @@
 #
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
-#import:
-#  - /path/to/alacritty.yml
+import:
+  - ~/.config/alacritty/catppuccin.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -67,7 +67,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.6
+  opacity: 0.9
 
   # Startup Mode (changes require restart)
   #
@@ -326,43 +326,10 @@ font:
   # regardless of their background color.
   #transparent_background_colors: false
 
-# Catppuccin!
-colors:
-  # Default colors
-  primary:
-    background: '0x1E1D2F'
-    foreground: '0xD9E0EE'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x1E1D2F'
-    cursor: '0xF5E0DC'
-
-  # Normal colors
-  normal:
-    black:   '0x6E6C7E'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
-
-  # Bright colors
-  bright:
-    black:   '0x988BA2'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
-
-  indexed_colors:
-    - { index: 16, color: '0xF8BD96' }
-    - { index: 17, color: '0xF5E0DC' }
+#   indexed_colors:
+#     - { index: 16, color: '0xF8BD96' }
+#     - { index: 17, color: '0xF5E0DC' }
 
 # Bell
 #
