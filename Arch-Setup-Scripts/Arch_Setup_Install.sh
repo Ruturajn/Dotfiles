@@ -64,7 +64,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
-		brightnessctl bc bashtop acpi github-cli wget shfmt lxpolkit
+		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession
 
 	# Adding a swapfile
 	read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
