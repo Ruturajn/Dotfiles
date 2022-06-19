@@ -24,6 +24,6 @@ Since, that's out of the way now, 😄
 Run the `Ubuntu_Setup_Install.sh` script with:
 
 ```
-curl -fsSL https://tinyurl.com/ubuntu-setup-rn > Ubuntu_Setup
+curl -fsSL https://tinyurl.com/ubuntu-setup-nr > Ubuntu_Setup
 bash ./Ubuntu_Setup
 ```
