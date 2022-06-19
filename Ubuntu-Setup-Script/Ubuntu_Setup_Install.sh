@@ -231,7 +231,6 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 	cp -r ./dunst "${HOME}"/.config
-	chmod +x "${HOME}"/.config/dunst/vol_script
 	sed -i "s|    icon_path = .*|    icon_path = $HOME/.config/dunst/icons|" "${HOME}"/.config/dunst/dunstrc
 
 	echo -e "${BYellow}[ * ]Placing rofi folder in ~/.config/rofi${End_Colour}"
@@ -315,13 +314,13 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		nvim +'PlugInstall --sync' +qa
 
 		# Install LSP Servers
-		nvim +'LspInstall pyright --sync' +qa
+		nvim +'LspInstall --sync pyright' +qa
 
 		# Install Rust if not installed
 		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 		rustup component add rust-src
-		nvim +'LspInstall rust_analyzer --sync' +qa
+		nvim +'LspInstall --sync rust_analyzer' +qa
 		;;
 	esac
 
@@ -410,9 +409,10 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		mkdir -p "${HOME}"/.config/fish
 		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install >install
 		fish install --path=~/.local/share/omf --config=~/.config/omf --noninteractive
+		fish -c "omf install robbyrussell"
 		cp ./fish/config.fish "${HOME}"/.config/fish/config.fish
 		# Add various paths to fish config
-		sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/bin ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust|g' ~/.config/fish/config.fish
+		sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/bin ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust|g' "${HOME}"/.config/fish/config.fish
 		rm install
 	elif [[ ${shell_ans} == "n" || ${shell_ans} == "N" ]]; then
 		echo -e "${BRed}Skipping Shell change${End_Colour}"
