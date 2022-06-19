@@ -245,6 +245,13 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		;;
 	esac
 
+	echo -e "${BYellow}[ * ]Changing the picom executable call in autostart.sh${End_Colour}"
+	read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
+	if [[ -z ${vm_ans} || ${vm_ans} == "y" || ${vm_ans} == "Y" ]]; then
+		sed -i 's|picom.*|picom --no-vsync \&|' "${HOME}"/.config/qtile/autostart.sh
+		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty/alacritty.yml
+	fi
+
 	# Installing material design icon font
 	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
 	cd "${HOME}"/Git-Repos || exit
