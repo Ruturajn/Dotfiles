@@ -27,8 +27,7 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
 from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The script will also
-backup your `$HOME/.config` directory before making any changes, so you will not loose any data. **_The Setup Scripts do not support neovim setup as of
-yet, it will be added soon_**.
+backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
 
 <br />
 
