@@ -148,7 +148,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
-	cp ./alacritty ~/.config/
+	cp -r ./alacritty ~/.config/
 
 	echo -e "${BYellow}[ * ]Choose your Preferred Editor : "
 	echo -e "1) vim"
