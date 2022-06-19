@@ -52,7 +52,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		mv "${HOME}"/.vim "${HOME}"/vim_backup_files/.
 	fi
 
-	if [[ ! "$(ls -A ${HOME}/vim_backup_files)" ]]; then
+	if [[ ! "$(ls -A "${HOME}"/vim_backup_files)" ]]; then
 		rm -r "${HOME}"/vim_backup_files
 	fi
 
@@ -254,21 +254,76 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	cp ./alacritty.yml ~/.config/
 	# sed -i 's/family\: FantasqueSansMono/family\: FantasqueSansMono Nerd Font Mono/' "${HOME}"/.config/alacritty.yml
 
-	echo -e "${BYellow}[ * ]Placing .vimrc in ~/${End_Colour}"
-	cp ./.vimrc "${HOME}"/
+	echo -e "${BYellow}[ * ]Choose your Preferred Editor : "
+	echo -e "1) vim"
+	echo -e "2) neovim"
+	read -rp "[1;34m[ * ]Enter your choice : [0m" editor_ans
 
-	echo -e "${BYellow}[ *]Making ~/.vim/plugged directory"
-	mkdir -p "${HOME}"/.vim/plugged
+	case "${editor_ans}" in
+	1)
+		echo -e "${BYellow}[ * ]Installing Vim${End_Colour}"
+		echo -e "${BYellow}[ * ]Placing .vimrc in ~/${End_Colour}"
+		cp ./.vimrc "${HOME}"/
 
-	echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		echo -e "${BYellow}[ *]Making ~/.vim/plugged directory"
+		mkdir -p "${HOME}"/.vim/plugged
 
-	echo -e "${BYellow}[ * ]Sourcing .vimrc${End_Colour}"
-	source "${HOME}"/.vimrc
+		echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-	echo -e "${BYellow}[ * ]Installing vim plugins${End_Colour}"
-	vim +'PlugInstall --sync' +qa
+		echo -e "${BYellow}[ * ]Sourcing .vimrc${End_Colour}"
+		source "${HOME}"/.vimrc
+
+		echo -e "${BYellow}[ * ]Installing vim plugins${End_Colour}"
+		vim +'PlugInstall --sync' +qa
+		;;
+	2)
+		echo -e "${BYellow}[ * ]Installing Neovim${End_Colour}"
+		# Installing Vim-Plug for neovim
+		echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
+		sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+		# Check if neovim is installed, if it is remove it and install latest
+		echo -e "${BYellow}[ * ]Installing Latest Neovim${End_Colour}"
+		if [[ -n $(command -v nvim) ]]; then
+			sudo apt remove neovim -y
+			sudo apt autoremove -y
+		fi
+		wget "https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb"
+		sudo dpkg -i nvim-linux64.deb
+
+		echo -e "${BYellow}[ * ]Placing nvim directory in ~/.config${End_Colour}"
+		cp -r nvim ~/.config/
+
+		# Install nodejs
+		echo -e "${BYellow}[ * ]Installing Latest Nodejs${End_Colour}"
+		cd ~ || exit
+		if [[ -n $(command -v npm) ]]; then
+			sudo apt remove npm -y
+			sudo apt autoremove -y
+		fi
+		wget "https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.xz"
+		sudo mkdir -p /usr/local/lib/nodejs
+		sudo tar -xJvf node-v16.15.1-linux-x64.tar.xz -C /usr/local/lib/nodejs
+
+		# Make a plugged directory in ~/.config/nvim/
+		echo -e "${BYellow}[ * ]Making directory ~/.config/nvim/plugged${End_Colour}"
+		mkdir -p ~/.config/nvim/plugged
+
+		# Install plugins
+		nvim +'PlugInstall --sync' +qa
+
+		# Install LSP Servers
+		nvim +'LspInstall pyright --sync' +qa
+
+		# Install Rust if not installed
+		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
+		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+		rustup component add rust-src
+		nvim +'LspInstall rust_analyzer --sync' +qa
+		;;
+	esac
 
 	echo -e "${BYellow}[ * ]Installing picom from source${End_Colour}"
 	sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev \
@@ -353,9 +408,11 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		chsh -s /usr/bin/fish
 		echo -e "${BYellow}[ * ]Placing fish config in ~/.config/fish${End_Colour}"
 		mkdir -p "${HOME}"/.config/fish
-		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install >install
 		fish install --path=~/.local/share/omf --config=~/.config/omf --noninteractive
 		cp ./fish/config.fish "${HOME}"/.config/fish/config.fish
+		# Add various paths to fish config
+		sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/bin ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust|g' ~/.config/fish/config.fish
 		rm install
 	elif [[ ${shell_ans} == "n" || ${shell_ans} == "N" ]]; then
 		echo -e "${BRed}Skipping Shell change${End_Colour}"
