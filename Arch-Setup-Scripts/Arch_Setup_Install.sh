@@ -120,17 +120,17 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	# Getting pfetch as fetch tool
 	echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
-	mkdir "${HOME}"/Git-repos
-	cd "${HOME}"/Git-repos || exit
+	mkdir "${HOME}"/Git-Repos
+	cd "${HOME}"/Git-Repos || exit
 	git clone https://github.com/dylanaraps/pfetch.git
 	cd ./pfetch || exit
 	sudo cp ./pfetch /usr/bin/pfetch
 
 	# Clone the Dotfiles Repo and place all the folders in the $(HOME)/.config directory
-	cd "${HOME}"/Git-repos/ || exit
+	cd "${HOME}"/Git-Repos/ || exit
 	echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
 	git clone https://github.com/Ruturajn/Dotfiles.git
-	cd "${HOME}"/Git-repos/Dotfiles || exit
+	cd "${HOME}"/Git-Repos/Dotfiles || exit
 
 	echo -e "${BYellow}[ * ]Placing dunst folder in ~/.config/dunst and making vol_script executable${End_Colour}"
 	cp -r ./dunst "${HOME}"/.config
@@ -145,7 +145,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}/.config/"
-	echo "nitrogen --set-scaled ${HOME}/Git-repos/Dotfiles/Wallpapers/Pixelated_Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Pixelated_Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
@@ -204,7 +204,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	# Installing material design icon font
 	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
-	cd "${HOME}"/Git-repos || exit
+	cd "${HOME}"/Git-Repos || exit
 	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
 	if [[ ! -d "${HOME}"/.fonts ]]; then
 		mkdir "${HOME}"/.fonts
@@ -213,14 +213,18 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	fc-cache -fv
 
 	# Install fish and change default shell
-	cd "${HOME}"/Git-repos/Dotfiles || exit
+	cd "${HOME}"/Git-Repos/Dotfiles || exit
 	read -rp "[1;34m[ * ]Do you want to change the default shell to fish? [Y/n]:[0m" shell_ans
 	if [[ -z ${shell_ans} || ${shell_ans} == "y" || ${shell_ans} == "Y" ]]; then
 		echo -e "${BYellow}[ * ]Changing Default shell to fish and installing omf with robbyrussell theme${End_Colour}"
 		chsh -s /usr/bin/fish
 		echo -e "${BYellow}[ * ]Placing fish config in ~/.config/fish${End_Colour}"
 		mkdir -p "${HOME}"/.config/fish
+		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+		fish install --path=~/.local/share/omf --config=~/.config/omf --noninteractive
+		fish -c "omf install robbyrussell"
 		cp ./fish/config.fish "${HOME}"/.config/fish/config.fish
+		rm install
 	elif [[ ${shell_ans} == "n" || ${shell_ans} == "N" ]]; then
 		echo -e "${BRed}Skipping Shell change${End_Colour}"
 	else
