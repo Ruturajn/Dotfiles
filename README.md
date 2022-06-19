@@ -27,7 +27,8 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
 from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The script will also
-backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
+backup your `$HOME/.config` directory before making any changes, so you will not loose any data. **_The Setup Scripts do not support neovim setup as of
+yet, it will be added soon_**.
 
 <br />
 
@@ -40,17 +41,32 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 | Shell    | [Fish](https://github.com/fish-shell/fish-shell) (with [Oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)) |
 | Compositor | [Jonaburg's Fork of picom](https://github.com/jonaburg/picom) |
 | Application Launcher | [Rofi](https://github.com/davatorium/rofi) | 
-| Text Editor | [Vim](https://github.com/vim/vim) |
+| Text Editor | [Vim](https://github.com/vim/vim) or [Neovim](https://github.com/neovim/neovim) |
 | Browser | [Brave](https://brave.com/) |
 | Notifications | [Dunst](https://github.com/dunst-project/dunst) |
 | File Manager | [Nemo](https://github.com/linuxmint/nemo) |
 | Fonts | [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete), [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete), [Fontawesome Font](https://github.com/FortAwesome/Font-Awesome) and [Material Design Icon Font](https://github.com/google/material-design-icons/blob/master/font/MaterialIcons-Regular.ttf) |
 | Fetch Program | [pfetch](https://github.com/dylanaraps/pfetch), [fm6000](https://github.com/anhsirk0/fetch-master-6000) and [nerdfetch](https://github.com/ThatOneCalculator/NerdFetch) |
 | Terminal Programs | [cava](https://github.com/karlstav/cava), [bashtop](https://github.com/aristocratos/bashtop), [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix) and [cbonsai](https://gitlab.com/jallbrit/cbonsai) |
+| Theme | [Catppuccin](https://github.com/catppuccin/catppuccin) |
 
 <br />
 
 ## Screenshots
+![Arch-Rice-1](https://user-images.githubusercontent.com/56625259/174470042-5732da0a-d178-40c5-a8e4-790938f29d74.png)
+
+![Arch-Rice-2](https://user-images.githubusercontent.com/56625259/174470046-ff2404c9-5f2a-4323-86a7-6f54690689c1.png)
+
+![Arch-Rice-Rofi](https://user-images.githubusercontent.com/56625259/174470048-dbf91f68-9c13-4aaa-912b-71afc9326c8d.png)
+
+![Arch-Rice-Wifi](https://user-images.githubusercontent.com/56625259/174470061-d0c25b4c-ebcc-4826-893c-d258dabc2f4d.png)
+
+![Arch-Rice-PowerMenu](https://user-images.githubusercontent.com/56625259/174470067-dd74b2a6-99c1-453b-a454-a8231f23fe00.png)
+
+## Screenshots (Showing Volume and Brightness Control)
+<details>
+<summary>Old Screenshots</summary>
+<br>
 
 ![Arch_Rice_Qtile](https://user-images.githubusercontent.com/56625259/170982950-a64198cd-11c6-4372-b731-699f6e24422f.png)
 
@@ -69,3 +85,5 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 ![Arch_Rice_Qtile_Brightness](https://user-images.githubusercontent.com/56625259/170983161-d5827eee-dd7f-406a-95bd-a026cfc34b20.png)
 
 <br />
+  
+</details>
