@@ -3,7 +3,7 @@ My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scrip
 are for installing this setup and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu, which you can find
 in the `ubuntu` branch.
 
-To use the config on Arch, you will need to make 2 changes (If you are not using one of the setup scripts):
+To use the config on Arch, you will need to do 3 things(If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -11,7 +11,31 @@ To use the config on Arch, you will need to make 2 changes (If you are not using
   with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist, due to line `9` in the 
   [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script. Also, you will need to make the autostart script executable,
   with `chmod +x <Path-to-autostart.sh>/autostart.sh`.
-
+- For setting up neovim navigate to this dotfiles repo and follow,
+  ```
+  $ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  $ sudo pacman -S neovim
+  $ cp -r <Path_To_These_Dotfiles>/nvim ~/.config/
+  $ sudo pacman -S npm nodejs
+  $ mkdir -p ~/.config/nvim/plugged
+  $ nvim +'PlugInstall --sync' +qa
+  $ nvim +'LspInstall --sync pyright' +qa
+  $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  $ source $HOME/.cargo/env
+  $ rustup component add rust-src
+  $ nvim +'LspInstall --sync rust_analyzer' +qa
+  ```
+  whereas, for setting, up vim,
+  ```
+  $ cp <Path_To_These_Dotfiles>/.vimrc "${HOME}"/
+  $ mkdir -p "${HOME}"/.vim/plugged
+  $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  $ source "${HOME}"/.vimrc
+  $ vim +'PlugInstall --sync' +qa
+  ```
+  Please, see the `echo` commands, [here](https://github.com/Ruturajn/Dotfiles/blob/9fac0af2e9a5ca32fa8eb00242d97ed2197a8881/Arch-Setup-Scripts/Arch_Setup_Install.sh#L178-L209) and [here](https://github.com/Ruturajn/Dotfiles/blob/9fac0af2e9a5ca32fa8eb00242d97ed2197a8881/Arch-Setup-Scripts/Arch_Setup_Install.sh#L160-L175), as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
+  
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
 under the `Arch-Setup-Scripts` directory and the script ,before running the script. You can just get the script using curl (see 
