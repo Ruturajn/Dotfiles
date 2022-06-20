@@ -85,6 +85,20 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 
 ## Screenshots
 
+![Ubuntu-Qtile-Rice-1](https://user-images.githubusercontent.com/56625259/174551823-dc47db9e-2ee6-4978-9d3b-7f03b8324691.png)
+
+![Ubuntu-Qtile-Rice-2](https://user-images.githubusercontent.com/56625259/174551835-871f0284-97bb-44ef-b4ca-cb5e33f5caa3.png)
+
+![Ubuntu-Qtile-Rice-Rofi](https://user-images.githubusercontent.com/56625259/174551904-c206e71a-dc31-43de-840c-d8c74b52d25c.png)
+
+![Ubuntu-Qtile-Rice-Wifi](https://user-images.githubusercontent.com/56625259/174551959-0bca4800-958c-4321-8f7d-a84921d5df70.png)
+
+![Ubuntu-Qtile-Rice-PowerMenu](https://user-images.githubusercontent.com/56625259/174551974-1e3bb88e-55eb-4885-a7e4-4ae9647a098d.png)
+
+## Screenshots (Showing Volume and Brightness Control)
+<details>
+<summary>Old Screenshots</summary>
+
 ![Ubuntu_Qtile_Rice](https://user-images.githubusercontent.com/56625259/170973427-d2e64b55-43bf-4ce6-987c-70251b20617e.png)
 
 ![Ubuntu_Qtile_Rice_1](https://user-images.githubusercontent.com/56625259/170973472-4af755da-aaa8-4e35-bf2a-9836b06de1cc.png)
@@ -102,3 +116,5 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 ![Ubuntu_Qtile_Rice_Brightness](https://user-images.githubusercontent.com/56625259/170973640-10d22a17-65ff-4ede-bd28-76e9ba5050ac.png)
 
 <br />
+
+</details>
