@@ -1,7 +1,6 @@
 # Dotfiles
-My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have three bash scripts in this repo, two of those
-are for installing this setup and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu, which you can find
-in the `ubuntu` branch.
+My Config Files for starship, qtile, rofi, fish, etc. I have a three bash scripts in this repo, two of those are for installing this setup
+and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu, which you can find in the `ubuntu` branch.
 
 To use the config on Arch, you will need to do 3 things(If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
