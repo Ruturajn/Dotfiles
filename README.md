@@ -1,14 +1,50 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. This branch contains scripts and config files for setting up this rice on Ubuntu.
 
-To use the config on Ubuntu, you will need to make 2 changes (If you are not using one of the setup scripts):
+To use the config on Ubuntu, you will need to do 3 things (If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/autostart.sh) script to add the path to your wallpaper. 
   This can be skipped if you want to use nitrogen, to set your wallaper. To do that, you will need to set a wallpaper the first time you login to Qtile
   with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist, due to line `9` in the 
-  [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/autostart.sh) script. Also, you will need to make the autostart script executable,
-  with `chmod +x <Path-to-autostart.sh>/autostart.sh`.
+  [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/autostart.sh) script. Also, you will need to make the autostart script 
+  executable, with `chmod +x <Path-to-autostart.sh>/autostart.sh`.
+- For setting up neovim navigate to this dotfiles repo and follow,
+  ```
+  $ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  $ if [[ -n $(command -v nvim) ]]; then
+	    sudo apt remove neovim -y
+	    sudo apt autoremove -y
+    fi
+  $ wget "https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb"
+  $ sudo dpkg -i nvim-linux64.deb
+  $ cp -r <Path_To_These_Dotfiles>/nvim ~/.config/
+  $ cd ~ || exit
+  $ if [[ -n $(command -v npm) ]]; then
+      sudo apt remove npm -y
+      sudo apt autoremove -y
+    fi
+  $ wget "https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.xz"
+  $ sudo mkdir -p /usr/local/lib/nodejs
+  $ sudo tar -xJvf node-v16.15.1-linux-x64.tar.xz -C /usr/local/lib/nodejs
+  $ mkdir -p ~/.config/nvim/plugged
+  $ nvim +'PlugInstall --sync' +qa
+  $ nvim +'LspInstall --sync pyright' +qa
+  $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  $ source $HOME/.cargo/env
+  $ rustup component add rust-src
+  $ nvim +'LspInstall --sync rust_analyzer' +qa
+  ```
+  whereas, for setting, up vim,
+  ```
+  $ cp <Path_To_These_Dotfiles>/.vimrc "${HOME}"/
+  $ mkdir -p "${HOME}"/.vim/plugged
+  $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  $ source "${HOME}"/.vimrc
+  $ vim +'PlugInstall --sync' +qa
+  ```
+  Please, see the `echo` commands, [here](https://github.com/Ruturajn/Dotfiles/blob/91e0f49573f9e97af130d0695c855572f938c923/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh#L281-L323) and [here](https://github.com/Ruturajn/Dotfiles/blob/91e0f49573f9e97af130d0695c855572f938c923/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh#L263-L278), as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
 
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file 
