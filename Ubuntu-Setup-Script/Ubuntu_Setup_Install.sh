@@ -319,6 +319,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		# Install Rust if not installed
 		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+		source "${HOME}"/.cargo/env
 		rustup component add rust-src
 		nvim +'LspInstall --sync rust_analyzer' +qa
 		;;
