@@ -24,6 +24,9 @@ To use the config on Arch, you will need to do 3 things(If you are not using one
   $ source $HOME/.cargo/env
   $ rustup component add rust-src
   $ nvim +'LspInstall --sync rust_analyzer' +qa
+  
+  # Add Language Servers to path, use the command given below, if you are using my fish config
+  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin|g' "${HOME}"/.config/fish/config.fish
   ```
   whereas, for setting, up vim,
   ```
