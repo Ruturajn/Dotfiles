@@ -55,4 +55,5 @@ Plug 'tpope/vim-commentary'
 
 --> Git support Plugin
 Plug 'tpope/vim-fugitive'
+
 vim.call('plug#end')

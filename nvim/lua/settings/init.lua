@@ -1,7 +1,6 @@
 local set = vim.opt
 
--- vim.notify = require('notify')
--- require('notify')
+vim.notify = require('notify')
 
 set.hlsearch = true
 

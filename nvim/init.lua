@@ -1,5 +1,5 @@
-require('settings')
 require('vim_plug')
+require('settings')
 require('plugins.nvim-tree')
 require('plugins.lsp-config')
 require('plugins.nvim-cmp')
