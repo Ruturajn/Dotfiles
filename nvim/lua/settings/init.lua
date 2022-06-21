@@ -37,3 +37,5 @@ set.mouse = "a"
 set.guifont = { "FantasqueSansMono Nerd Font", ":h10" }
 
 set.splitright = true
+
+set.cursorline = true
