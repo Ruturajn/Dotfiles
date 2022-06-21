@@ -3,7 +3,7 @@ My Config Files for starship, qtile, rofi, fish, etc. I have a three bash script
 and for a base Arch-Linux Install respectively, present in the `Arch-Setup-Scripts` directory. The other one is for setting up this rice on Ubuntu,
 which you can find in the `ubuntu` branch.
 
-To use the config on Arch, you will need to do 3 things(If you are not using one of the setup scripts):
+To use the config on Arch, you will need to do 3 things apart from installing the required packages (If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -20,13 +20,14 @@ To use the config on Arch, you will need to do 3 things(If you are not using one
   $ mkdir -p ~/.config/nvim/plugged
   $ nvim +'PlugInstall --sync' +qa
   $ nvim +'LspInstall --sync pyright' +qa
+  $ nvim +'LspInstall --sync sumneko_lua' +qa
   $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   $ source $HOME/.cargo/env
   $ rustup component add rust-src
   $ nvim +'LspInstall --sync rust_analyzer' +qa
   
   # Add Language Servers to path, use the command given below, if you are using my fish config
-  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin|g' "${HOME}"/.config/fish/config.fish
+  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin ~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin|g' "${HOME}"/.config/fish/config.fish
   ```
   whereas, for setting, up vim,
   ```
@@ -37,7 +38,7 @@ To use the config on Arch, you will need to do 3 things(If you are not using one
   $ source "${HOME}"/.vimrc
   $ vim +'PlugInstall --sync' +qa
   ```
-  Please, see the `echo` commands, [here](https://github.com/Ruturajn/Dotfiles/blob/e845e4b7d3bcf4619b825a2358bb75e7950cb50c/Arch-Setup-Scripts/Arch_Setup_Install.sh#L178-L210) and [here](https://github.com/Ruturajn/Dotfiles/blob/e845e4b7d3bcf4619b825a2358bb75e7950cb50c/Arch-Setup-Scripts/Arch_Setup_Install.sh#L160-L175), as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
+  Please, see the `echo` commands, on lines `158` to `211` as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
   
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
