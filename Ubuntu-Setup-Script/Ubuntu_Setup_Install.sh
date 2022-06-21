@@ -315,6 +315,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 		# Install LSP Servers
 		nvim +'LspInstall --sync pyright' +qa
+        nvim +'LspInstall --sync sumneko_lua' +qa
 
 		# Install Rust if not installed
 		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
@@ -413,7 +414,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		fish -c "omf install robbyrussell"
 		cp ./fish/config.fish "${HOME}"/.config/fish/config.fish
 		# Add various paths to fish config
-		sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/bin ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin|g' "${HOME}"/.config/fish/config.fish
+		sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/ /usr/local/lib/nodejs/node-v16.15.1-linux-x64/bin ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin ~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin|g' "${HOME}"/.config/fish/config.fish
 		rm install
 	elif [[ ${shell_ans} == "n" || ${shell_ans} == "N" ]]; then
 		echo -e "${BRed}Skipping Shell change${End_Colour}"
