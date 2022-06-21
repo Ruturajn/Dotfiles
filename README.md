@@ -1,7 +1,7 @@
 # Dotfiles
-My Config Files for starship, qtile, rofi, fish, etc. In the ```Arch-Setup-Scripts``` directory, I have three bash scripts in this repo, two of those
-are for installing this setup and for a base Arch-Linux Install respectively. The other one is for setting up this rice on Ubuntu, which you can find
-in the `ubuntu` branch.
+My Config Files for starship, qtile, rofi, fish, etc. I have a three bash scripts in this repo, two of those are for installing this setup
+and for a base Arch-Linux Install respectively, present in the `Arch-Setup-Scripts` directory. The other one is for setting up this rice on Ubuntu,
+which you can find in the `ubuntu` branch.
 
 To use the config on Arch, you will need to do 3 things(If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
@@ -24,6 +24,9 @@ To use the config on Arch, you will need to do 3 things(If you are not using one
   $ source $HOME/.cargo/env
   $ rustup component add rust-src
   $ nvim +'LspInstall --sync rust_analyzer' +qa
+  
+  # Add Language Servers to path, use the command given below, if you are using my fish config
+  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin|g' "${HOME}"/.config/fish/config.fish
   ```
   whereas, for setting, up vim,
   ```
@@ -76,15 +79,15 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 <br />
 
 ## Screenshots
-![Arch-Rice-1](https://user-images.githubusercontent.com/56625259/174470042-5732da0a-d178-40c5-a8e4-790938f29d74.png)
+![Arch-Rice-1](https://user-images.githubusercontent.com/56625259/174547792-39bc37b6-37a7-4078-9612-7304c7d0cf2e.png)
 
-![Arch-Rice-2](https://user-images.githubusercontent.com/56625259/174470046-ff2404c9-5f2a-4323-86a7-6f54690689c1.png)
+![Arch-Rice-2](https://user-images.githubusercontent.com/56625259/174547817-b29b94e0-2054-4bce-a4a9-8f1faecc7003.png)
 
-![Arch-Rice-Rofi](https://user-images.githubusercontent.com/56625259/174470048-dbf91f68-9c13-4aaa-912b-71afc9326c8d.png)
+![Arch-Rice-Rofi](https://user-images.githubusercontent.com/56625259/174547828-075cb18c-647f-42c6-a0d2-835c86cb39d7.png)
 
-![Arch-Rice-Wifi](https://user-images.githubusercontent.com/56625259/174470061-d0c25b4c-ebcc-4826-893c-d258dabc2f4d.png)
+![Arch-Rice-Wifi](https://user-images.githubusercontent.com/56625259/174547884-b01229f9-703c-4e2b-bb6f-0b21c4e6a4b5.png)
 
-![Arch-Rice-PowerMenu](https://user-images.githubusercontent.com/56625259/174470067-dd74b2a6-99c1-453b-a454-a8231f23fe00.png)
+![Arch-Rice-Powermenu](https://user-images.githubusercontent.com/56625259/174547906-0334b18f-71a7-4dc7-a0f4-73a1a8ed0e47.png)
 
 ## Screenshots (Showing Volume and Brightness Control)
 <details>
