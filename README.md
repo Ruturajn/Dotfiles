@@ -1,7 +1,7 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. This branch contains scripts and config files for setting up this rice on Ubuntu.
 
-To use the config on Ubuntu, you will need to do 3 things (If you are not using the setup script):
+To use the config on Ubuntu, you will need to do 3 things apart from installing the required packages(If you are not using the setup script):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -30,13 +30,14 @@ To use the config on Ubuntu, you will need to do 3 things (If you are not using 
   $ mkdir -p ~/.config/nvim/plugged
   $ nvim +'PlugInstall --sync' +qa
   $ nvim +'LspInstall --sync pyright' +qa
+  $ nvim +'LspInstall --sync sumneko_lua' +qa
   $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   $ source $HOME/.cargo/env
   $ rustup component add rust-src
   $ nvim +'LspInstall --sync rust_analyzer' +qa
   
   # Add Language Servers to path, use the command given below, if you are using my fish config
-  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin|g' "${HOME}"/.config/fish/config.fish
+  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin ~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin|g' "${HOME}"/.config/fish/config.fish
   ```
   whereas, for setting, up vim,
   ```
@@ -47,7 +48,7 @@ To use the config on Ubuntu, you will need to do 3 things (If you are not using 
   $ source "${HOME}"/.vimrc
   $ vim +'PlugInstall --sync' +qa
   ```
-  Please, see the `echo` commands, [here](https://github.com/Ruturajn/Dotfiles/blob/644dc60f64ff6e10b74ec577f1a407f690564ac9/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh#L281-L324) and [here](https://github.com/Ruturajn/Dotfiles/blob/644dc60f64ff6e10b74ec577f1a407f690564ac9/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh#L263-L278), as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
+  Please, see the `echo` commands, from line `261` to `326` in [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
 
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file 
