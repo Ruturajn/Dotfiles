@@ -51,3 +51,25 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+
+--> Terminal KeyBindings
+-- map('n', '<A-h>', '<C-\><C-N><C-w>h', opts)
+map('n', '<A-z>r', ':rightb vsplit +term<CR>', opts)
+map('n', '<A-z>b', ':rightbelow split +term<CR>', opts)
+vim.cmd [[
+    :tnoremap <A-h> <C-\><C-N><C-w>h
+    :tnoremap <A-j> <C-\><C-N><C-w>j
+    :tnoremap <A-k> <C-\><C-N><C-w>k
+    :tnoremap <A-l> <C-\><C-N><C-w>l
+    :inoremap <A-h> <C-\><C-N><C-w>h
+    :inoremap <A-j> <C-\><C-N><C-w>j
+    :inoremap <A-k> <C-\><C-N><C-w>k
+    :inoremap <A-l> <C-\><C-N><C-w>l
+    :nnoremap <A-h> <C-w>h
+    :nnoremap <A-j> <C-w>j
+    :nnoremap <A-k> <C-w>k
+    :nnoremap <A-l> <C-w>l
+]]
+
+-- To open a terminal below the file horizontally - :rightbelow split +term
+-- To shift a terminal to the top or bottom - <C-/><C-N><C-W><Shift-J> and <C-/><C-N><C-W><Shift-K>
