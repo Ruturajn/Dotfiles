@@ -38,7 +38,7 @@ To use the config on Arch, you will need to do 3 things apart from installing th
   $ source "${HOME}"/.vimrc
   $ vim +'PlugInstall --sync' +qa
   ```
-  Please, see the `echo` commands, on lines `158` to `211` as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
+  Please, see the `echo` commands, on lines `158` to `211` in [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
   
 *Note:* 
 - *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
