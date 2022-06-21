@@ -315,7 +315,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 		# Install LSP Servers
 		nvim +'LspInstall --sync pyright' +qa
-        nvim +'LspInstall --sync sumneko_lua' +qa
+		nvim +'LspInstall --sync sumneko_lua' +qa
 
 		# Install Rust if not installed
 		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
