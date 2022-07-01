@@ -160,7 +160,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     always_show_folders = true,
   },
   log = {
-    enable = true,
+    enable = false,
     truncate = true,
     types = {
       all = false,
