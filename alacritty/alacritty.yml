@@ -117,7 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FantasqueSansMono
+    family: FantasqueSansMono Nerd Font Mono
     #family: Hack Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
