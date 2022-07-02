@@ -114,14 +114,6 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains Mono Font with ${aur_name}${End_Colour}"
 	"${aur_name}" -S nerd-fonts-fantasque-sans-mono ttf-jetbrains-mono
 
-	echo -e "${BYellow}[ *]Installing JetBrains Mono Nerd Font${End_Colour}"
-	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
-	if [[ ! -d "${HOME}"/.fonts ]]; then
-		mkdir "${HOME}"/.fonts
-	fi
-	cp "JetBrains Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
-	fc-cache -fv
-
 	# Install pipes and cava with yay
 	echo -e "${BYellow}[ * ]Installing pipes.sh, cava and brave-bin with ${aur_name}${End_Colour}"
 	"${aur_name}" -S pipes.sh cava brave-bin
@@ -262,7 +254,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty/alacritty.yml
 	fi
 
-	# Installing material design icon font
+	# Installing material design icon font and JetBrains Mono Nerd Font
 	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
 	cd "${HOME}"/Git-Repos || exit
 	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
@@ -270,6 +262,11 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		mkdir "${HOME}"/.fonts
 	fi
 	cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
+	fc-cache -fv
+
+	echo -e "${BYellow}[ *]Installing JetBrains Mono Nerd Font${End_Colour}"
+	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
+	cp ./"JetBrains Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
 	fc-cache -fv
 
 	# Install fish and change default shell
