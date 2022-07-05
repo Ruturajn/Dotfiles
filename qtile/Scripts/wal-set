@@ -5,11 +5,15 @@
 # This script changes the colorscheme using pywal and wpgtk
 # globally.
 
+# Catch errors if any while running the script.
 set -eou pipefail
 
+# Define the PATH where the Wallpapers are located.
 WALLPAPER_PATH="/home/$(whoami)/Git-Repos/Dotfiles/Wallpapers/"
 
-selected_wal=$(ls -lah "${WALLPAPER_PATH}" | 
+# Get a list of wallpapers, from the WALLPAPER_PATH, and add a picutre glyph at the
+# beginning of the line. Finally, pass the list to rofi.
+selected_wal=$(find "${WALLPAPER_PATH}" -name "*" | rev | cut -d / -f 1 | rev | sed 1d | 
     rev | awk '{print $1}' | rev | sed 1,3d |
     sed 's|^| |' | rofi -dmenu -i -p "Wal" -l 5 \
 	-theme-str 'window {width: 20%;}' \
@@ -17,20 +21,41 @@ selected_wal=$(ls -lah "${WALLPAPER_PATH}" |
 	-theme-str 'configuration {show-icons: false;}' \
 	-theme-str 'configuration {font: "Jet Brains Mono Nerd Font Mono Regular 14";}')
 
+# If no wallpaper is selected, exit.
 if [[ -z "${selected_wal}" ]]; then
 	exit
 fi
 
+# Remove the glyph, from the beginning of the line.
 selected_wal=$(echo "${selected_wal}" | sed 's|^. ||')
 
+# If previous colorschemes exit, remove them.
 if [[ "$(ls -A ~/.config/wpg/schemes)" ]] ; then
     rm ~/.config/wpg/schemes/* || exit
 fi
-echo "${WALLPAPER_PATH}${selected_wal}"
+
+# Add the selected wallpaper to wpg.
 wpg -a "${WALLPAPER_PATH}${selected_wal}"
+
+# Set the wallpaper, and generate the colorscheme.
 wpg -s "${selected_wal}"
+
+# Change rofi, colors, by pikcing a color from the colorscheme, and changing the rofi theme config.
 wal_color=$(cat ~/.config/wpg/schemes/* | grep "color10" | xargs | awk '{print $2}' | sed 's|\,||')
 sed -i "s|pywal-color:.*|pywal-color:                 $wal_color;|" ~/.config/rofi/themes/my_theme.rasi
+
+# Change the color for dunst.
 sed -i "305 s/background =.*/background = \"${wal_color}\"/" ~/.config/dunst/dunstrc
 killall -q dunst &
+
+# Change colors for cava (REQUIRES MANUAL RELOAD of CAVA)
+wal_colors_list=$(cat ~/.config/wpg/schemes/* | grep "color" | sed 1d | sed 's|^        ||' | awk '{print $2}' | sed 's|,||')
+wal_colors_list=($wal_colors_list)
+for i in {1..8} ; do
+    search_exp="gradient_color_${i}"
+    replace_exp="gradient_color_${i} = ${wal_colors_list[i]}"
+    sed -i "s|^$search_exp.*|$replace_exp|" ~/.config/cava/config
+done
+
+# Finally, restart qtile.
 qtile cmd-obj -o cmd -f restart
