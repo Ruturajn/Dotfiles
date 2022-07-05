@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+
+# This script changes the colorscheme using pywal and wpgtk
+# globally.
+
 set -eou pipefail
 
 WALLPAPER_PATH="/home/$(whoami)/Git-Repos/Dotfiles/Wallpapers/"
@@ -26,4 +31,6 @@ wpg -a "${WALLPAPER_PATH}${selected_wal}"
 wpg -s "${selected_wal}"
 wal_color=$(cat ~/.config/wpg/schemes/* | grep "color10" | xargs | awk '{print $2}' | sed 's|\,||')
 sed -i "s|pywal-color:.*|pywal-color:                 $wal_color;|" ~/.config/rofi/themes/my_theme.rasi
+sed -i "305 s/background =.*/background = \"${wal_color}\"/" ~/.config/dunst/dunstrc
+killall -q dunst &
 qtile cmd-obj -o cmd -f restart
