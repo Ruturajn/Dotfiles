@@ -51,6 +51,26 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
   to your network interface.
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
   `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
+- *The installation of `wpgtk` and `pywal` is not yet included in the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script. However, the modifications, required to use it are present in the `qtile config`, and the `wal-set` script is 
+  placed under `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:*
+  ```
+  # Install wpgtk from the AUR, I use 'yay', you can use any AUR-Helper you like
+  $ yay -S wpgtk
+  
+  # Then add this line to the fish config, at the end of the 'if' block
+  cat ~/.config/wpg/sequences
+  
+  # After that, remove the line from the autostart.sh file, that restores the wallpaper with 'nitrogen',
+  # and replace it with,
+  wal -R
+  
+  # Now, run the wal-set script using 'Alt+P'. Once, the colorscheme is generated, run
+  # the following to generate gtk and icon theme.
+  $ wpg-install.sh -gi
+  ```
+  To apply the gtk and icon theme, use 'lxappearance', to choose the theme, whose name will be displayed, when you run the previous command.
+  This should setup everything, and now whenever you run the 'wal-set' script, the theme will reflect everywhere. I do not use this scheme
+  for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim).
 
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
@@ -75,11 +95,14 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 | Fonts | [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete), [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete), [Fontawesome Font](https://github.com/FortAwesome/Font-Awesome) and [Material Design Icon Font](https://github.com/google/material-design-icons/blob/master/font/MaterialIcons-Regular.ttf) |
 | Fetch Program | [pfetch](https://github.com/dylanaraps/pfetch), [fm6000](https://github.com/anhsirk0/fetch-master-6000) and [nerdfetch](https://github.com/ThatOneCalculator/NerdFetch) |
 | Terminal Programs | [cava](https://github.com/karlstav/cava), [bashtop](https://github.com/aristocratos/bashtop), [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix) and [cbonsai](https://gitlab.com/jallbrit/cbonsai) |
-| Theme | [Catppuccin](https://github.com/catppuccin/catppuccin) |
+| Theme | [Catppuccin](https://github.com/catppuccin/catppuccin) or [pywal](https://github.com/dylanaraps/pywal) with [wpgtk](https://github.com/deviantfero/wpgtk) |
 
 <br />
 
-## Screenshots
+## Gallery
+
+https://user-images.githubusercontent.com/56625259/177325808-e83bf6b4-9f1b-420c-9234-0499991397b8.mp4
+
 ![Arch-Rice-1](https://user-images.githubusercontent.com/56625259/174547792-39bc37b6-37a7-4078-9612-7304c7d0cf2e.png)
 
 ![Arch-Rice-2](https://user-images.githubusercontent.com/56625259/174547817-b29b94e0-2054-4bce-a4a9-8f1faecc7003.png)
