@@ -57,5 +57,5 @@ for i in {1..8} ; do
     sed -i "s|^$search_exp.*|$replace_exp|" ~/.config/cava/config
 done
 
-# Finally, restart qtile.
-qtile cmd-obj -o cmd -f restart
+# Finally, reload qtile.
+qtile cmd-obj -o cmd -f reload_config
