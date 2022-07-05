@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -eou pipefail
+
+WALLPAPER_PATH="/home/$(whoami)/Git-Repos/Dotfiles/Wallpapers/"
+
+selected_wal=$(ls -lah "${WALLPAPER_PATH}" | 
+    rev | awk '{print $1}' | rev | sed 1,3d |
+    sed 's|^| |' | rofi -dmenu -i -p "Wal" -l 5 \
+	-theme-str 'window {width: 20%;}' \
+	-theme-str 'listview {columns: 1;}' \
+	-theme-str 'configuration {show-icons: false;}' \
+	-theme-str 'configuration {font: "Jet Brains Mono Nerd Font Mono Regular 14";}')
+
+if [[ -z "${selected_wal}" ]]; then
+	exit
+fi
+
+selected_wal=$(echo "${selected_wal}" | sed 's|^. ||')
+
+if [[ "$(ls -A ~/.config/wpg/schemes)" ]] ; then
+    rm ~/.config/wpg/schemes/* || exit
+fi
+echo "${WALLPAPER_PATH}${selected_wal}"
+wpg -a "${WALLPAPER_PATH}${selected_wal}"
+wpg -s "${selected_wal}"
+wal_color=$(cat ~/.config/wpg/schemes/* | grep "color10" | xargs | awk '{print $2}' | sed 's|\,||')
+sed -i "s|pywal-color:.*|pywal-color:                 $wal_color;|" ~/.config/rofi/themes/my_theme.rasi
+qtile cmd-obj -o cmd -f restart
