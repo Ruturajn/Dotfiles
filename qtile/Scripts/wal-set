@@ -14,7 +14,6 @@ WALLPAPER_PATH="/home/$(whoami)/Git-Repos/Dotfiles/Wallpapers/"
 # Get a list of wallpapers, from the WALLPAPER_PATH, and add a picutre glyph at the
 # beginning of the line. Finally, pass the list to rofi.
 selected_wal=$(find "${WALLPAPER_PATH}" -name "*" | rev | cut -d / -f 1 | rev | sed 1d | 
-    rev | awk '{print $1}' | rev | sed 1,3d |
     sed 's|^| |' | rofi -dmenu -i -p "Wal" -l 5 \
 	-theme-str 'window {width: 20%;}' \
 	-theme-str 'listview {columns: 1;}' \
