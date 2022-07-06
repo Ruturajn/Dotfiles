@@ -68,14 +68,15 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
   # the following to generate gtk and icon theme.
   $ wpg-install.sh -gi
   ```
-  To apply the gtk and icon theme, use 'lxappearance', to choose the theme, whose name will be displayed, when you run the previous command.
-  This should setup everything, and now whenever you run the 'wal-set' script, the theme will reflect everywhere. I do not use this scheme
-  for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim).
+  To apply the gtk and icon theme, use `lxappearance` (or any other application that you like), for choosing the theme, whose name will be displayed, 
+  when you run the command `$ wpg-install.sh -gi`. Now, this should setup everything, and whenever you run the `wal-set` script, the theme will reflect 
+  everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim).
 
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
 from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The script will also
-backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
+backup your `$HOME/.config` directory before making any changes, so you will not loose any data. Check the links from the **Theme** section, in the 
+[Setup Details](#setup-details) section if you have any issues while installing `wpgtk` or `pywal`.
 
 <br />
 
