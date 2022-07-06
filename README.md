@@ -92,8 +92,9 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   ```
   To apply the gtk and icon theme, use `lxappearance` (or any other application that you like), for choosing the theme, whose name will be displayed, 
   when you run the command `$ wpg-install.sh -gi`. Now, this should setup everything, and whenever you run the `wal-set` script, the theme will reflect 
-  everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim). Check the links from the **Theme** section, in the [Setup Details](#setup-details) section if you have any 
-  issues while installing `wpgtk` or `pywal`.
+  everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a 
+  [plugin](https://github.com/deviantfero/wpgtk.vim). Check the links from the **Theme** section, in the [Setup Details](#setup-details) section if you 
+  have any issues while installing `wpgtk` or `pywal`.
 
 If you are using the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all 
 of these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
