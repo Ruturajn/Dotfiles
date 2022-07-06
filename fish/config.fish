@@ -22,6 +22,4 @@ if status is-interactive
     
     # Starting the starship prompt
     #starship init fish | source
-
-    cat ~/.config/wpg/sequences
 end
