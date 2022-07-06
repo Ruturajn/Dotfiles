@@ -62,8 +62,22 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   the `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
 - *The installation of `wpgtk` and `pywal` is not yet included in the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script. However, the modifications, required to use it are present in the `qtile config`, and the `wal-set` script   is placed under `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:*
   ```
-  # Install wpgtk from the AUR, I use 'yay', you can use any AUR-Helper you like
-  $ yay -S wpgtk
+  # Install the dependencies for pywal before the installation of wpgtk.
+  $ sudo apt install imagemagick procps
+  
+  # Now, build and install pywal from source
+  $ git clone https://github.com/dylanaraps/pywal
+  $ cd pywal
+  $ sudo pip3 install .
+  
+  # After this, install the dependencies for wpgtk
+  $ sudo apt install gtk2-engines-murrine
+  $ sudo pip3 install pillow
+  
+  # Then, build and install wpgtk from source
+  $ git clone https://github.com/deviantfero/wpgtk
+  $ cd wpgtk
+  $ sudo pip3 install .
   
   # Then add this line to the fish config, at the end of the 'if' block
   cat ~/.config/wpg/sequences
@@ -78,7 +92,8 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   ```
   To apply the gtk and icon theme, use `lxappearance` (or any other application that you like), for choosing the theme, whose name will be displayed, 
   when you run the command `$ wpg-install.sh -gi`. Now, this should setup everything, and whenever you run the `wal-set` script, the theme will reflect 
-  everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim).
+  everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim). Check the links from the **Theme** section, in the [Setup Details](#setup-details) section if you have any 
+  issues while installing `wpgtk` or `pywal`.
 
 If you are using the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all 
 of these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
@@ -103,6 +118,7 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 | Fonts | [Fantasque Sans Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete), [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete), [Fontawesome Font](https://github.com/FortAwesome/Font-Awesome) and [Material Design Icon Font](https://github.com/google/material-design-icons/blob/master/font/MaterialIcons-Regular.ttf) |
 | Fetch Program | [pfetch](https://github.com/dylanaraps/pfetch), [fm6000](https://github.com/anhsirk0/fetch-master-6000) and [nerdfetch](https://github.com/ThatOneCalculator/NerdFetch) |
 | Terminal Programs | [cava](https://github.com/karlstav/cava), [bashtop](https://github.com/aristocratos/bashtop), [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix) and [cbonsai](https://gitlab.com/jallbrit/cbonsai) |
+| Theme | [Catppuccin](https://github.com/catppuccin/catppuccin) or [pywal](https://github.com/dylanaraps/pywal) with [wpgtk](https://github.com/deviantfero/wpgtk) |
 
 <br />
 
