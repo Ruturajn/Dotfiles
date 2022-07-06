@@ -123,7 +123,9 @@ backup your `$HOME/.config` directory before making any changes, so you will not
 
 <br />
 
-## Screenshots
+## Gallery
+
+https://user-images.githubusercontent.com/56625259/177556957-b1e09610-c086-42f3-a2f8-58f6924e4b6e.mp4
 
 ![Ubuntu-Qtile-Rice-1](https://user-images.githubusercontent.com/56625259/174551823-dc47db9e-2ee6-4978-9d3b-7f03b8324691.png)
 
