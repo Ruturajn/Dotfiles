@@ -1,11 +1,40 @@
-from typing import List  # noqa: F401
-
-from libqtile import layout, hook, bar
-from qtile_extras import widget
-from qtile_extras.bar import Bar
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.lazy import lazy
+# from typing import List  # noqa: F401
+# 
+# from libqtile import layout, hook, bar
+# from qtile_extras import widget
+# from qtile_extras.bar import Bar
+# from libqtile.config import Click, Drag, Group, Key, Match, Screen
+# from libqtile.lazy import lazy
 from qtile_extras.widget.decorations import RectDecoration, BorderDecoration
+
+# Import the necessary libraries
+import json, os, glob
+
+# Search for the colorscheme file and read it.
+file_name = glob.glob(os.path.expanduser("~/.config/wpg/schemes/*.json"))
+file = open(file_name[0])
+data = json.load(file)
+
+# Create and empty list that will house the colours from the current 
+# colorscheme.
+color_list = []
+
+# Iterate over the colours, and store them in the list.
+for color in data["colors"]:
+    color_list.append(data["colors"][color])
+
+color_list.reverse()
+
+foreground_colour = data["special"]["background"]
+#foreground_colour = "#FFFFFF"
+#foreground_colour = "#000000"
+
+#foreground_colour_icon = "#000000"
+#foreground_colour_icon = "#FFFFFF"
+foreground_colour_icon = data["special"]["foreground"]
+
+# Close the file.
+file.close()
 
 colors_1 = ["#600060", "#992A88", "#758CCA", "#C1F4B6", ""]
 
@@ -35,9 +64,11 @@ foreground_colour = "#000000"
 #foreground_colour_icon = "#000000"
 foreground_colour_icon = "#FFFFFF"
 
+color_theme = color_list
+
 decor_layout = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[9], radius=4,
+        RectDecoration(colour=color_theme[9], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 18
@@ -45,7 +76,7 @@ decor_layout = {
 
 decor_groupbox = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[0], radius=4,
+        RectDecoration(colour=color_theme[0], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 18
@@ -53,7 +84,7 @@ decor_groupbox = {
 
 decor_Wifi = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[1], radius=4,
+        RectDecoration(colour=color_theme[1], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -61,7 +92,7 @@ decor_Wifi = {
 
 decor_ram = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[2], radius=4,
+        RectDecoration(colour=color_theme[2], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -69,7 +100,7 @@ decor_ram = {
 
 decor_CPU = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[3], radius=4,
+        RectDecoration(colour=color_theme[3], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -77,7 +108,7 @@ decor_CPU = {
 
 decor_battery = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[4], radius=4,
+        RectDecoration(colour=color_theme[4], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -85,7 +116,7 @@ decor_battery = {
 
 decor_Day = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[5], radius=4,
+        RectDecoration(colour=color_theme[5], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -93,7 +124,7 @@ decor_Day = {
 
 decor_Date = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[6], radius=4,
+        RectDecoration(colour=color_theme[6], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -101,7 +132,7 @@ decor_Date = {
 
 decor_RPM = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[7], radius=4,
+        RectDecoration(colour=color_theme[7], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13
@@ -109,7 +140,7 @@ decor_RPM = {
 
 decor_Temp = {
     "decorations": [
-        RectDecoration(colour=colors_catpuccin[8], radius=4,
+        RectDecoration(colour=color_theme[8], radius=4,
                        filled=True, padding_y=2, padding_x=3)
     ],
     "padding": 13

@@ -153,7 +153,7 @@ keys = [
         os.path.expanduser("~/.config/qtile/Scripts/vol_script toggle")), desc="Mute System Volume"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch Brave"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch File Manager Nemo"),
-    Key(["mod1"], "c", lazy.spawn(os.path.expanduser(
+    Key(["mod1"], "t", lazy.spawn(os.path.expanduser(
         "~/.config/qtile/Scripts/cpu_temp")), desc="Display CPU Core Temperature"),
     Key(["mod1"], "f", lazy.spawn(os.path.expanduser(
         "~/.config/qtile/Scripts/fan_speed")), desc="Display CPU Fan Speed"),
@@ -169,4 +169,5 @@ keys = [
         "playerctl next"), desc="Play Next Music Track"),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop the Music"),
     Key([mod, "shift"], "q", lazy.function(show_power_menu)),
-    Key(["mod1"], "w", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/wifi_menu")), desc="Launch Wi-fi menu script")]
+    Key(["mod1"], "w", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/wifi_menu")), desc="Launch Wi-fi menu script"),
+    Key(["mod1"], "p", lazy.spawn(os.path.expanduser("~/.config/qtile/Scripts/wal-set")), desc="Change colorscheme with pywal")]
