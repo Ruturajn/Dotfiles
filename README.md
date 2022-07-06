@@ -60,6 +60,25 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   to your network interface.
 - *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/Scripts/bright_control) script, the user will need to be a part of 
   the `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
+- *The installation of `wpgtk` and `pywal` is not yet included in the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script. However, the modifications, required to use it are present in the `qtile config`, and the `wal-set` script   is placed under `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:*
+  ```
+  # Install wpgtk from the AUR, I use 'yay', you can use any AUR-Helper you like
+  $ yay -S wpgtk
+  
+  # Then add this line to the fish config, at the end of the 'if' block
+  cat ~/.config/wpg/sequences
+  
+  # After that, remove the line from the autostart.sh file, that restores the wallpaper with 'nitrogen',
+  # and replace it with,
+  wal -R
+  
+  # Now, run the wal-set script using 'Alt+P'. Once, the colorscheme is generated, run
+  # the following to generate gtk and icon theme.
+  $ wpg-install.sh -gi
+  ```
+  To apply the gtk and icon theme, use `lxappearance` (or any other application that you like), for choosing the theme, whose name will be displayed, 
+  when you run the command `$ wpg-install.sh -gi`. Now, this should setup everything, and whenever you run the `wal-set` script, the theme will reflect 
+  everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim).
 
 If you are using the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all 
 of these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
