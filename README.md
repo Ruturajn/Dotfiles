@@ -50,17 +50,8 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   ```
   Please, see the `echo` commands, from line `261` to `326` in [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
 
-*Note:* 
-- *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file 
-  placed under the `Ubuntu-Setup-Script` directory and the script, before running the script. You can just get the script using curl (see 
-  [Ubuntu-Setup-Script/README.md](https://github.com/Ruturajn/Dotfiles/tree/ubuntu/Ubuntu-Setup-Script)), it will clone this repo and do the needfull.*
-- *The `picom.conf` file here, is to be used with the original picom. For [Jonaburg's Fork of picom](https://github.com/jonaburg/picom),
-  I use `jonaburg_picom.conf`. If you want to use jonaburg-picom use that.*
-- If you don't see the `wifi` widget show up, change line `138` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/config.py)
-  to your network interface.
-- *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/Scripts/bright_control) script, the user will need to be a part of 
-  the `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
-- *The installation of `wpgtk` and `pywal` is not yet included in the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script. However, the modifications, required to use it are present in the `qtile config`, and the `wal-set` script   is placed under `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:*
+- (Optional) Using `wpgtk` and `pywal`. The modifications, required to use them are present in the `qtile config`, and the `wal-set` script is placed under 
+  `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:
   ```
   # Install the dependencies for pywal before the installation of wpgtk.
   $ sudo apt install imagemagick procps
@@ -96,10 +87,21 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   [plugin](https://github.com/deviantfero/wpgtk.vim). Check the links from the **Theme** section, in the [Setup Details](#setup-details) section if you 
   have any issues while installing `wpgtk` or `pywal`.
 
+*Note:* 
+- *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file 
+  placed under the `Ubuntu-Setup-Script` directory and the script, before running the script. You can just get the script using curl (see 
+  [Ubuntu-Setup-Script/README.md](https://github.com/Ruturajn/Dotfiles/tree/ubuntu/Ubuntu-Setup-Script)), it will clone this repo and do the needfull.*
+- *The `picom.conf` file here, is to be used with the original picom. For [Jonaburg's Fork of picom](https://github.com/jonaburg/picom),
+  I use `jonaburg_picom.conf`. If you want to use jonaburg-picom use that.*
+- If you don't see the `wifi` widget show up, change line `138` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/config.py)
+  to your network interface.
+- *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/Scripts/bright_control) script, the user will need to be a part of 
+  the `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
+
 If you are using the [Ubuntu_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/Ubuntu-Setup-Script/Ubuntu_Setup_Install.sh) script, all 
 of these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
-from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The script will also
-backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
+from that fork in `~/.config/picom/picom.conf`), adding your user to the groups and giving you the choice to choose `pywal` with `wpgtk` will be
+taken care of by the script. The script will also backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
 
 <br />
 
