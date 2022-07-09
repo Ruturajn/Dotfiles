@@ -66,7 +66,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	sudo apt install xorg xserver-xorg python3 python3-xcffib \
 		python3-cairocffi libpangocairo-1.0-0 python3-pip python3-dbus \
 		libpulse-dev pavucontrol python3-testresources git vim curl \
-		fonts-fantasque-sans fish cargo lxappearance \
+		fonts-fantasque-sans fish cargo lxappearance dialog \
 		nitrogen brightnessctl fonts-font-awesome playerctl python3-pip \
 		build-essential cmake fonts-material-design-icons-iconfont ntfs-3g \
 		ntfs-3g-dev nfs-kernel-server udisks2 papirus-icon-theme acpi lm-sensors \
@@ -296,8 +296,17 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	2)
 		echo -e "${BYellow}[ * ]Installing Neovim${End_Colour}"
 		# Installing Vim-Plug for neovim
+		cd "${HOME}"/Git-Repos || exit
 		echo -e "${BYellow}[ * ]Installing Vim-Plug${End_Colour}"
 		sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+		# Install Rust if not installed
+		if [[ -z $(command -v rustc) && -z $(command -v cargo) && -z $(cargo -v rustup) ]]; then
+			echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
+			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+			source "${HOME}"/.cargo/env
+		fi
+		rustup component add rust-src
 
 		# Check if neovim is installed, if it is remove it and install latest
 		echo -e "${BYellow}[ * ]Installing Latest Neovim${End_Colour}"
@@ -309,6 +318,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		sudo dpkg -i nvim-linux64.deb
 
 		echo -e "${BYellow}[ * ]Placing nvim directory in ~/.config${End_Colour}"
+		cd "${HOME}"/Git-Repos/Dotfiles || exit
 		cp -r nvim ~/.config/
 
 		# Install nodejs
@@ -332,12 +342,6 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		# Install LSP Servers
 		nvim +'LspInstall --sync pyright' +qa
 		nvim +'LspInstall --sync sumneko_lua' +qa
-
-		# Install Rust if not installed
-		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
-		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-		source "${HOME}"/.cargo/env
-		rustup component add rust-src
 		nvim +'LspInstall --sync rust_analyzer' +qa
 		;;
 	esac
