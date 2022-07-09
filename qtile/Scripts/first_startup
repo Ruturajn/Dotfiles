@@ -1,0 +1,27 @@
+#!/bin/bash
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+
+# This script runs only once, i.e. at the first time you login to Qtile,
+# after the Arch_Setup_Install.sh script has run.
+
+AUTOSTART_PATH="/home/$(whoami)/.config/qtile/autostart.sh"
+
+remove_temp() {
+    final_autostart=$(tac "${AUTOSTART_PATH}" | sed 1,2d | tac)
+    echo "${final_autostart}" > "${AUTOSTART_PATH}"
+}
+
+test=$(dialog --menu "Choose your preferred way:" 10 30 2 1 Nitrogen 2 Pywal --output-fd 1)
+echo "${test}"
+
+if [[ "${test}" == "1" ]] ; then
+    remove_temp
+elif [[ "${test}" == "2" ]] ; then
+    sed -i 's|^nitrogen --restore|# nitrogen --restore\nwal -R|' "${AUTOSTART_PATH}"
+    sed -i 's|^end|    cat ~/.config/wpg/sequences\nend|' ~/.config/fish/config.fish
+    remove_temp
+    ~/.config/qtile/Scripts/wal-set > /dev/null
+    wpg-install.sh -gi
+else
+    remove_temp
+fi

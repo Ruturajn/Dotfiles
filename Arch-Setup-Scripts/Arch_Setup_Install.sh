@@ -64,7 +64,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
-		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession
+		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession lxappearance
 
 	# Adding a swapfile
 	read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
@@ -84,7 +84,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	# Install stuff with pip
 	# echo -e "${BYellow}[ * ]Installing fontawesome and dbus-next for icons and notifications${End_Colour}"
-	# sudo pip3 install psutil fontawesome dbus-next
+	echo -e "${BYellow}[ * ]Installing fontawesome${End_Colour}"
+	sudo pip3 install fontawesome 
 
 	# Install `yay` as the AUR Helper, interact wherever required
 	read -rp "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" aur_ans
@@ -145,6 +146,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}/.config/"
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "alacritty -e ~/.config/qtile/Scripts/first_startup" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 
 	echo -e "${BYellow}[ * ]Placing alacritty config in ~/.config/${End_Colour}"
