@@ -60,7 +60,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	# Install the required packages for the Rice
 	echo -e "${BYellow}[ * ]Installing packages${End_Colour}"
-	sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi dunst \
+	sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi dunst dialog \
 		python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
