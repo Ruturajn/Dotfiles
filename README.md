@@ -39,20 +39,8 @@ To use the config on Arch, you will need to do 3 things apart from installing th
   $ vim +'PlugInstall --sync' +qa
   ```
   Please, see the `echo` commands, on lines `158` to `211` in [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) as explanation on what these lines do, for neovim and vim setup respectively, if you are unfamiliar with them.
-  
-*Note:* 
-- *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
-under the `Arch-Setup-Scripts` directory and the script ,before running the script. You can just get the script using curl (see 
-[Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)), it will clone this repo and do the needfull.*
-- *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
-- *The `picom.conf` file here, is to be used with the original picom. For [Jonaburg's Fork of picom](https://github.com/jonaburg/picom),
-  I use `jonaburg_picom.conf`. If you want to use jonaburg-picom use that.*
-- If you don't see the `wifi` widget show up, change line `364` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/config.py)
-  to your network interface.
-- *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
-  `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
-- *The installation of `wpgtk` and `pywal` is not yet included in the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script. However, the modifications, required to use it are present in the `qtile config`, and the `wal-set` script is 
-  placed under `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:*
+- (Optional) Using `wpgtk` and `pywal`. The modifications, required to use them are present in the `qtile config`, and the `wal-set` script is 
+  placed under `qtile/Scripts` directory. To use it with my dotfiles, follow these steps:
   ```
   # Install wpgtk from the AUR, I use 'yay', you can use any AUR-Helper you like
   $ yay -S wpgtk
@@ -71,12 +59,24 @@ under the `Arch-Setup-Scripts` directory and the script ,before running the scri
   To apply the gtk and icon theme, use `lxappearance` (or any other application that you like), for choosing the theme, whose name will be displayed, 
   when you run the command `$ wpg-install.sh -gi`. Now, this should setup everything, and whenever you run the `wal-set` script, the theme will reflect 
   everywhere. I do not use this scheme for neovim, since the generated schemes do not look that great in it. You can use it, by installing a [plugin](https://github.com/deviantfero/wpgtk.vim).
+  
+*Note:* 
+- *The Setup Install Script places the config files in their respective directories and installs the dependencies. Please read the ```README.md``` file placed
+under the `Arch-Setup-Scripts` directory and the script ,before running the script. You can just get the script using curl (see 
+[Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)), it will clone this repo and do the needfull.*
+- *The Arch Install Script adds a user, partitions the disk, does a base Arch Installation etc. (see [Arch-Setup-Scripts/README.md](https://github.com/Ruturajn/Dotfiles/tree/main/Arch-Setup-Scripts)).*
+- *The `picom.conf` file here, is to be used with the original picom. For [Jonaburg's Fork of picom](https://github.com/jonaburg/picom),
+  I use `jonaburg_picom.conf`. If you want to use jonaburg-picom use that.*
+- If you don't see the `wifi` widget show up, change line `364` in [qtile/config.py](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/config.py)
+  to your network interface.
+- *To use the [bright_control](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/bright_control) script, the user will need to be a part of the 
+  `video` group. This can be done by : `$ sudo usermod -aG video $USER`.*
 
 If you are using the [Arch_Setup_Install.sh](https://github.com/Ruturajn/Dotfiles/blob/main/Arch-Setup-Scripts/Arch_Setup_Install.sh) script all of 
 these things mentioned about editing files, picom configs (It will also ask you which fork of picom you require and place the default config
-from that fork in `~/.config/picom/picom.conf`), and adding your user to the groups will be taken care of by the script. The script will also
-backup your `$HOME/.config` directory before making any changes, so you will not loose any data. Check the links from the **Theme** section, in the 
-[Setup Details](#setup-details) section if you have any issues while installing `wpgtk` or `pywal`.
+from that fork in `~/.config/picom/picom.conf`), adding your user to the groups and giving you the choice to choose `pywal` with `wpgtk` will
+be taken care of by the script. It will also backup your `$HOME/.config` directory before making any changes, so you will not loose any data.
+Check the links from the **Theme** section, in the [Setup Details](#setup-details) section if you have any issues while installing `wpgtk` or `pywal`.
 
 <br />
 
