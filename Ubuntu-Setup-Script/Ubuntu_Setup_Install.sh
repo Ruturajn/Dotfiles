@@ -260,7 +260,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
-	echo "alacritty -e ~/.config/qtile/Scripts/first_startup" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "alacritty -e ~/.config/qtile/Scripts/first_startup &" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 	# sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/Keybindings.py
 	# sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
