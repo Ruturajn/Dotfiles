@@ -222,6 +222,21 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	meson setup build
 	meson install -C build
 
+	echo -e "${BYellow}[ * ]Installing pywal from source${End_Colour}"
+	cd "${HOME}"/Git-Repos || exit
+	sudo apt install imagemagick procps
+	git clone https://github.com/dylanaraps/pywal
+	cd pywal || exit
+	sudo pip3 install .
+
+	echo -e "${BYellow}[ * ]Installing wpgtk from source${End_Colour}"
+	cd "${HOME}"/Git-Repos || exit
+	sudo apt install gtk2-engines-murrine
+	sudo pip3 install pillow
+	git clone https://github.com/deviantfero/wpgtk
+	cd wpgtk || exit
+	sudo pip3 install .
+
 	# Clone the Dotfiles Repo and place all the folders in the $(HOME)/.config directory
 	cd "${HOME}"/Git-Repos || exit
 	echo -e "${BYellow}[ * ]Cloning the Dotfiles repo${End_Colour}"
@@ -245,6 +260,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "alacritty -e ~/.config/qtile/Scripts/first_startup" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 	# sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/Keybindings.py
 	# sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
