@@ -60,7 +60,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 
 	# Install the required packages for the Rice
 	echo -e "${BYellow}[ * ]Installing packages${End_Colour}"
-	sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi qtile dunst \
+	sudo pacman -Syyu neofetch htop nitrogen xorg fish rofi dunst \
 		python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
@@ -83,8 +83,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	fi
 
 	# Install stuff with pip
-	echo -e "${BYellow}[ * ]Installing fontawesome and dbus-next for icons and notifications${End_Colour}"
-	sudo pip3 install psutil fontawesome dbus-next
+	# echo -e "${BYellow}[ * ]Installing fontawesome and dbus-next for icons and notifications${End_Colour}"
+	# sudo pip3 install psutil fontawesome dbus-next
 
 	# Install `yay` as the AUR Helper, interact wherever required
 	read -rp "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" aur_ans
@@ -107,16 +107,16 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	"${aur_name}" -Syu
 
 	# Install lsd for the ls command and qtile-extras from desired AUR Helper
-	echo -e "${BYellow}[ * ]Installing lsd and qtile-extras with ${aur_name}${End_Colour}"
-	"${aur_name}" -S lsd qtile-extras-git
+	echo -e "${BYellow}[ * ]Installing lsd, qtile, and qtile-extras with ${aur_name}${End_Colour}"
+	"${aur_name}" -S lsd qtile qtile-extras-git
 
 	# Install the required fonts
 	echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains Mono Font with ${aur_name}${End_Colour}"
 	"${aur_name}" -S nerd-fonts-fantasque-sans-mono ttf-jetbrains-mono
 
 	# Install pipes and cava with yay
-	echo -e "${BYellow}[ * ]Installing pipes.sh, cava and brave-bin with ${aur_name}${End_Colour}"
-	"${aur_name}" -S pipes.sh cava brave-bin
+	echo -e "${BYellow}[ * ]Installing pipes.sh, cava, brave-bin and wpgtk with ${aur_name}${End_Colour}"
+	"${aur_name}" -S pipes.sh cava brave-bin wpgtk
 
 	# Getting pfetch as fetch tool
 	echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
