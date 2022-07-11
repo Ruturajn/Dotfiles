@@ -108,8 +108,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	"${aur_name}" -Syu
 
 	# Install lsd for the ls command and qtile-extras from desired AUR Helper
-	echo -e "${BYellow}[ * ]Installing lsd, qtile, and qtile-extras with ${aur_name}${End_Colour}"
-	"${aur_name}" -S lsd qtile qtile-extras-git
+	echo -e "${BYellow}[ * ]Installing lsd, qtile-git, and qtile-extras with ${aur_name}${End_Colour}"
+	"${aur_name}" -S lsd qtile-git qtile-extras-git
 
 	# Install the required fonts
 	echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains Mono Font with ${aur_name}${End_Colour}"
