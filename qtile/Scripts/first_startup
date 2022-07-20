@@ -20,7 +20,7 @@ elif [[ "${test}" == "2" ]] ; then
     sed -i 's|^nitrogen --restore|# nitrogen --restore\nwal -R|' "${AUTOSTART_PATH}"
     sed -i 's|^end|    cat ~/.config/wpg/sequences\nend|' ~/.config/fish/config.fish
     remove_temp
-    ~/.config/qtile/Scripts/wal-set > /dev/null
+    ~/.config/qtile/Scripts/wal-set &> /dev/null
     wpg-install.sh -gi
 else
     remove_temp
