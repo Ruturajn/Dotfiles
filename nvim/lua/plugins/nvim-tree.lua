@@ -91,8 +91,8 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     auto_open = true,
   },
   update_focused_file = {
-    enable = false,
-    update_cwd = false,
+    enable = true,
+    update_cwd = true,
     update_root = false,
     ignore_list = {},
   },
