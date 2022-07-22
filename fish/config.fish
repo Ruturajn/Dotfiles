@@ -16,6 +16,7 @@ if status is-interactive
     # Adding Aliases
     #alias ll="ls -lah --color=auto"
     alias ll="lsd -lah"
+    alias sudo!!="history | head -n1 | sed 's|^|sudo |'; fish -c (history | head -n1 | sed 's|^|sudo |')"
     
     #set -U fish_color_param blue
     set fish_greeting
