@@ -64,7 +64,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		python-dbus linux-headers base base-devel p7zip unzip tar python-pip \
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
-		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession lxappearance
+		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession lxappearance \
+		ttf-joypixels yad gnome-disk-utility
 
 	# Adding a swapfile
 	read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
@@ -85,7 +86,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# Install stuff with pip
 	# echo -e "${BYellow}[ * ]Installing fontawesome and dbus-next for icons and notifications${End_Colour}"
 	echo -e "${BYellow}[ * ]Installing fontawesome${End_Colour}"
-	sudo pip3 install fontawesome 
+	sudo pip3 install fontawesome
 
 	# Install `yay` as the AUR Helper, interact wherever required
 	read -rp "[1;34m[ * ]Do you want to install yay as the AUR Helper? [Y/n]:[0m" aur_ans
