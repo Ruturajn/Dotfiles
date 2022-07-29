@@ -56,4 +56,7 @@ Plug 'tpope/vim-commentary'
 --> Git support Plugin
 Plug 'tpope/vim-fugitive'
 
+--> Telescope Plugin - Fuzzy file finder
+Plug ('nvim-telescope/telescope.nvim', {['tag'] = '0.1.0'})
+
 vim.call('plug#end')
