@@ -65,7 +65,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
 		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession lxappearance \
-		ttf-joypixels yad gnome-disk-utility
+		ttf-joypixels yad gnome-disk-utility ripgrep
 
 	# Adding a swapfile
 	read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
