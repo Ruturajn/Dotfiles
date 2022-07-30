@@ -30,7 +30,7 @@ from libqtile import layout, hook, bar
 #from libqtile import widget
 from qtile_extras import widget
 from qtile_extras.bar import Bar
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras.widget.decorations import RectDecoration, BorderDecoration
@@ -122,6 +122,11 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+groups.append(ScratchPad('scratchpad', [
+    DropDown('calendar', 'yad --calendar', x=0.015, width=0.2, height=0.2, opacity=1)
+    ]
+))
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -130,12 +135,12 @@ screens = [
                 widget.CurrentLayoutIcon(),
                 widget.CurrentLayout(**decor_layout, foreground=foreground_colour),
                 widget.Clock(format=fa.icons["calendar"] + " %d-%m-%y %a",
-                             background="#00000000", foreground=foreground_colour, **decor_Day),
+                    background="#00000000", foreground=foreground_colour, **decor_Day, mouse_callbacks={"Button1" : lazy.group['scratchpad'].dropdown_toggle('calendar')}),
                 widget.Clock(format=" %I:%M:%S %p",
                              background="#00000000", foreground=foreground_colour, **decor_Date),
                 # widget.Net(interface="wlp2s0", background="#00000000", foreground=foreground_colour,
                 #            format=fa.icons["wifi"]+" {up}", **decor_Wifi),
-                widget.Net(interface="wlo1", background="#00000000", foreground=foreground_colour,
+                widget.Net(interface="enp0s3", background="#00000000", foreground=foreground_colour,
                            format=fa.icons["wifi"]+" {up}", **decor_Wifi),
                 widget.Spacer(length=bar.STRETCH),
                 widget.GroupBox(highlight_method="line", highlight_color="#00000000", foreground=foreground_colour,
@@ -143,6 +148,8 @@ screens = [
                                 borderwidth=4),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Prompt(**decor_ram),
+                widget.CheckUpdates(background="#00000000", foreground="#FF0000",
+                                    colour_have_updates="#000000", colour_no_updates="#000000", **decor_ram),
                 widget.Systray(background="#00000000", icon_size=20),
                 widget.Memory(background="#00000000", foreground=foreground_colour,
                               measure_mem='G', format=fa.icons["server"] + "{MemUsed: .2f} GB", **decor_ram),
@@ -191,7 +198,9 @@ floating_layout = layout.Floating(
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
+        Match(title="pinentry"), # GPG key password entry
+        Match(wm_class="gnome-disks"), # Gnome Disk Utility
+        Match(wm_class="yad"),
     ]
 )
 auto_fullscreen = True
