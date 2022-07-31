@@ -56,6 +56,10 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.run([home])
 
+@hook.subscribe.startup_once
+def start_dex():
+    subprocess.run(["/usr/bin/dex", "-a"])
+
 #groups = [Group(i) for i in "123456789"]
 
 groups = [
