@@ -38,9 +38,9 @@ sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 5/g" /etc/pacman.conf
 tput setaf 5
 lsblk
 tput setaf 7
-read -rp "[1;34mEnter the disk that needs to be paritioned (/dev/sdX) :[0m" disk_name
+read -rp "[1;34mEnter the disk that needs to be partitioned (/dev/sdX) :[0m" disk_name
 if [[ -z ${disk_name} ]]; then
-	echo -e "${BRed}[ * ]FATAL : No disk provided to be paritioned, cannot proceed !${End_Colour}"
+	echo -e "${BRed}[ * ]FATAL : No disk provided to be partitioned, cannot proceed !${End_Colour}"
 	exit
 fi
 
@@ -75,23 +75,23 @@ sgdisk -n 2::+4G -t 2:8200 "${disk_name}"
 sgdisk -n 3::: -t 3:8300 "${disk_name}"
 
 # Making file-systems on each partition
-echo -e "${BYellow}[ * ]Writing paritions with filesystems${End_Colour}"
+echo -e "${BYellow}[ * ]Writing partitions with filesystems${End_Colour}"
 echo ""
-echo -e "${BYellow}[ * ]Making the root parition as ext4${End_Colour}"
+echo -e "${BYellow}[ * ]Making the root partition as ext4${End_Colour}"
 mkfs.ext4 "${disk_name}3"
-echo -e "${BYellow}[ * ]Making the swap parition${End_Colour}"
+echo -e "${BYellow}[ * ]Making the swap partition${End_Colour}"
 mkswap "${disk_name}2"
-echo -e "${BYellow}[ * ]Making the boot parition as fat32${End_Colour}"
+echo -e "${BYellow}[ * ]Making the boot partition as fat32${End_Colour}"
 mkfs.fat -F 32 "${disk_name}1"
 
-# Mounting the paritions
-echo -e "${BYellow}[ * ]Mounting the paritions"
+# Mounting the partitions
+echo -e "${BYellow}[ * ]Mounting the partitions"
 mount "${disk_name}3" /mnt
 mkdir /mnt/boot
 mount "${disk_name}1" /mnt/boot
 
-# Activate the swap parition
-echo -e "${BYellow}[ * ]Activating the swap parition${End_Colour}"
+# Activate the swap partition
+echo -e "${BYellow}[ * ]Activating the swap partition${End_Colour}"
 swapon "${disk_name}2"
 
 # Installing base packages with pacstrap
