@@ -6,6 +6,7 @@ from qtile_extras import widget
 from qtile_extras.bar import Bar
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from libqtile.command import lazy
 from qtile_extras.widget.decorations import RectDecoration, BorderDecoration
 
 import os
@@ -64,6 +65,8 @@ def show_power_menu(qtile):
         ),
         PopupText(
             text="Log Out",
+            font="JetBrains Mono",
+            fontsize=15,
             pos_x=0.085,
             pos_y=0.7,
             width=0.2,
@@ -72,6 +75,8 @@ def show_power_menu(qtile):
         ),
         PopupText(
             text="Shutdown",
+            font="JetBrains Mono",
+            fontsize=15,
             pos_x=0.4,
             pos_y=0.7,
             width=0.2,
@@ -80,6 +85,8 @@ def show_power_menu(qtile):
         ),
         PopupText(
             text="Reboot",
+            font="JetBrains Mono",
+            fontsize=15,
             pos_x=0.7,
             pos_y=0.7,
             width=0.2,
