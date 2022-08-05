@@ -3,7 +3,7 @@
 
 # Get all the Wifi Networks Available
 ntw=$(nmcli --fields "SSID" device wifi list |
-	sed 1d | uniq -u | sed 's/^/ /g' | 
+	sed 1d | uniq | sed 's/^/ /g' | 
 	rofi -dmenu -p "Wifi" -i -l 5 -width 20 \
     -theme-str 'window {width: 20%;}' \
     -theme-str 'listview {columns: 1;}' \
