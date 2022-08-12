@@ -6,6 +6,7 @@ from qtile_extras import widget
 from qtile_extras.bar import Bar
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from libqtile.command import lazy
 from qtile_extras.widget.decorations import RectDecoration, BorderDecoration
 
 import os

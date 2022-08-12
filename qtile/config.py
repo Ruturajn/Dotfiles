@@ -101,19 +101,19 @@ for i in groups:
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Bsp(margin=8, border_focus="#533a7b", fair=False, border_on_single=True),
+    layout.Bsp(margin=8, border_focus=color_theme[0], fair=False, border_on_single=True),
     layout.Columns(border_focus_stack=[
-                   "#533a7b", "#533a7b"], border_width=3, margin=8, border_focus="#533a7b"),
-    layout.Max(),
+                   color_theme[0], color_theme[0]], border_width=3, margin=8, border_focus=color_theme[0]),
+    layout.Max(border_focus=color_theme[0]),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
-    layout.Floating(),
+    layout.MonadTall(border_focus=color_theme[0]),
+    layout.Floating(border_focus=color_theme[0]),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    layout.Tile(),
+    layout.Tile(border_focus=color_theme[0]),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -127,7 +127,7 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 groups.append(ScratchPad('scratchpad', [
-    DropDown('calendar', 'yad --calendar', x=0.015, width=0.2, height=0.2, opacity=1)
+    DropDown('calendar', 'yad --no-buttons --calendar', x=0.015, y=0.01, width=0.2, height=0.2, opacity=1)
     ]
 ))
 
@@ -204,8 +204,9 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"), # GPG key password entry
         Match(wm_class="gnome-disks"), # Gnome Disk Utility
-        Match(wm_class="yad"),
-    ]
+        Match(wm_class="yad"), #YAD
+    ],
+    border_focus=color_theme[0]
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

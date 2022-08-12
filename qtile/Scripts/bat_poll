@@ -4,7 +4,12 @@
 # This script polls the battery status and prints out the
 # the corresponding icon according the battery charge status.
 
-battery_status=$(acpi | sed 's/^.*ing, //' | sed 's/\%.*//')
+# The path where battery info is stored on the system
+BASE_PATH="/sys/class/power_supply/"
+
+bat_var=$(ls "${BASE_PATH}" | grep "BAT")
+battery_status=$(cat "${BASE_PATH}${bat_var}"/capacity)
+# battery_status=$(acpi | sed 's/^.*ing, //' | sed 's/\%.*//')
 
 if [[ "${battery_status}" -ge 95 ]] ; then
     bat_icon=""
@@ -18,9 +23,14 @@ else
     bat_icon=""
 fi
 
-charge_status=$(acpi | awk '{print $3}' | sed 's/\,//')
+ac_var=$(ls "${BASE_PATH}" | grep "AC")
+charge_status=$(cat "${BASE_PATH}${ac_var}"/online)
+# charge_status=$(acpi | awk '{print $3}' | sed 's/\,//')
 
-if [[ "${charge_status}" == "Charging" ]] ; then
+# if [[ "${charge_status}" == "Charging" ]] ; then
+#     bat_icon+=""
+# fi
+if [[ "${charge_status}" == "1" ]] ; then
     bat_icon+=""
 fi
 
