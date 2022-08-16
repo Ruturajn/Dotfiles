@@ -8,7 +8,7 @@
     red:                         #f15d22;
     orange:                      #faa41a; 
     blue:                        #48b9c7;
-    pywal-color:                 #75867A;
+    pywal-color:                 #ABE9B3;
     black-foreground:            #000000;
 
     selected-normal-foreground:  @foreground;

@@ -6,7 +6,7 @@ if status is-interactive
     pfetch
     
     # Adding the Path for ST-Development Folder
-    set -gx fish_user_paths ~/.local/bin/ 
+    set -gx fish_user_paths ~/.local/bin/ ~/.cargo/bin 
     set -gx LD_LIBRARY_PATH /usr/local/lib
     
     # Adding the Path for ST-Development Folder in the bashrc format
@@ -16,10 +16,19 @@ if status is-interactive
     # Adding Aliases
     #alias ll="ls -lah --color=auto"
     alias ll="lsd -lah"
+    alias sudo!!="history | head -n1 | sed 's|^|sudo |'; fish -c (history | head -n1 | sed 's|^|sudo |')"
+    alias lf="~/.config/lf/wrapper.sh"
     
     #set -U fish_color_param blue
     set fish_greeting
     
     # Starting the starship prompt
-    #starship init fish | source
+    # starship init fish | source
+
+    if test -e ~/.config/wpg/sequences
+        cat ~/.config/wpg/sequences
+    end
+
+    # Set Environment variable for qt5
+    set -gx QT_QPA_PLATFORMTHEME "qt5ct"
 end
