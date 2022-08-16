@@ -52,6 +52,9 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 -- map('n', '<leader>ff', '<Cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
 map('n', '<leader>ff', '<Cmd>Telescope find_files<CR>', opts)
 map('n', '<leader>lg', '<Cmd>Telescope live_grep<CR>', opts)
+map('n', '<leader>of', '<Cmd>Telescope oldfiles<CR>', opts)
+map('n', '<leader>gc', '<Cmd>Telescope git_commits<CR>', opts)
+map('n', '<leader>cs', '<Cmd>Telescope colorscheme<CR>', opts)
 
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)

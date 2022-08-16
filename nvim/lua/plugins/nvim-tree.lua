@@ -91,8 +91,8 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     auto_open = true,
   },
   update_focused_file = {
-    enable = false,
-    update_cwd = false,
+    enable = true,
+    update_cwd = true,
     update_root = false,
     ignore_list = {},
   },
@@ -115,11 +115,11 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     dotfiles = false,
     custom = {},
     exclude = {},
-  },
-  filesystem_watchers = {
-    enable = false,
-    interval = 100,
-  },
+  -- },
+  -- filesystem_watchers = {
+  --   enable = false,
+  --   -- interval = 100,
+  -- },
   git = {
     enable = true,
     ignore = true,
