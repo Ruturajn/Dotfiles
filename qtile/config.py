@@ -168,7 +168,8 @@ screens = [
                                    background="#00000000", foreground=foreground_colour, **decor_RPM),
                 widget.GenPollText(update_interval=600, func=lambda: " {}°C".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/cpu_temp_text")).decode("utf-8")),
                                    background="#00000000", foreground=foreground_colour, **decor_Temp),
-                widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.function(show_power_menu)}),
+                # widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.function(show_power_menu)}),
+                widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.spawn((os.path.expanduser("~/.config/qtile/Scripts/power_menu")))}),
             ],
             27,
             border_width=[0, 0, 0, 0],  # Draw top and bottom borders

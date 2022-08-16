@@ -259,8 +259,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	esac
 
 	echo -e "${BYellow}[ * ]Changing the picom executable call in autostart.sh${End_Colour}"
-	read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
-	if [[ -z ${vm_ans} || ${vm_ans} == "y" || ${vm_ans} == "Y" ]]; then
+	if [[ $(systemd-detect-virt) ]]; then
 		sed -i 's|picom.*|picom --no-vsync \&|' "${HOME}"/.config/qtile/autostart.sh
 		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty/alacritty.yml
 	fi
@@ -300,6 +299,12 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	else
 		echo -e "${BRed}Not a valid option, Skipping Shell change${End_Colour}"
 	fi
+
+	echo -e "[ * ]Placing lf in ~/.config${End_Colour}"
+	cp -r ./lf "${HOME}"/.config/
+
+	echo -e "[ * ]Placing betterlockscreen config file in ~/.config${End_Colour}"
+	cp ./betterlockscreenrc "${HOME}"/.config/
 
 	# # Enable lightdm service with the following steps
 	# read -rp "[1;34m[ * ]Do you want to install the lightdm login manager?[Y/n]:[0m" lightdm_ans
