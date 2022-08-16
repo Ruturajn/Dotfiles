@@ -219,7 +219,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		# rustup component add rust-src
 		# nvim +'LspInstall --sync rust_analyzer' +qa
 
-		sudo pacman -s lua-language-server pyright rust-analyzer
+		sudo pacman -S lua-language-server pyright rust-analyzer
 		;;
 	esac
 
