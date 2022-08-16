@@ -1,6 +1,6 @@
 # Dotfiles
 
-***Now, a custom Arch-Based Distro/ISO is available for this Rice @ https://gitlab.com/ruturajn/RnOS_ISO***. Do check it out.
+***Now, a custom Arch-Based Distro/ISO is available for this Rice @ https://gitlab.com/ruturajn/RnOS_ISO. Do check it out.***
 
 My Config Files for starship, qtile, rofi, fish, etc. I have a three bash scripts in this repo, two of those are for installing this setup
 and for a base Arch-Linux Install respectively, present in the `Arch-Setup-Scripts` directory. The other one is for setting up this rice on Ubuntu,
