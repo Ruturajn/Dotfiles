@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+
+# This script sends a notification whenever, the volume is changed.
+
 if [[ $1 == "up" ]]; then
     pamixer -i 2 && dunstify -a "Mute_Volume" -r "9991" \
     -h int:value:"$(pamixer --get-volume)" -i "icons8-audio-50" "Vol:$(pamixer --get-volume)" -t 2000

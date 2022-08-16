@@ -17,3 +17,5 @@ pulseaudio --start
 
 # Start polkit authentication agent
 lxpolkit &
+
+~/.config/qtile/Scripts/get_ip.sh &
