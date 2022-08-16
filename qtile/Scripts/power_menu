@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Author : Ruturajn <nanotiruturaj@gmail.com>
+
+# This script is a powermenu, that utilizes `rofi`.
+
+# Catch errors if any while running the script.
+set -eou pipefail
+
+# List the operations to perform
+Shutdown=""
+Reboot=""
+Lock=""
+Logout=""
+
+# Get the uptime
+uptime_var=$(uptime -p | sed 's|^up ||')
+
+# Call rofi
+selected_var=$(printf "${Shutdown}\n${Reboot}\n${Logout}\n${Lock}" | rofi -dmenu -i -p "Uptime :: ${uptime_var}" -l 5 \
+	-theme-str 'window {width: 30%;}' \
+	-theme-str 'listview {lines: 1;}' \
+	-theme-str 'listview {layout: horizontal;}' \
+	-theme-str 'listview {spacing: 4.2%;}' \
+	-theme-str 'textbox-prompt-colon {str : "";}' \
+	-theme-str 'inputbar { children:   [ prompt,textbox-prompt-colon];}' \
+	-theme-str 'element-text {font: "Feather 52";}' \
+	-theme-str 'configuration {show-icons: false;}' \
+	-theme-str 'configuration {font: "Jet Brains Mono Nerd Font Mono Regular 14";}')
+
+echo "${selected_var}"
+
+# Check $selected_var
+if [[ -z "${selected_var}" ]]; then
+	exit 0
+fi
+
+get_confirmation() {
+	exit_ans=$(printf "Yes\nNo" | rofi -dmenu -i -p "Please Confirm" \
+		-theme-str 'window {width: 20%;}' \
+		-theme-str 'listview {lines: 1;}' \
+		-theme-str 'configuration {font: "Jet Brains Mono Nerd Font Mono Regular 14";}')
+}
+
+# Perform various actions based on the user choice.
+# Get confirmation for `reboot`, `shutdown` and `logout`.
+if [[ "${selected_var}" == "${Shutdown}" ]]; then
+	get_confirmation
+	if [[ "${exit_ans}" == "Yes" ]]; then
+		poweroff
+	else
+		exit 0
+	fi
+elif [[ "${selected_var}" == "${Reboot}" ]]; then
+	get_confirmation
+	if [[ "${exit_ans}" == "Yes" ]]; then
+		reboot
+	else
+		exit 0
+	fi
+elif [[ "${selected_var}" == "${Logout}" ]]; then
+	get_confirmation
+	if [[ "${exit_ans}" == "Yes" ]]; then
+		qtile cmd-obj -o cmd -f shutdown
+	else
+		exit 0
+	fi
+elif [[ "${selected_var}" == "${Lock}" ]]; then
+	betterlockscreen -l blur
+else
+	echo "Something went Wrong!!"
+	exit 1
+fi

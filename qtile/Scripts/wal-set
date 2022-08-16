@@ -14,7 +14,7 @@ WALLPAPER_PATH="/home/$(whoami)/Git-Repos/Dotfiles/Wallpapers/"
 # Get a list of wallpapers, from the WALLPAPER_PATH, and add a picutre glyph at the
 # beginning of the line. Finally, pass the list to rofi.
 selected_wal=$(find "${WALLPAPER_PATH}" -name "*" | rev | cut -d / -f 1 | rev | sed 1d | sort |
-    sed 's|^| |' | rofi -dmenu -i -p "Wal" -l 5 \
+	sed 's|^| |' | rofi -dmenu -i -p "Wal" -l 5 \
 	-theme-str 'window {width: 20%;}' \
 	-theme-str 'listview {columns: 1;}' \
 	-theme-str 'configuration {show-icons: false;}' \
@@ -29,8 +29,8 @@ fi
 selected_wal=$(echo "${selected_wal}" | sed 's|^. ||')
 
 # If previous colorschemes exit, remove them.
-if [[ "$(ls -A ~/.config/wpg/schemes)" ]] ; then
-    rm ~/.config/wpg/schemes/* || exit
+if [[ "$(ls -A ~/.config/wpg/schemes)" ]]; then
+	rm ~/.config/wpg/schemes/* || exit
 fi
 
 # Add the selected wallpaper to wpg.
@@ -39,7 +39,7 @@ wpg -a "${WALLPAPER_PATH}${selected_wal}"
 # Set the wallpaper, and generate the colorscheme.
 wpg -s "${selected_wal}"
 
-# Change rofi, colors, by pikcing a color from the colorscheme, and changing the rofi theme config.
+# Change rofi, colors, by picking a color from the colorscheme, and changing the rofi theme config.
 wal_color=$(cat ~/.config/wpg/schemes/* | grep "color10" | xargs | awk '{print $2}' | sed 's|\,||')
 sed -i "s|pywal-color:.*|pywal-color:                 $wal_color;|" ~/.config/rofi/themes/my_theme.rasi
 
@@ -50,11 +50,16 @@ killall -q dunst &
 # Change colors for cava (REQUIRES MANUAL RELOAD of CAVA)
 wal_colors_list=$(cat ~/.config/wpg/schemes/* | grep "color" | sed 1d | sed 's|^        ||' | awk '{print $2}' | sed 's|,||')
 wal_colors_list=($wal_colors_list)
-for i in {1..8} ; do
-    search_exp="gradient_color_${i}"
-    replace_exp="gradient_color_${i} = ${wal_colors_list[i]}"
-    sed -i "s|^$search_exp.*|$replace_exp|" ~/.config/cava/config
+for i in {1..8}; do
+	search_exp="gradient_color_${i}"
+	replace_exp="gradient_color_${i} = ${wal_colors_list[i]}"
+	sed -i "s|^$search_exp.*|$replace_exp|" ~/.config/cava/config
 done
 
 # Finally, reload qtile.
 qtile cmd-obj -o cmd -f reload_config
+
+# Update Betterlockscreen cache
+dunstify -i "icons8-info-48" -t 2000 "Updating Betterlockscreen Cache"
+betterlockscreen -u "${WALLPAPER_PATH}${selected_wal}"
+dunstify -i "icons8-info-48" -t 2000 "Betterlockscreen Cache Updated"

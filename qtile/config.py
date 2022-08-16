@@ -59,6 +59,8 @@ def autostart():
 @hook.subscribe.startup_once
 def start_dex():
     subprocess.run(["/usr/bin/dex", "-a"])
+    # Start udiskie for automounting.
+    subprocess.Popen(["/usr/bin/udiskie"])
 
 #groups = [Group(i) for i in "123456789"]
 
@@ -160,13 +162,14 @@ screens = [
                 # Can also use fa.icons["microchip"], fa.icons["chart-bar"]
                 # widget.CPU(format=fa.icons["microchip"]+" {freq_current}GHz {load_percent}%",**decor_wallpaper),
                 widget.CPU(format=fa.icons["microchip"]+" {load_percent}%", foreground=foreground_colour, **decor_CPU),
-                widget.GenPollText(update_interval=1, func=lambda: "{}%".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/bat_poll")).decode("utf-8")),
+                widget.GenPollText(update_interval=60, func=lambda: "{}%".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/bat_poll")).decode("utf-8")),
                                    background="#00000000", foreground=foreground_colour, **decor_battery),
                 widget.GenPollText(update_interval=600, func=lambda: " {} RPM".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/fan_speed_text")).decode("utf-8")),
                                    background="#00000000", foreground=foreground_colour, **decor_RPM),
                 widget.GenPollText(update_interval=600, func=lambda: " {}°C".format(subprocess.check_output(os.path.expanduser("~/.config/qtile/Scripts/cpu_temp_text")).decode("utf-8")),
                                    background="#00000000", foreground=foreground_colour, **decor_Temp),
-                widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.function(show_power_menu)}),
+                # widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.function(show_power_menu)}),
+                widget.TextBox("", background="#00000000",foreground=foreground_colour_icon, fontsize=20, mouse_callbacks={"Button1" : lazy.spawn((os.path.expanduser("~/.config/qtile/Scripts/power_menu")))}),
             ],
             27,
             border_width=[0, 0, 0, 0],  # Draw top and bottom borders
