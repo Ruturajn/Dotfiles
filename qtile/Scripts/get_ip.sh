@@ -29,4 +29,7 @@ dunstify -i "icons8-info-48" -t 2000 "Updating Betterlockscreen Cache"
 betterlockscreen -u /usr/share/Wallpapers/Mountains.jpg
 dunstify -i "icons8-info-48" -t 2000 "Betterlockscreen Cache Updated"
 
+# Call the first_startup script
+alacritty -e ~/.config/qtile/Scripts/first_startup &
+
 echo "Task Completed Successfully" | tee -a ~/.cache/get_ip.log
