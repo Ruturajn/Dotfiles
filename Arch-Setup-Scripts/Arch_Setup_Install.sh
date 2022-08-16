@@ -65,7 +65,9 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		papirus-icon-theme cmatrix pamixer feh alsa-utils pavucontrol alacritty \
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
 		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession lxappearance \
-		ttf-joypixels yad gnome-disk-utility ripgrep
+		ttf-joypixels yad gnome-disk-utility ripgrep udiskie xclip dex starship \
+		ttf-joypixels python-neovim python2 bat ueberzug ffmpegthumbnailer libjpeg \
+		libpng ncdu tree xsel fd
 
 	# Adding a swapfile
 	read -rp "[1;34m[ * ]Do you want to create a swapfile [Y/n]:[0m" ans
@@ -116,9 +118,13 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font and JetBrains Mono Font with ${aur_name}${End_Colour}"
 	"${aur_name}" -S nerd-fonts-fantasque-sans-mono ttf-jetbrains-mono
 
-	# Install pipes and cava with yay
+	# Install pipes,cava, and brave-bin with yay
 	echo -e "${BYellow}[ * ]Installing pipes.sh, cava, brave-bin and wpgtk with ${aur_name}${End_Colour}"
 	"${aur_name}" -S pipes.sh cava brave-bin wpgtk
+
+	# Install some other packages with yay
+	echo -e "${BYellow}[ * ]Installing some other misc. packages with ${aur_name}${End_Colour}"
+	"${aur_name}" -S lf i3lock-color betterlockscreen tty-clock-git cbonsai
 
 	# Getting pfetch as fetch tool
 	echo -e "${BYellow}[ * ]Installing pfetch as the fetch tool${End_Colour}"
@@ -203,15 +209,17 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		nvim +'PlugInstall --sync' +qa
 
 		# Install LSP Servers
-		nvim +'LspInstall --sync pyright' +qa
-		nvim +'LspInstall --sync sumneko_lua' +qa
+		# nvim +'LspInstall --sync pyright' +qa
+		# nvim +'LspInstall --sync sumneko_lua' +qa
 
-		# Install Rust if not installed
-		echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
-		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-		source "${HOME}"/.cargo/env
-		rustup component add rust-src
-		nvim +'LspInstall --sync rust_analyzer' +qa
+		# # Install Rust if not installed
+		# echo -e "${BYellow}[ * ]Installing Latest Rust${End_Colour}"
+		# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+		# source "${HOME}"/.cargo/env
+		# rustup component add rust-src
+		# nvim +'LspInstall --sync rust_analyzer' +qa
+
+		sudo pacman -s lua-language-server pyright rust-analyzer
 		;;
 	esac
 
