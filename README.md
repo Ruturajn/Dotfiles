@@ -1,9 +1,12 @@
 # Dotfiles
+
+***Now, a custom Arch-Based Distro/ISO is available for this Rice @ https://gitlab.com/ruturajn/RnOS_ISO***. Do check it out.
+
 My Config Files for starship, qtile, rofi, fish, etc. I have a three bash scripts in this repo, two of those are for installing this setup
 and for a base Arch-Linux Install respectively, present in the `Arch-Setup-Scripts` directory. The other one is for setting up this rice on Ubuntu,
 which you can find in the `ubuntu` branch.
 
-To use the config on Arch, you will need to do 3 things apart from installing the required packages (If you are not using one of the setup scripts):
+To use the config on Arch, you will need to do a few things apart from installing the required packages (If you are not using one of the setup scripts):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/main/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -11,6 +14,9 @@ To use the config on Arch, you will need to do 3 things apart from installing th
   with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist, due to line `9` in the 
   [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/main/qtile/autostart.sh) script. Also, you will need to make the autostart script executable,
   with `chmod +x <Path-to-autostart.sh>/autostart.sh`.
+- Get the required fonts, i.e. [Material Icons Font](https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf), 
+  [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf), and finally copy all fonts along
+  with the `Feather.ttf` in the `fonts` directory to `~/.fonts`. Then, to update the font cache run `$ fc-cache -fv`.
 - For setting up neovim navigate to this dotfiles repo and follow,
   ```
   $ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -19,15 +25,7 @@ To use the config on Arch, you will need to do 3 things apart from installing th
   $ sudo pacman -S npm nodejs
   $ mkdir -p ~/.config/nvim/plugged
   $ nvim +'PlugInstall --sync' +qa
-  $ nvim +'LspInstall --sync pyright' +qa
-  $ nvim +'LspInstall --sync sumneko_lua' +qa
-  $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-  $ source $HOME/.cargo/env
-  $ rustup component add rust-src
-  $ nvim +'LspInstall --sync rust_analyzer' +qa
-  
-  # Add Language Servers to path, use the command given below, if you are using my fish config
-  $ sed -i 's|set -gx fish_user_paths ~/.local/bin/|set -gx fish_user_paths ~/.local/bin/ ~/.local/share/nvim/lsp_servers/python/node_modules/.bin ~/.local/share/nvim/lsp_servers/rust ~/.cargo/bin ~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin|g' "${HOME}"/.config/fish/config.fish
+  $ sudo pacman -S lua-language-server pyright rust-analyzer
   ```
   whereas, for setting, up vim,
   ```
