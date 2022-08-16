@@ -273,6 +273,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		mkdir "${HOME}"/.fonts
 	fi
 	cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
+	cp -r "${HOME}"/Git-Repos/Dotfiles/fonts/. "${HOME}"/.fonts
 	fc-cache -fv
 
 	echo -e "${BYellow}[ *]Installing JetBrains Mono Nerd Font${End_Colour}"
