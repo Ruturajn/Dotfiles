@@ -100,6 +100,8 @@ Check the links from the **Theme** section, in the [Setup Details](#setup-detail
 
 ## Gallery
 
+<details>
+
 https://user-images.githubusercontent.com/56625259/177325808-e83bf6b4-9f1b-420c-9234-0499991397b8.mp4
 
 ![Arch-Rice-1](https://user-images.githubusercontent.com/56625259/174547792-39bc37b6-37a7-4078-9612-7304c7d0cf2e.png)
@@ -111,6 +113,8 @@ https://user-images.githubusercontent.com/56625259/177325808-e83bf6b4-9f1b-420c-
 ![Arch-Rice-Wifi](https://user-images.githubusercontent.com/56625259/174547884-b01229f9-703c-4e2b-bb6f-0b21c4e6a4b5.png)
 
 ![Arch-Rice-Powermenu](https://user-images.githubusercontent.com/56625259/174547906-0334b18f-71a7-4dc7-a0f4-73a1a8ed0e47.png)
+
+</details>
 
 ## Screenshots (Showing Volume and Brightness Control)
 <details>
@@ -136,3 +140,7 @@ https://user-images.githubusercontent.com/56625259/177325808-e83bf6b4-9f1b-420c-
 <br />
   
 </details>
+
+## Credits
+
+Wallpapers taken from [wallpaperscraft](https://wallpaperscraft.com), and [wallpaperbetter](https://www.wallpaperbetter.com/en/search?q=1920x1080).
