@@ -101,6 +101,7 @@ Check the links from the **Theme** section, in the [Setup Details](#setup-detail
 ## Gallery
 
 <details>
+<summary>Videos and Screenshots</summary>
 
 https://user-images.githubusercontent.com/56625259/177325808-e83bf6b4-9f1b-420c-9234-0499991397b8.mp4
 
