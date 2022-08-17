@@ -58,7 +58,7 @@ def autostart():
 
 @hook.subscribe.startup_once
 def start_dex():
-    subprocess.run(["/usr/bin/dex", "-a"])
+    # subprocess.run(["/usr/bin/dex", "-a"])
     # Start udiskie for automounting.
     subprocess.Popen(["/usr/bin/udiskie"])
 
