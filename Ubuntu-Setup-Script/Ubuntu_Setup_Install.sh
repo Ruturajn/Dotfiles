@@ -70,7 +70,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		nitrogen brightnessctl fonts-font-awesome playerctl python3-pip \
 		build-essential cmake fonts-material-design-icons-iconfont ntfs-3g \
 		ntfs-3g-dev nfs-kernel-server udisks2 papirus-icon-theme acpi lm-sensors \
-		lxpolkit ripgrep tree fd-find dex xsettingsd feh
+		lxpolkit ripgrep tr fd-findee fd-find dex xsettingsd feh udiskie python2 \
+		bat ripgrep fd-find shfmt
 
 	echo -e "${BYellow}[ * ]Installing cxxopts from source${End_Colour}"
 	if [[ ! -d "${HOME}"/Git-Repos ]]; then
@@ -191,29 +192,21 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	sudo add-apt-repository ppa:aslatter/ppa
 	sudo apt install alacritty
 
-	echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font${End_Colour}"
-	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
-	if [[ ! -d "${HOME}"/.fonts ]]; then
-		mkdir "${HOME}"/.fonts
-	fi
-	cp "Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
-	fc-cache -fv
+	# echo -e "${BYellow}[ * ]Installing JetBrains Mono Nerd Font${End_Colour}"
+	# wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
+	# cp "JetBrains Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
+	# fc-cache -fv
 
-	echo -e "${BYellow}[ * ]Installing JetBrains Mono Nerd Font${End_Colour}"
-	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
-	cp "JetBrains Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
-	fc-cache -fv
+	# echo -e "${BYellow}[ * ]Installing JetBrains Mono Font${End_Colour}"
+	# wget "https://github.com/JetBrains/JetBrainsMono/raw/master/fonts/ttf/JetBrainsMono-Regular.ttf"
+	# cp JetBrainsMono-Regular.ttf ~/.fonts/
+	# fc-cache -fv
 
-	echo -e "${BYellow}[ * ]Installing JetBrains Mono Font${End_Colour}"
-	wget "https://github.com/JetBrains/JetBrainsMono/raw/master/fonts/ttf/JetBrainsMono-Regular.ttf"
-	cp JetBrainsMono-Regular.ttf ~/.fonts/
-	fc-cache -fv
-
-	# Installing material design icon font
-	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
-	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
-	cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
-	fc-cache -fv
+	# # Installing material design icon font
+	# echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
+	# wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
+	# cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
+	# fc-cache -fv
 
 	echo -e "${BYellow}[ * ]Installing pamixer from source${End_Colour}"
 	cd "${HOME}"/Git-Repos || exit
@@ -236,6 +229,35 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	git clone https://github.com/deviantfero/wpgtk
 	cd wpgtk || exit
 	sudo pip3 install .
+
+	echo -e "${BYellow}[ * ]Installing i3lock-color from source${End_Colour}"
+	cd "${HOME}"/Git-Repos || exit
+	sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev \
+		libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev \
+		libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev \
+		libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
+	git clone https://github.com/Raymo111/i3lock-color.git
+	cd ./i3lock-color || exit
+	./build.sh
+	./install-i3lock-color.sh
+
+	echo -e "${BYellow}[ * ]Installing betterlockscreen from source${End_Colour}"
+	cd "${HOME}"/Git-Repos || exit
+	git clone https://github.com/betterlockscreen/betterlockscreen.git
+	cd ./betterlockscreen || exit
+	chmod +x betterlockscreen
+	sudo cp betterlockscreen /usr/local/bin/
+	cp system/betterlockscreen@.service /usr/lib/systemd/system/
+	systemctl enable --user betterlockscreen@$USER
+
+	echo -e "${BYellow}[ * ]Installing lf from source${End_Colour}"
+	cd "${HOME}"/Git-Repos || exit
+	wget https://github.com/gokcehan/lf/releases/download/r27/lf-linux-amd64.tar.gz
+	sudo cp ./lf-linux-amd64/lf /usr/local/bin/
+
+	echo -e "${BYellow}[ * ]Installing ueberzug using pip${End_Colour}"
+	cd "${HOME}"/Git-Repos || exit
+	sudo pip3 install ueberzug
 
 	# Clone the Dotfiles Repo and place all the folders in the $(HOME)/.config directory
 	cd "${HOME}"/Git-Repos || exit
@@ -260,7 +282,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Placing qtile/config.py and qtile/autostart.sh folder in ~/.config/qtile  and making autostart.sh executable${End_Colour}"
 	cp -r ./qtile "${HOME}"/.config/
 	echo "nitrogen --set-scaled ${HOME}/Git-Repos/Dotfiles/Wallpapers/Mountains.jpg --save" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
-	echo "alacritty -e ~/.config/qtile/Scripts/first_startup &" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
+	echo "~/.config/qtile/Scripts/get_ip.sh &" | sudo tee -a "${HOME}"/.config/qtile/autostart.sh
 	chmod +x "${HOME}"/.config/qtile/autostart.sh
 	# sed -i 's/browser \= "brave"/browser \= "brave-browser"/' "${HOME}"/.config/qtile/Keybindings.py
 	# sed -i 's/file_manager \= "nemo"/file_manager \= "nautilus"/' "${HOME}"/.config/qtile/Keybindings.py
@@ -441,6 +463,19 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	else
 		echo -e "${BRed}Not a valid option, Skipping Shell change${End_Colour}"
 	fi
+
+	echo -e "${BYellow}[ * ]Placing lf config files in ~/.config${End_Colour}"
+	cp -r ./lf "${HOME}"/.config/.
+
+	echo -e "${BYellow}[ * ]Placing betterlockscreen config in ~/.config${End_Colour}"
+	cp ./betterlockscreenrc "${HOME}"/.config/.
+
+	echo -e "${BYellow}[ * ]Installing Fantasque Sans Mono Nerd Font${End_Colour}"
+	if [[ ! -d "${HOME}"/.fonts ]]; then
+		mkdir "${HOME}"/.fonts
+	fi
+	cp -r ./fonts/. "${HOME}"/.fonts
+	fc-cache -fv
 
 	echo -e "${BYellow}[ * ]Enabling pulseaudio at startup${End_Colour}"
 	systemctl --user enable pulseaudio

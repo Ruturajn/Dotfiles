@@ -26,7 +26,7 @@ done
 
 # Update betterlockscreen cache
 dunstify -i "icons8-info-48" -t 2000 "Updating Betterlockscreen Cache"
-betterlockscreen -u /usr/share/Wallpapers/Mountains.jpg
+betterlockscreen -u ~/Git-Repos/Dotfiles/Wallpapers/Mountains.jpg
 dunstify -i "icons8-info-48" -t 2000 "Betterlockscreen Cache Updated"
 
 # Call the first_startup script
