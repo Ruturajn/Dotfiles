@@ -434,8 +434,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	esac
 
 	echo -e "${BYellow}[ * ]Changing the path for picom executable in autostart.sh${End_Colour}"
-	read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
-	if [[ -z ${vm_ans} || ${vm_ans} == "y" || ${vm_ans} == "Y" ]]; then
+	# read -rp "[1;34m[ * ]Are you Installing this on a VM?[Y/n]:" vm_ans
+	if [[ $(systemd-detect-virt) ]]; then
 		sed -i 's|picom.*|/usr/local/picom/bin/picom --no-vsync \&|' "${HOME}"/.config/qtile/autostart.sh
 		sed -i 's/size\: 10/size\: 14/' "${HOME}"/.config/alacritty/alacritty.yml
 	else
