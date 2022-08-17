@@ -253,7 +253,8 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	echo -e "${BYellow}[ * ]Installing lf from source${End_Colour}"
 	cd "${HOME}"/Git-Repos || exit
 	wget https://github.com/gokcehan/lf/releases/download/r27/lf-linux-amd64.tar.gz
-	sudo cp ./lf-linux-amd64/lf /usr/local/bin/
+	tar -xvf lf-linux-amd64.tar.gz
+	sudo cp ./lf /usr/local/bin/
 
 	echo -e "${BYellow}[ * ]Installing ueberzug using pip${End_Colour}"
 	cd "${HOME}"/Git-Repos || exit

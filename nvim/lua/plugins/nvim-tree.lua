@@ -115,7 +115,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     dotfiles = false,
     custom = {},
     exclude = {},
-  -- },
+  },
   -- filesystem_watchers = {
   --   enable = false,
   --   -- interval = 100,

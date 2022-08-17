@@ -38,7 +38,7 @@ if [ -n "$FIFO_UEBERZUG" ]; then
 		draw "$cache" "$@"
 		;;
 	text/* | */xml)
-        bat --terminal-width "$3" -f "$file"
+        batcat --terminal-width "$3" -f "$file"
 		;;
 	esac
 fi
