@@ -1,7 +1,7 @@
 # Dotfiles
 My Config Files for starship, qtile, rofi, fish, etc. This branch contains scripts and config files for setting up this rice on Ubuntu.
 
-To use the config on Ubuntu, you will need to do 3 things apart from installing the required packages(If you are not using the setup script):
+To use the config on Ubuntu, you will need to do a few things apart from installing the required packages(If you are not using the setup script):
 - Edit line `202` in the [dunstrc](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/dunst/dunstrc) to add the path to dunst icons, which should be
   `~/.config/dunst/icons`, or if you have not moved the `dunst` folder to your `~/.config` directory `<Path_to_these_dotfiles>/dunst/icons`.
 - Edit line `6` in the [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/autostart.sh) script to add the path to your wallpaper. 
@@ -9,6 +9,16 @@ To use the config on Ubuntu, you will need to do 3 things apart from installing 
   with `nitrogen`. This is only a one time thing, and the wallpaper you chose will persist, due to line `9` in the 
   [autostart.sh](https://github.com/Ruturajn/Dotfiles/blob/ubuntu/qtile/autostart.sh) script. Also, you will need to make the autostart script 
   executable, with `chmod +x <Path-to-autostart.sh>/autostart.sh`.
+- Get the required fonts, to do this, copy the fonts from the `fonts` directory into `~/.fonts`, if this directory does not exist you might have to
+  create it,
+  ```
+  # If you don't have the ~/.fonts create it
+  $ mkdir ~/.fonts
+  
+  # Copy the fonts to that directory and update font cache
+  $ cp -r <Path_To_These_Dotfiles>/fonts/. ~/.fonts
+  $ fc-cache -fv
+  ```
 - For setting up neovim navigate to this dotfiles repo and follow,
   ```
   $ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
