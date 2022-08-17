@@ -137,6 +137,10 @@ taken care of by the script. The script will also backup your `$HOME/.config` di
 
 ## Gallery
 
+<details>
+<summary>Videos and Screenshots</summary>
+
+
 https://user-images.githubusercontent.com/56625259/177556957-b1e09610-c086-42f3-a2f8-58f6924e4b6e.mp4
 
 ![Ubuntu-Qtile-Rice-1](https://user-images.githubusercontent.com/56625259/174551823-dc47db9e-2ee6-4978-9d3b-7f03b8324691.png)
@@ -148,6 +152,8 @@ https://user-images.githubusercontent.com/56625259/177556957-b1e09610-c086-42f3-
 ![Ubuntu-Qtile-Rice-Wifi](https://user-images.githubusercontent.com/56625259/174551959-0bca4800-958c-4321-8f7d-a84921d5df70.png)
 
 ![Ubuntu-Qtile-Rice-PowerMenu](https://user-images.githubusercontent.com/56625259/174551974-1e3bb88e-55eb-4885-a7e4-4ae9647a098d.png)
+
+</details>
 
 ## Screenshots (Showing Volume and Brightness Control)
 <details>
@@ -172,3 +178,7 @@ https://user-images.githubusercontent.com/56625259/177556957-b1e09610-c086-42f3-
 <br />
 
 </details>
+
+## Credits
+
+Wallpapers taken from [wallpaperscraft](https://wallpaperscraft.com), and [wallpaperbetter](https://www.wallpaperbetter.com/en/search?q=1920x1080).
