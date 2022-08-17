@@ -267,18 +267,18 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 	# Installing material design icon font and JetBrains Mono Nerd Font
 	echo -e "${BYellow}[ * ]Installing Material-Design-Icon Font${End_Colour}"
 	cd "${HOME}"/Git-Repos || exit
-	wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
+	# wget "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf"
 	if [[ ! -d "${HOME}"/.fonts ]]; then
 		mkdir "${HOME}"/.fonts
 	fi
-	cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
-	cp -r "${HOME}"/Git-Repos/Dotfiles/fonts/. "${HOME}"/.fonts
+	# cp ./MaterialIcons-Regular.ttf "${HOME}"/.fonts
+	cp -r "${HOME}"/Git-Repos/Dotfiles/fonts/. "${HOME}"/.fonts/.
 	fc-cache -fv
 
-	echo -e "${BYellow}[ *]Installing JetBrains Mono Nerd Font${End_Colour}"
-	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
-	cp ./"JetBrains Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
-	fc-cache -fv
+	# echo -e "${BYellow}[ *]Installing JetBrains Mono Nerd Font${End_Colour}"
+	# wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
+	# cp ./"JetBrains Mono Regular Nerd Font Complete Mono.ttf" "${HOME}"/.fonts
+	# fc-cache -fv
 
 	# Install fish and change default shell
 	cd "${HOME}"/Git-Repos/Dotfiles || exit

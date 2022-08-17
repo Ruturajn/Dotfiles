@@ -22,7 +22,7 @@ set scrolloff 10
 
 #-------Custom Additions-------------
 # Enable borders
-set drawbox
+# set drawbox
 
 # Toggle hidden files
 map . set hidden!
