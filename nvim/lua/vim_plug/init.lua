@@ -59,4 +59,7 @@ Plug 'tpope/vim-fugitive'
 --> Telescope Plugin - Fuzzy file finder
 Plug ('nvim-telescope/telescope.nvim', {['tag'] = '0.1.0'})
 
+--> For Indentation
+Plug ('lukas-reineke/indent-blankline.nvim')
+
 vim.call('plug#end')
