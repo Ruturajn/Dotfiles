@@ -66,7 +66,7 @@ if [[ -z ${setup_ans} || ${setup_ans} == "y" || ${setup_ans} == "Y" ]]; then
 		git vim curl flameshot pulseaudio playerctl scrot ttf-fantasque-sans-mono \
 		brightnessctl bc bashtop acpi github-cli wget shfmt lxsession lxappearance \
 		ttf-joypixels yad gnome-disk-utility ripgrep udiskie xclip dex starship \
-		ttf-joypixels python-neovim python2 bat ueberzug ffmpegthumbnailer libjpeg \
+		noto-fonts-emoji python-neovim python2 bat ueberzug ffmpegthumbnailer libjpeg \
 		libpng ncdu tree xsel fd
 
 	# Adding a swapfile
